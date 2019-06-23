@@ -1,0 +1,11 @@
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
+.line2 {
+  fill: none;
+  stroke: rgb(97, 19, 32);
+  stroke-width: 2px;
+}

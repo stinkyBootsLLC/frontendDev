@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Check Passwords Prototype</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+        crossorigin="anonymous">
+    </head>
+
+    <h2>Check Passwords - Prototype</h2>
+      <div class="container">
+        <div class="card text-center border-secondary mb-3" style="max-width: 58rem;">
+        <div class="card-header">Unecrypted Password</div>
+        <div class="card-body text-secondary">
+
+        <!--<<form method="post"  id="password-form" onsubmit=" ">-->
+          <!--action="results.php"-->
+          <label for="Unecrypted-Password">Unecrypted Password:</label>
+          <input id="passField" type="text" name="pass" value="">
+          <br><br>
+          <!--<input id="mybutton" class="btn btn-primary" type="submit" value="Submit">-->
+          <button onclick="createTheAPIcall()">Try it</button>
+        <!--<</form>-->
+
+      </div>
+    </div> 
+
+    <div class="" id="test">
+      <p id="demo"></p>
+
+    </div>
+
+
+
+
+    
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" 
+      crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 
+      crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
+      crossorigin="anonymous">
+    </script>
+    <script src="/pwned/scripts/siteFunc.js"></script>
+    <script src="/pwned/scripts/sha1.js"></script>
+    
+  
+
+  </body>
+</html>

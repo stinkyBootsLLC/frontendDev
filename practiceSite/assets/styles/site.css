@@ -1,0 +1,145 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Arizonia');
+@import url('https://fonts.googleapis.com/css?family=Oswald:500&display=swap');
+/*https://fonts.googleapis.com/css?family=Font+Name">*/
+
+body, html {
+/*
+height: 100%;
+margin: 0;*/
+}
+
+
+
+
+.mylogo{
+font-family: 'Arizonia', cursive;  
+font-size: 38px;
+text-shadow: 4px 4px 4px #aaa;
+color:rgb(142, 141, 141);
+padding-right: 10px;
+
+}
+
+main{
+font-family: 'Roboto', sans-serif;
+}
+
+.social-icons > a > i{
+color:black;
+}
+
+.social-icons > a > i:hover {
+color: rgb(182, 182, 237);
+}
+
+.myNavItems > ul > li > a{
+font-size: 12px;
+}
+
+.myNavItems > ul > li > div > a{
+font-size: 12px;
+
+}
+.page-header{
+background-color: rgb(230, 225, 229);
+}
+
+.header-heading {
+
+margin: auto;
+width: 50%;
+padding: 10px;
+}
+.tag-line{ 
+text-align: center;
+font-size: 0.7em;
+
+padding: 10px;
+}
+
+.banner{
+padding-top: 30px;  
+}
+
+
+.banner-image {
+background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/Windupdance_Event.jpg");
+
+height: 485px;
+width: 100%;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+}
+
+.banner-text {
+text-align: center;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color:white;
+}
+
+.banner-text > h1{
+    font-weight: 700;
+
+}
+
+.banner-text button {
+font-family: Oswald, sans-serif;
+display: inline-block;
+font-size: 15px;
+font-weight: 500;
+color: rgb(36, 36, 36);
+text-transform: uppercase;
+padding: 12px 54px;
+border-radius: 4px;
+border-width: 1px;
+border-style: solid;
+}
+
+.banner-text button a{
+text-decoration: none;
+color: black;
+
+}
+
+.banner-text button:hover {
+background-color:#8d8791;
+color: white;
+}
+.includes{
+    font-family: Oswald, sans-serif;
+    padding: 12px;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+
+}
+.testList{
+    list-style: none;
+
+}
+
+.featuring{
+    padding: 1px;
+
+    text-transform: uppercase;
+    text-align: center;
+    height: 405px;
+}
+.featuring > img{
+    height: 75%;
+    width: 100%;
+}
+
+
+
+
+ 
+
+
