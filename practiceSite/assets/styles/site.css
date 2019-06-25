@@ -5,9 +5,9 @@
 /*https://fonts.googleapis.com/css?family=Font+Name">*/
 
 body, html {
-/*
+
 height: 100%;
-margin: 0;*/
+margin: 0;
 }
 
 
@@ -86,38 +86,45 @@ color:white;
 
 .banner-text > h1{
     font-weight: 700;
+    font-size:50px;
 
 }
 
 .banner-text button {
+    opacity: 0.85;
 font-family: Oswald, sans-serif;
 display: inline-block;
 font-size: 15px;
 font-weight: 500;
-color: rgb(36, 36, 36);
+color: rgb(70, 64, 64);
 text-transform: uppercase;
 padding: 12px 54px;
 border-radius: 4px;
 border-width: 1px;
 border-style: solid;
+background-color: #8B9DC3;
 }
 
 .banner-text button a{
 text-decoration: none;
 color: black;
 
+
 }
 
 .banner-text button:hover {
-background-color:#8d8791;
+opacity: 0.65;
+background-color:#8B9DC3;
 color: white;
 }
 .includes{
     font-family: Oswald, sans-serif;
     padding: 12px;
+    border-color: rgb(142, 141, 141);
     border-radius: 4px;
     border-width: 1px;
     border-style: solid;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 
 }
 .testList{
@@ -126,7 +133,7 @@ color: white;
 }
 
 .featuring{
-    padding: 1px;
+    padding: 0px;
 
     text-transform: uppercase;
     text-align: center;
@@ -134,11 +141,32 @@ color: white;
 }
 .featuring > img{
     height: 75%;
-    width: 100%;
+    width: 110%;
 }
 
+/*@TODO xfer to mobile.css*/
+
+ 
 
 
+/*
+@media screen and (max-width: 731px) {
+
+    .featuring{
+        padding: 0px;
+    
+        text-transform: uppercase;
+        text-align: center;
+        height: 500px;
+    }
+
+
+    .featuring > img{
+        height: 90%;
+        width: 100%;
+    }
+}
+*/
 
  
 
