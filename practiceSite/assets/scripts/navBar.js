@@ -14,5 +14,3 @@ $('#mail-Icon').hover(
     function(){ $(this).addClass('fa-lg') },
     function(){ $(this).removeClass('fa-lg') }
 )
-
-//<i class="fab fa-facebook"></i>

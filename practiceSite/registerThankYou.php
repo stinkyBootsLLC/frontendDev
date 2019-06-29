@@ -14,10 +14,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <!-- local styles -->
-        <link href="assets/styles/site.css" rel="stylesheet" type="text/css" />
-        <link href="assets/styles/footer-Dark.css" rel="stylesheet" type="text/css" />
-        <link href="assets/styles/registration.css" rel="stylesheet" type="text/css" />
-        <link href="assets/styles/mobile.css" rel="stylesheet" type="text/css" />
+        <link href="assets/styles/site.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/styles/registration.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/styles/mobile.min.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <section class=" container reg-message">
@@ -40,7 +39,6 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
         <!-- Boostrap requirements -->
-        <script src="assets/scripts/navBar.js" type="module"></script>
     </body>
 
 </html>
