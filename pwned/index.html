@@ -1,34 +1,70 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <body>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <title>Check Passwords Prototype</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
-        crossorigin="anonymous">
-    </head>
 
-    <h2>Check Passwords - Prototype</h2>
-      <div class="container">
-        <div class="card text-center border-secondary mb-3" style="max-width: 58rem;">
-        <div class="card-header">Unecrypted Password</div>
-        <div class="card-body text-secondary">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Check Passwords Prototype</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
 
-        <!--<<form method="post"  id="password-form" onsubmit=" ">-->
-          <!--action="results.php"-->
-          <label for="Unecrypted-Password">Unecrypted Password:</label>
-          <input id="passField" type="text" name="pass" value="">
-          <br><br>
-          <!--<input id="mybutton" class="btn btn-primary" type="submit" value="Submit">-->
-          <button onclick="createTheAPIcall()">Try it</button>
-        <!--<</form>-->
+  <h2>Check Passwords - Prototype</h2>
+  <div class="container">
+    <h5>Searching by range</h5>
+    <p>
+      In order to protect the value of the source password being searched for, Pwned Passwords also implements
+      a k-Anonymity model that allows a password to be searched for by partial hash.
+      This allows the first 5 characters of a SHA-1 password hash (not case-sensitive)
+      to be passed to the API (testable by clicking here):
+    </p>
+    <p>
+      When a password hash with the same first 5 characters is found in the Pwned Passwords repository,
+      the API will respond with an HTTP 200 and include the suffix of every hash beginning with the specified
+      prefix, followed by a count of how many times it appears in the data set. The API consumer can then
+      search the results of the response for the presence of their source hash and if not found, the password
+      does not exist in the data set. A sample response for the hash prefix "21BD1" would be as follows:
+    </p>
+    <p>
+      On average, a range search returns 478 hash suffixes, although this number will differ depending on the
+      hash prefix being searched for. The smallest result is 381, the largest 584. There are 1,048,576
+      different hash prefixes between 00000 and FFFFF (16^5) and every single one will return HTTP 200; there
+      is no circumstance in which the API should return HTTP 404.
+    </p>
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+  <div class="container">
+    <div class="card text-center border-secondary mb-3" style="max-width: 58rem;">
+      <div class="card-header">Unecrypted Password</div>
+      <div class="card-body text-secondary">
+
+        <label for="Unecrypted-Password">Unecrypted Password:</label>
+        <input id="passField" type="text" name="pass" value="">
+        <br><br>
+        <button onclick="createTheAPIcall()">Try it</button>
+        
 
       </div>
-    </div> 
+    </div>
 
     <div class="" id="test">
+      <p id="found"></p>
+      <p id="found2"></p>
       <p id="demo"></p>
 
     </div>
@@ -36,24 +72,22 @@
 
 
 
-    
-    
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" 
-      crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 
-      crossorigin="anonymous">
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
-      crossorigin="anonymous">
-    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+      </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+      </script>
     <script src="/pwned/scripts/siteFunc.js"></script>
     <script src="/pwned/scripts/sha1.js"></script>
-    
-  
 
-  </body>
+
+
+</body>
+
 </html>
