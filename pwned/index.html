@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
+  <div class="container-fluid">
+    <h2>Check Passwords - Prototype</h2>
+  </div>
 
-  <h2>Check Passwords - Prototype</h2>
   <div class="container">
     <h5>Searching by range</h5>
     <p>
@@ -52,22 +54,31 @@
     <div class="card text-center border-secondary mb-3" style="max-width: 58rem;">
       <div class="card-header">Unecrypted Password</div>
       <div class="card-body text-secondary">
-
-        <label for="Unecrypted-Password">Unecrypted Password:</label>
-        <input id="passField" type="text" name="pass" value="">
         <br><br>
-        <button onclick="createTheAPIcall()">Try it</button>
-        
+        <div class="form-group row">
+          <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="passField" type="text" name="pass" value="" placeholder="Password">
+          </div>
+          
+        </div>
+        <br><br>
+        <button type="button" class="btn btn-outline-secondary btn-lg" onclick="createTheAPIcall()">pwned? </button>
 
+
+
+        <div class="" id="results">
+            <br>
+            <p id="display"></p>
+      
+          </div>
+
+
+        
       </div>
     </div>
 
-    <div class="" id="test">
-      <p id="found"></p>
-      <p id="found2"></p>
-      <p id="demo"></p>
-
-    </div>
+  
 
 
 
