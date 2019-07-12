@@ -9,93 +9,189 @@
     <title>Check Passwords Prototype</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="site.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </head>
   <div class="container-fluid">
-    <h2>Check Passwords - Prototype</h2>
+    <h1>Check PWNED Passwords - Prototype</h1>
   </div>
+  <br><br>
 
-  <div class="container">
-    <h5>Searching by range</h5>
-    <p>
-      In order to protect the value of the source password being searched for, Pwned Passwords also implements
-      a k-Anonymity model that allows a password to be searched for by partial hash.
-      This allows the first 5 characters of a SHA-1 password hash (not case-sensitive)
-      to be passed to the API (testable by clicking here):
-    </p>
-    <p>
-      When a password hash with the same first 5 characters is found in the Pwned Passwords repository,
-      the API will respond with an HTTP 200 and include the suffix of every hash beginning with the specified
-      prefix, followed by a count of how many times it appears in the data set. The API consumer can then
-      search the results of the response for the presence of their source hash and if not found, the password
-      does not exist in the data set. A sample response for the hash prefix "21BD1" would be as follows:
-    </p>
-    <p>
-      On average, a range search returns 478 hash suffixes, although this number will differ depending on the
-      hash prefix being searched for. The smallest result is 381, the largest 584. There are 1,048,576
-      different hash prefixes between 00000 and FFFFF (16^5) and every single one will return HTTP 200; there
-      is no circumstance in which the API should return HTTP 404.
-    </p>
-
-
-
-
-
-
-
-  </div>
-
-
-
-
-
-
-
-  <div class="container">
+  <section class="container">
     <div class="card text-center border-secondary mb-3" style="max-width: 58rem;">
       <div class="card-header">Unecrypted Password</div>
       <div class="card-body text-secondary">
         <br><br>
         <div class="form-group row">
+
           <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-10">
             <input class="form-control" id="passField" type="text" name="pass" value="" placeholder="Password">
           </div>
-          
+
         </div>
         <br><br>
-        <button type="button" class="btn btn-outline-secondary btn-lg" onclick="createTheAPIcall()">pwned? </button>
+        <button type="button" class="btn btn-outline-secondary btn-lg" onclick="creatPassWordSHA()">pwned? </button>
 
 
 
         <div class="" id="results">
-            <br>
-            <p id="display"></p>
-      
+          <br>
+          <p id="display"></p>
+
+        </div>
+
+
+
+      </div>
+  </section>
+  <section class="container">
+    <h5>Purpose:</h5>
+    <p>This project was inspired from a video by Dr Mike Pound [Computerphile]
+      <a href="https://www.youtube.com/watch?v=hhUb5iknVJs">
+        <cite><q>Have You Been Pwned?</q></cite></a> and to showcase using a REST API.
+      The term "pwn" means
+      <a href="https://www.urbandictionary.com/define.php?term=pwn">
+        <cite><q>An act of dominating an opponent.</q></cite></a>
+      In this case your password. According to <a href="https://haveibeenpwned.com/Passwords">haveibeenpwned.com,</a>
+      <cite><q>
+          Pwned Passwords are 551,509,767 real world passwords previously exposed in data breaches.
+          This exposure makes them unsuitable for ongoing use as they're at much greater risk of
+          being used to take over other accounts. They're searchable online below as well as being
+          downloadable for use in other online systems.
+        </q></cite>
+    </p>
+
+    <p>
+      In this example project, I am using a k-Anonymity model that allows a password to be searched for by
+      partial hash. <strong>(Searching by range)</strong> The JavaScript algorithm will convert your plain text
+      into a Secure Hash Algorithm 1 (SHA-1) and use the first 5 characters of the hash to check the
+      pwned passwords repository. The last 35 characters of the hash will then be used to search for a match.
+    </p>
+  </section>
+
+  <section class="container">
+    <h5>Example:</h5>
+    <p>
+      If you type "password" and click the pwned button.
+      <ul>
+        <li>Full SHA-1 HEX = 5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8</li>
+        <li>First 5 chars to use for API k-Anonymity = 5baa6 (the only characters being sent to the repository)</li>
+        <li>Part to search = 1e4c9b93f3f0682250b6cf8331b7ee68fd8</li>
+        <li>Display hash found or not found</li>
+      </ul>
+      The searching algorithm is being accomplished on the front-end. (your computer, not mine or the server)
+      <br><br>
+      University of NottinghamComputer Science
+      https://www.nottingham.ac.uk/computerscience/
+    </p>
+  </section>
+  <br><br>
+  <div class="container-fluid">
+    <h1>Getting a single breached site</h1>
+  </div>
+
+
+    <section id="breaches" class="container">
+
+    <p>A "breach" is an instance of a system having been compromised by an attacker and the data disclosed.
+      For example, Adobe was a breach, Gawker was a breach etc.</p>
+
+    <div class="card text-center border-secondary mb-3" style="max-width: 58rem;">
+      <div class="card-header">Domain Name</div>
+      <div class="card-body text-secondary">
+        <br><br>
+        <form>
+          <div class="form-group row">
+
+            <label for="DomainName" class="col-sm-2 col-form-label">Domain Name</label>
+            <div class="col-sm-10">
+              <input class="form-control" id="domainName" type="text" name="domainName" value=""
+                placeholder="Domain Name" required>
+            </div>
+
           </div>
+          <br><br>
+          <button type="button" class="btn btn-outline-secondary btn-lg" onclick="siteBreach()">go </button>
+        </form>
+
+      </div>
+  </section>
 
 
-        
+  <br><br>
+  <section id="domainNameDisplay" class="container domainNameDisplay">
+    <div class="card">
+      <div class="row no-gutters">
+        <div class="col-auto">
+          <img id="logo" class="img-fluid" alt="" style="width:300px;height:300px;">
+        </div>
+        <div class="col">
+          <div class="card-block px-2">
+            <h4 class="card-title" id="domainTitle"></h4>
+            <p class="card-text" id="description"></p>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer w-100 text-muted" id="cardFooter">
+
+
       </div>
     </div>
 
-  
+    <br><br>
+
+
+  </section>
 
 
 
 
 
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-      </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-      </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-      </script>
-    <script src="/pwned/scripts/siteFunc.js"></script>
-    <script src="/pwned/scripts/sha1.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+  <script src="/pwned/scripts/siteFunc.js"></script>
+  <script src="/pwned/scripts/sha1.js"></script>
 
 
 
