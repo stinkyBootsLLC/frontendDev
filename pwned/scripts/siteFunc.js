@@ -37,12 +37,12 @@
             // the hash was found in the database
             let badPassResult = document.getElementById("display");
             badPassResult.style.color = "red";
-            badPassResult.innerHTML = "this password is compromised!";
+            badPassResult.innerHTML = "Password is compromised!";
           } else {
             // not found
             let goodPassResult = document.getElementById("display");
             goodPassResult.style.color = "green";
-            goodPassResult.innerHTML = "wow you found a clean one!";
+            goodPassResult.innerHTML = "Clean password!";
           } // end if (foundHash > 0)
         }// end if(this.readyState == 4 && this.status == 200)
       };
@@ -71,14 +71,14 @@
             let logoPath = JSON.stringify(data[0].LogoPath);
             let pwnCount = JSON.stringify(data[0].PwnCount);
             // render HTML
-            domainTitle.innerHTML = domainName.replace(/['"]+/g, '').toUpperCase() + " Breached on " + breachedDate;
+            domainTitle.innerHTML = "Domain Name: " + domainName.replace(/['"]+/g, '').toUpperCase() + "<br> Breach date:  " + breachedDate;
             descriptionDisplay.innerHTML = description.replace(/['"]+/g, '');
             // append and remove double quotes
             companyLogo.src = logoPath.replace(/['"]+/g, '');
-            cardFooter.innerHTML = "The total number of accounts loaded into the system. =  <strong>" + pwnCount + "</strong>";
+            cardFooter.innerHTML = "Total compromised accounts:  <strong>" + pwnCount + "</strong>";
             //  remove and add css classes
             fullDisplay.classList.remove('domainNameDisplay');
-            fullDisplay.classList.add('displayResults')
+            fullDisplay.classList.add('displaydomainNameResults')
           })
           // error handling
           .catch(error => alert('There is no information on "' + userInput + '"'));

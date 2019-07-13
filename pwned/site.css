@@ -1,15 +1,55 @@
 @import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto:100&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bahianita&display=swap');
 
 body {
   font-family: 'Libre Franklin', sans-serif;
+  
 }
+
+.main-title{
+  background-color: #071029;
+  padding : 1px;
+}
+
+div.main-title > div > h1 {
+  font: 57px 'Bahianita', cursive;
+  color: rgb(87, 96, 126);
+  
+
+}
+
+.user-form{
+  margin-top: 0.5in;
+}
+
+.form-title{
+  font: 40px 'Bahianita', cursive;
+  color:#071029;;
+
+}
+
+input[type="text"] {
+  width: 80%;
+  display: block;
+  margin-bottom: 10px;
+}
+
+div.sub-title > h1{
+  font: 57px 'Bahianita', cursive;
+  color: #071029;;
+
+}
+
+
+
+
+
 
 .domainNameDisplay { 
-    display: none;
+    display: none;   
 }
-.displayResults{
+.displaydomainNameResults{
     display: block;
-
 }
