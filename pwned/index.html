@@ -9,24 +9,24 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <link rel="stylesheet" href="site.css">
     </head>
-
     <div class="main-title">
       <div class="container-fluid">
         <h1>Check PWNED Passwords - Prototype</h1>
       </div>
     </div> 
+    <div class="container-fluid sub-title">
+      <h1>Searching By Range</h1>
+    </div>
     <section class="container">
       <div class="card text-center border-secondary mb-3 user-form" style="max-width: 58rem;">
         <div class="card-header form-title">Unecrypted Password</div>
         <div class="card-body text-secondary">
-          
           <div class="form-group row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
               <input class="form-control" id="passField" type="text" name="pass" value="" placeholder="Password">
             </div>
           </div>
-          
           <button type="button" class="btn btn-outline-secondary btn-lg" onclick="creatPassWordSHA()">pwned? </button>
           <div class="" id="results">
             <br>
@@ -37,10 +37,10 @@
     <section class="container">
       <h5>Purpose:</h5>
       <p>This project was inspired from a video by Dr Mike Pound [Computerphile]
-        <a href="https://www.youtube.com/watch?v=hhUb5iknVJs">
-          <cite><q>Have You Been Pwned?</q></cite></a> and to showcase using a REST API.
-        The term "pwn" means
-        <a href="https://www.urbandictionary.com/define.php?term=pwn">
+        <a href="https://www.youtube.com/watch?v=hhUb5iknVJs"><cite><q>Have You Been Pwned?</q></cite></a> 
+        and to showcase using a <mark><span data-toggle="popover" title="What is REST?" 
+        data-content="REST is acronym for REpresentational State Transfer.">REST API.</span></mark>
+        The term "pwn" means<a href="https://www.urbandictionary.com/define.php?term=pwn">
           <cite><q>An act of dominating an opponent.</q></cite></a>
         In this case your password. According to <a href="https://haveibeenpwned.com/Passwords">haveibeenpwned.com,</a>
         <cite><q> <!--<a href="https://www.nottingham.ac.uk/computerscience/">University of NottinghamComputer Science</a>-->
@@ -50,7 +50,6 @@
             downloadable for use in other online systems.
           </q></cite>
       </p>
-
       <p>
         In this example project, I am using a k-Anonymity model that allows a password to be searched for by
         partial hash. <strong>(Searching by range)</strong> The JavaScript algorithm will convert your plain text
@@ -69,18 +68,15 @@
           <li>Display hash found or not found</li>
         </ul>
         The searching algorithm is being accomplished on the front-end. (your computer, not mine or the server)
-        <br>
-        
         
       </p>
     </section>
-    <br><br>
+   
     <div class="container-fluid sub-title">
       <h1>Getting a single breached site</h1>
     </div>
-    
     <section id="breaches" class="container">
-        <h5>Purpose:</h5>
+      <h5>Purpose:</h5>
       <p>
         In this section, the user can search for a single breached site.
         A "breach" is an instance of a system having been compromised by an attacker and the data disclosed.
@@ -89,7 +85,6 @@
       <div class="card text-center border-secondary mb-3 user-form" style="max-width: 58rem;">
         <div class="card-header form-title">All Domain Names in the system</div>
         <div class="card-body text-secondary">
-         
             <div class="form-group row">
               <label for="DomainName" class="col-sm-2 col-form-label">Domain Name</label>
               <div class="col-sm-10">
@@ -121,6 +116,32 @@
     
     <br><br><br><br>
 
+  
+
+    <footer id="sticky-footer" class="py-4 bg-dark text-light">
+        <div class="container text-center">
+
+            Reference Links: &nbsp; &nbsp; &nbsp; 
+            <a href="https://www.youtube.com/user/Computerphile">Computerphile</a>&nbsp; | &nbsp; 
+            <a href="https://bit.ly/nottscomputer">(C/S) University of Nottingham</a> &nbsp; | &nbsp;
+            <a href="https://haveibeenpwned.com/">HIBP</a> &nbsp; | &nbsp;
+            <a href="https://restfulapi.net/">REST API</a> &nbsp; | &nbsp;
+            
+           
+
+
+
+
+
+
+
+          <small>Copyright &copy; Eduardo Estrada</small>
+        </div>
+      </footer>
+    
+
+
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
@@ -133,5 +154,23 @@
       </script>
     <script src="/pwned/scripts/siteFunc.js"></script>
     <script src="/pwned/scripts/sha1.js"></script>
+
+
+
+    <script type="text/javascript">
+      // JQuery for popover (part of bootstrap library)
+      $(document).ready(function(){
+          $('[data-toggle="popover"]').popover({
+              placement : 'top',
+              trigger : 'hover'
+          });
+      });
+      </script>
+
+
+
+
+
+
   </body>
 </html>
