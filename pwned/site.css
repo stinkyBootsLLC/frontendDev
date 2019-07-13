@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Roboto:100&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Bahianita&display=swap');
 
 body {
   font-family: 'Libre Franklin', sans-serif;
+  height: 100%;
 }
 
 h5 {
@@ -25,7 +24,7 @@ div.main-title > div > h1 {
 }
 
 .user-form{
-  margin-top: 0.5in;
+  margin-top: 0.1in;
 }
 
 .form-title{
@@ -34,11 +33,23 @@ div.main-title > div > h1 {
 
 }
 
-input[type="text"] {
+input[type="text"]{
   width: 80%;
   display: block;
   margin-bottom: 10px;
 }
+
+
+
+#sticky-footer {
+  flex-shrink: none;
+}
+
+footer > div > a {
+  color: white;
+}
+
+
 
 div.sub-title > h1{
   font: 57px 'Bahianita', cursive;
