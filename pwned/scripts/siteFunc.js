@@ -52,12 +52,12 @@
 	
     // Send data to a web service and receive data from a web service by using the Fetch API object.
     function siteBreach(){
-      let userInput = document.getElementById("domainName").value;
+      let userInput = document.getElementById("allbreaches").value;
       if(userInput === ""){
         alert("Domain Name cannot be BLANK");
       } else {
-        let urlDomain = "https://haveibeenpwned.com/api/breaches?domain=" + userInput;
-        fetch(urlDomain)
+        let urlDomainName = "https://haveibeenpwned.com/api/breaches?domain=" + userInput;
+        fetch(urlDomainName)
           .then((resp) => resp.json())
           .then((data) => {
             const fullDisplay = document.getElementById("domainNameDisplay");
@@ -84,6 +84,26 @@
           .catch(error => alert('There is no information on "' + userInput + '"'));
       } // end if(userInput === "")
     }// end siteBreach()
+
+    // get all domain names from the API and display in options for select element
+    function allBreachedDomains(){
+      const urlAllDomains = "https://haveibeenpwned.com/api/v2/breaches";
+      fetch(urlAllDomains)
+          .then((resp) => resp.json())
+          .then((data) => {
+            const selectAllDomainNames = document.getElementById("allbreaches");
+            let domainNameValue = "";
+            let name = "";
+            for (let i = 0; i < data.length; i++) {
+              //<option value="audi">Audi</option>
+              domainNameValue = JSON.stringify(data[i].Domain);
+              name = domainNameValue.replace(/['"]+/g, '')
+              selectAllDomainNames.options[selectAllDomainNames.options.length] = new Option(name)
+              // console.log(JSON.stringify(data[i].Domain));
+            }// end for all domain names
+          })
+          .catch(error => console.log(error));
+    }// end allBreachedDomains()
 
 
  

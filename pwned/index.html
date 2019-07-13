@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <body>
+  <body onload="allBreachedDomains()">
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -85,18 +85,16 @@
         For example, Adobe was a breach, Gawker was a breach etc.
       </p>
       <div class="card text-center border-secondary mb-3 user-form" style="max-width: 58rem;">
-        <div class="card-header form-title">Domain Name</div>
+        <div class="card-header form-title">All Domain Names in the system</div>
         <div class="card-body text-secondary">
-          <form>
+         
             <div class="form-group row">
               <label for="DomainName" class="col-sm-2 col-form-label">Domain Name</label>
               <div class="col-sm-10">
-                <input class="form-control" id="domainName" type="text" name="domainName" value=""
-                  placeholder="Domain Name ie. adobe.com" required>
+                <select class="form-control" id="allbreaches" name="domainName" value=""></select>
               </div>
             </div>
-            <button type="button" class="btn btn-outline-secondary btn-lg" onclick="siteBreach()">Check Breached Site </button>
-          </form>
+            <button type="button" class="btn btn-outline-secondary btn-lg" onclick="siteBreach()">Check Breached Site </button>         
         </div>
     </section>
     <br><br>
@@ -104,7 +102,7 @@
       <div class="card">
         <div class="row no-gutters">
           <div class="col-auto">
-            <img id="logo" class="img-fluid" alt="" style="width:300px;height:300px;">
+            <img id="logo" class="img-fluid" alt="" style="width:200px;height:200px;">
           </div>
           <div class="col">
             <div class="card-block px-2">
@@ -123,10 +121,9 @@
 
 
 
-    <div class="container-fluid sub-title">
-      <h1>all breached sites in the system</h1>
-    </div>
 
+    
+    <br><br><br><br>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
