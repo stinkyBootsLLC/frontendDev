@@ -1,15 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
 // https://haveibeenpwned.com/API/v2
 // https://www.youtube.com/watch?v=hhUb5iknVJs
 // Have You Been Pwned? - Computerphile
@@ -100,7 +88,7 @@
     // get all domain names from the API and display in options for select element
     function allBreachedDomains(){
       const urlAllDomains = "https://haveibeenpwned.com/api/v2/breaches";
-      fetch(urlAllDomains)
+        fetch(urlAllDomains)
           .then((resp) => resp.json())
           .then((data) => {
             const selectAllDomainNames = document.getElementById("allbreaches");
@@ -116,6 +104,9 @@
           })
           .catch(error => console.log(error));
     }// end allBreachedDomains()
+
+
+
 
 
  
