@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Orbitron|Roboto&display=swap');
+
+body{
+    
+    font-family: 'Roboto', sans-serif;
+    background-color: black;
+    color: greenyellow;
+}
+h1{
+    font-family: 'Orbitron', sans-serif;
+    font-size: 35px;
+
+}
+h3{
+    padding-top: 10px;
+}
+
+
+
+a:link, a:visited {
+    color: white;
+    padding: 14px 25px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+}
+a:hover, a:active {
+background-color: red;
+}
+
+
+
+
+
+
+hr.new1 {
+    border-top: 1px solid red;
+}
+
+.moveMe{
+    width: 25%;
+    border-style: solid;
+    border-color: red;
+}
+
+
+.div2a {
+    border: solid yellow;
+    width: 80px;
+    height: 60px;
+
+}
+.div2a:hover {
+    border: solid yellow;
+    transform: scale(1, 1);
+    width: 170px;
+    height: 60px;
+}
+
+
+
+
+
+
+
+
+.transTarget{
+    color: yellow;
+    transition-property: background-color;
+    transition-delay: 0.5s;
+
+}
+.transTarget:hover{
+    background-color: chartreuse;
+    color: red;
+
+}

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Implement and Manipulate Document Structures and Objects (20-25%)</title>
+  <meta name="author" content="name">
+  <meta name="description" content="description here">
+  <meta name="keywords" content="keywords,here">
+  <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="site.css" type="text/css">
+</head>
+
+<body>
+
+  <header>
+    <h1>Implement and Manipulate Document Structures and Objects</h1>
+  </header>
+  <nav></nav>
+  <main>
+
+    <article class="container">
+      <h3>Write code that interacts with UI controls</h3>
+      <section class="row">
+        <div class="col-sm">
+          <li>Programmatically <mark>add</mark> and <mark>modify</mark> HTML elements;</li>
+          <div id="addAnElement"></div>
+          <p>
+            This button will progamatically
+            <button onclick="addElement ()">Add HTML Element</button>
+          </p>
+          <p>
+            and this button will progamatically
+            <button onclick="changeAttributes('blue');">modify HTML element</button>
+          </p>
+
+        </div>
+        <div class="col-sm">
+          <li>implement media controls;</li>
+          <p>video is NOT playing a .mov file</p>
+          <video width="320" height="240" controls>
+
+            <source src="video.mp4">
+            I'm sorry; your browser doesn't support HTML5 video in WebM with VP8/VP9 or MP4 with H.264.
+          </video>
+
+        </div>
+        <div class="col-sm">
+          <li>implement HTML5 canvas and SVG graphics</li>
+          <canvas id="myCanvas" width="400" height="200"
+            style="border:1px solid #000000; background-color: rgb(255, 255, 255);">
+
+
+          </canvas>
+          <br>
+          <button onclick="drawSVGz()">Draw On Canvas</button>
+        </div>
+      </section>
+    </article>
+    <hr class="new1">
+    <article class="container">
+      <h3>Apply styling to HTML elements programmatically</h3>
+      <section class="row">
+        <div class="col-sm">
+          <li>Change the location of an element;</li>
+
+          <div id="moveMe" class="moveMe">Move this Div</div>
+          <button onclick="moveDIv(800, 35) ">Move Div</button>
+
+          <li>apply a transform;</li>
+          <p>Transform is a CSS property</p>
+          <div id="div1">
+            <div class="div2a">HELLO</div>
+          </div>
+        </div>
+        <div class="col-sm">
+          <li>show and hide elements</li>
+          <div id="hideDiv" class="moveMe">
+            hide this DIV element.
+          </div>
+          <button onclick="hideElement()">hide Div</button>
+        </div>
+        <div class="col-sm">
+          New Div Area
+        </div>
+
+      </section>
+      <br>
+      <section class="row">
+        <p>Transition an element with <span class="transTarget">css</span>. When you hover over "<- css", there will be
+            a 2 sec delay in color change</p> </section> </article> <hr class="new1">
+            <article class="container">
+              <h3>Implement HTML5 APIs</h3>
+              <section class="row">
+                <div class="col-sm">
+                  <li>Implement storage APIs and the Geolocation API</li>
+                  <div id="localStorageDiv"></div>
+                  <div>
+                    <mark>Local storage</mark>
+                    <button onclick="setLocalStorage()">Create Local Storage</button>
+                    <button onclick="emptyLocalStorage()">DELETE Local Storage</button>
+                    <p>The stored data is saved across browser sessions. Data stored in localStorage
+                      has no expiration time
+                      <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Local_storage">Local
+                        storage</a>
+                    </p>
+                  </div>
+
+                </div>
+                <div class="col-sm">
+                  <div id="sessionStoragediv"></div>
+                  <div></div>
+                  <mark>Sessions storage</mark>
+                  <button onclick="createSessionStorage()">Create Session Storage</button>
+                  <button onclick="emptySessionStorage()">DELETE Session Storage</button>
+                  <p>The sessionStorage property allows you to access a session Storage object for the current origin.
+                    sessionStorage is similar to localStorage; the only difference is while data stored in localStorage
+                    has no expiration time, data stored in sessionStorage gets cleared when the page session ends.
+                    A page session lasts for as long as the browser is open and survives over page reloads and restores.
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage">Session Storage
+                    </a>
+                  </p>
+                </div>
+
+                </div>
+                <div class="col-sm">
+                  <p>Geolocation API</p>
+                  <li>Getting the current position</li>
+                  <div id="myCurrentGPSpos"></div>
+
+                  <button onclick="geoGetLocation()">get My Position</button>
+
+
+
+
+
+
+
+
+                  <li>Watching the current position</li>
+                  <div id="changedGPSpos"></div>
+                </div>
+
+
+
+
+
+
+
+
+              </section>
+            </article>
+
+            <hr class="new1">
+            <article class="container">
+              <h3>Establish the scope of objects and variables</h3>
+              <section class="row">
+                <div class="col-sm">
+                  <li>Define the lifetime of variables;</li>
+
+                  Varaibles begin their life at decleration<br>
+                  <code>var myVariable = "eduardo";</code><br>
+                  The remainder of their life, depends on where the variables are declared.
+                </div>
+                <div class="col-sm">
+                  <h5>Keep objects out of the global namespace;</h5>
+                  <p>To avoid the possibility on naming collisions</p>
+                  <p>
+                    Creating a namespace is as simple as creating an object, and "variable" in the namespace are simple
+                    the values of properties of the namespace object:
+                  </p>
+                  // create the JS Object<br>
+                  <code>var myNS = {}; </code><br>
+                  // this is a property<br>
+                  <code>myNS.variable1 = 5; </code><br>
+                  // and this is a method of that object<br>
+                  <code>myNS.method1 = function () {}; </code>
+
+                  <p>or the literal way </p>
+                  // create the JS Object<br>
+                  <code>var myNS = {</code><br>
+                  <code>variable1: 5,</code><br>
+                  <code>method1: function () {};</code><br>
+                  <code>}; </code><br>
+                  // call the object<br>
+                  <code>let someVar = myNS.method1;</code><br>
+                </div>
+                <div class="col-sm">
+                  <li>use the “this” keyword to reference an object that fired an event;</li>
+                  <p>
+                    A function's this keyword behaves a little differently in JavaScript compared to other languages.
+                    It also has some differences between strict mode and non-strict mode.
+
+                    In most cases, the value of this is determined by how a function is called (runtime binding).
+                    It can't be set by assignment during execution, and it may be different each time the function
+                    is called. ES5 introduced the bind() method to set the value of a function's this regardless of
+                    how it's called, and ES2015 introduced arrow functions which don't provide their own this binding
+                    (it retains the this value of the enclosing lexical context).
+
+
+                  </p>
+
+                  <code>var test = {</code><br>
+                  <code>prop: 42,</code><br>
+                  <code>func: function() {</code><br>
+                  <code>return this.prop;</code><br>
+                  <code>},</code><br>
+                  <code>};</code><br>
+
+                  <code>console.log(test.func());</code><br>
+                  <code>// expected output: 42</code><br>
+
+                  <p>OR</p>
+                  <code>var test = {</code><br>
+                  <code>prop: 42,</code><br>
+                  <code>func: function() {</code><br>
+                  <code>return this;</code><br>
+                  <code>},</code><br>
+                  <code>};</code><br>
+
+                  <code>console.log(test.func());</code><br>
+                  <code>// expected output: [object]</code><br>
+                </div>
+              </section>
+            </article>
+            <hr class="new1">
+            <article class="container">
+             
+              <section class="row">
+                <div class="col-sm-12">
+                  <h4>Scope variables locally and globally</h4>
+                  <h5><mark>Local and Global Scope</mark></h5>
+                  <p>
+                    Variables that are created within a function with the var keyword are local to that function.
+                    The values in these variables are only accessible within the function, and they are destroyed
+                    when the function call ends. All other variables in JS are created in the global environment.
+                    It is generally considered bad to "pollute" the global namespace with a ton of variables and
+                    objects. It should be noted that implicitly created variables in a function (that is, a variable
+                    name on the left side of an assignment with no var) are created in the global namespace.
+                    Basic overview of variable scope
+                  </p>
+                </div>
+              </section>
+            </article>
+
+            <hr class="new1">
+            <article class="container">
+              <h3> Create and implement objects and methods</h3>
+              <section class="row">
+                <div class="col-sm">
+                  <li>Implement native objects;</li>
+                  <p>
+                    There are three object categories in JavaScript: Native Objects, Host Objects, and User-Defined
+                    Objects.
+                  </p>
+                  <p>
+                    <mark>Native objects</mark> are those objects supplied by JavaScript. Examples of these are String,
+                    Number,
+                    Array, Image, Date, Math, etc. <mark>Host objects</mark> are objects that are supplied to JavaScript
+                    by
+                    the browser environment. Examples of these are window, document, forms, etc. And,
+                    <mark>user-defined objects</mark> are those that are defined by you, the programmer.
+                  </p>
+
+
+
+                  <li>Booleans can be objects (if defined with the new keyword)</li>
+                  <li>Numbers can be objects (if defined with the new keyword)</li>
+                  <li>Strings can be objects (if defined with the new keyword)</li>
+                  <li>Dates are always objects</li>
+                  <li>Maths are always objects</li>
+                  <li>Regular expressions are always objects</li>
+                  <li>Arrays are always objects</li>
+                  <li>Functions are always objects</li>
+                  <li>Objects are always objects</li>
+                  <li>All JavaScript values, except primitives, are objects.</li>
+                  <p>JavaScript defines 5 types of primitive data types:</p>
+                  <ul>
+                    <li><code>string</code></li>
+                    <li><code>number</code></li>
+                    <li><code>boolean</code></li>
+                    <li><code>null</code></li>
+                    <li><code>undefined</code></li>
+                  </ul>
+
+                  <code>var x = new Boolean(false);</code><br>
+                  <code>if (x) {</code><br>
+                  <code>// this code is executed</code><br>
+                  <code>}</code>
+
+                  <p>native objects will have methods and properities and primative data types WILL NOT</p>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects">Standard built-in objects
+                    </a><br>
+                </div>
+                <div class="col-sm">
+                  <li>create custom objects and custom properties for native objects using prototypes and
+                  functions;</li>
+                  <div id="customObj">
+                    <ul id="movieList"></ul>
+                  </div>
+                </div>
+                <div class="col-sm">
+
+                  <li>inherit from an object;</li>
+
+
+                  <code>// this is the custom object</code><br>
+                  <code>let movie = {</code><br>
+                    <code>title: "",</code><br>
+                    <code>date: new Date(),</code><br>
+                    <code>init: function(title, date){</code><br>
+                      <code>// init function acts like a constructor</code><br>
+                      <code>this.title = title;</code><br>
+                      <code>this.date = date;</code><br>
+                      <code>}</code><br>
+                      <code>};</code><br>
+
+                  <code>// set the movies </code><br>
+                  <code>const movieNum1 = Object.create(movie);<br>// movieNum1 INHERITS from movie</code><br>
+                  <code>movieNum1.init("Reservoir Dogs",1992);</code><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+              </section>
+            </article>
+            <hr class="new1">
+            <article class="container">
+              <h3> Create and implement objects and methods</h3>
+              <section class="row">
+                <div class="col-sm-6">
+                  <li>implement native methods </li>
+                  <p>Find the square root of a number using the native method sqrt() from the Math object</p>
+                  <input type="number" id="number"><br>
+                  <button id="sqrtButton"onclick="getSquareRoot()">get Square Root</button>
+                 
+                </div>
+
+                <div class="col-sm-6">
+                   
+                    <li>and create custom methods</li>
+                  </div>
+            
+              </section>
+            </article>
+
+
+
+
+
+
+
+
+
+            <hr class="new1">
+
+
+
+
+
+  </main>
+
+  <footer>
+
+
+    footer area
+  </footer>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="firstSection.js"></script>
+  <script src="customObj.js"></script>
+</body>
+
+</html>
