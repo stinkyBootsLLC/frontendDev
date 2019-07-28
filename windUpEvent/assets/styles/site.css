@@ -8,6 +8,9 @@ body, html {
     height: 100%;
     margin: 0;
 }
+a:hover{
+    text-decoration: none;
+}
 .mylogo {
     font-family: 'Arizonia', cursive;  
     font-size: 38px;
@@ -110,12 +113,16 @@ main {
     height: 405px;
 }
 .featuring > img{
-    height: 75%;
-    width: 110%;
+    height: 50%;
+    width: 50%;
 }
 .reg-message{
     margin-top: 1in;
     text-align: center;
+}
+.slide, .cap{
+    display:none;
+    font-size: 35px;
 }
 
 /*----------------------------*/

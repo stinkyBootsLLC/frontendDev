@@ -83,6 +83,7 @@
   text-align:center;   
   border-radius:50%;
   box-shadow:0 0 0 1px rgba(255,255,255,0.4); */ 
+  text-decoration-line: none;
   margin:0 8px;
   color:rgb(184, 181, 181);
   opacity:0.75;
