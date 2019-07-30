@@ -1,4 +1,37 @@
+@media screen and (min-width: 823px){
+    .slideshow{
+        display: none
+    }
+   
+
+    .featuring-large{
+        padding: 0px;
+        text-transform: uppercase;
+        text-align: center;
+       
+    }
+    .featuring-large h3{
+        padding: 0px;
+        text-align: left;
+       
+    }
+    .featuring-large  img{
+       
+        width: 100%;
+    }
+
+}
+
+
+
+
+
+
+
 @media screen and (min-width: 568px) and (max-width: 823px){
+    .featuring-large{
+        display: none;
+    }
     .banner{
         padding-top: 13px; 
         margin-bottom: .25in;
