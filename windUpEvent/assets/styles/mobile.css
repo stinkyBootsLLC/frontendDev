@@ -2,8 +2,6 @@
     .slideshow{
         display: none
     }
-   
-
     .featuring-large{
         padding: 0px;
         text-transform: uppercase;
@@ -21,14 +19,32 @@
     }
 
 }
+/* for the pixel2 xl*/
+@media screen and (min-width: 822px)  and (max-width: 823px){
+    .slideshow{
+        display: none
+    }
+    .featuring-large{
+        padding: 0px;
+        text-transform: uppercase;
+        text-align: center;
+       
+    }
+    .featuring-large h3{
+        padding: 0px;
+        text-align: left;
+       
+    }
+    .featuring-large  img{
+       
+        max-width: 60%;
+    }
+    .cap-lg{
+        font-size: 35px
+    }
 
-
-
-
-
-
-
-@media screen and (min-width: 568px) and (max-width: 823px){
+}
+@media screen and (min-width: 568px) and (max-width: 822px){
     .featuring-large{
         display: none;
     }
@@ -90,17 +106,6 @@
         font-size: 1.5rem;
     }
     /* registration form */
-
-
-
-
-
-
-
-
-
-
-
 }/* @media screen and (min-width: 568px) and (max-width: 640px) */
 
 @media screen and (min-width: 320px) and (max-width: 414px) {
@@ -193,13 +198,6 @@
         font-size: 1rem;
     }
     /* registration form */
-
-
-
-
-
-
-
 }/* @media screen and (min-width: 320px) and (max-width: 414px)  */
 
 
