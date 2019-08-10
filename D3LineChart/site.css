@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bahianita&display=swap');
+
+body {
+  font-family: 'Libre Franklin', sans-serif;
+  height: 100%;
+}
+
+h5 {
+  border-left: 2px solid #071029;
+  padding-left: 3px;
+  background-color: #e2e9fc9f;
+}
+
+
+.main-title{
+  background-color: #071029;
+  padding : 1px;
+}
+
+div.main-title > div > h1 {
+  font: 57px 'Bahianita', cursive;
+  color: rgb(87, 96, 126);
+}
+
+.user-form{
+  margin-top: 0.1in;
+}
+
+.form-title{
+  font: 40px 'Bahianita', cursive;
+  color:#071029;
+
+}
+
+input[type="text"]{
+  width: 80%;
+  display: block;
+  margin-bottom: 10px;
+}
+#sticky-footer {
+  flex-shrink: none;
+}
+
+footer > div > a {
+  color: white;
+}
+
+div.sub-title > h1{
+  font: 57px 'Bahianita', cursive;
+  color: #071029;
+}
+.domainNameDisplay { 
+    display: none;   
+}
+.displaydomainNameResults{
+    display: block;
+}
+
+.displaydomainNameResults > div.card{
+  width: 84%;
+}
