@@ -4,77 +4,83 @@
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-      <title>Check Passwords Prototype</title>
+      <title>Data-Driven Documents (D3) Visulization</title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-     
-        <link rel="stylesheet" href="chart.css">
-        <link rel="stylesheet" href="site.css">
-      
+      <link rel="stylesheet" href="chart.css">
+      <link rel="stylesheet" href="site.css">
     </head>
-    <div class="main-title">
-      <div class="container-fluid">
-        <h1>
-          Data-Driven Documents (D3) Visulization
-          
-
-
-        </h1>
-      </div>
-    </div> 
-
     
+    <div class="main-title">
+      <div class="container-fluid"><h1>Data-Driven Documents (D3) Visulization</h1></div>
+    </div> 
+    <br><br>
+    <section class="container">
+      <h5>Purpose:</h5>
+      <p>
+        The purpose of this project, is to showcase the <mark>
+        <span data-toggle="popover" data-content="Data-Driven Documents">D3 Visulization library.</span></mark>
+        <cite>
+        "D3.js is a JavaScript library for manipulating documents based on data. D3 helps you bring data to life using HTML, 
+        SVG, and CSS. D3’s emphasis on web standards gives you the full capabilities of modern browsers without 
+        tying yourself to a proprietary framework, combining powerful visualization components and a data-driven 
+        approach to DOM manipulation"(<a href="https://d3js.org/">Data-Driven Documents</a>).
+        </cite>
+      </p>
+      <h5>About the Graph:</h5>
+      <p>
+        The original data for the following graph, has been dowloaded from the Mother Jones database.
+        <a href="https://bit.ly/2OQiwgQ">Download the database in its entirety (in CSV format) by clicking here.</a>
+        This graph answers the question, How many victims have there been in mass shootings in the United States, per year?
+        The graph takes into account injuries and fatalities.
+      </p>
+  
+    </section>
+
+
+
+
+
+
     <section class="container sub-title">
-        
       <div class="sub-title"><h1>US Mass Shootings, 1982-2019: Data From Mother Jones’ Investigation</h1></div>
      
       <div class="card text-center border-secondary mb-3" style="max-width: 58rem;">
-        <div class="card-header form-title">Total Victims Per Year</div>
-        <div class="card-body text-secondary">
-            
-            <div id="chart-display"></div>
-          
+        <div id="card-title" class="card-header form-title">Total Victims Per Year</div>
+          <div class="card-body text-secondary">
+              <div id="chart-display"></div>
+          </div>
 
-        </div>
-        </div>
-    </section>
-    <section class="container">
-      <h5>Purpose:</h5>
-      <p>This project was inspired from a video by Dr Mike Pound [Computerphile]
-        <a href="https://www.youtube.com/watch?v=hhUb5iknVJs"><cite><q>Have You Been Pwned?</q></cite></a> 
-        and to showcase using a <mark><span data-toggle="popover" title="What is REST?" 
-        data-content="REST is acronym for REpresentational State Transfer.">REST API.</span></mark>
-        The term "pwn" means<a href="https://www.urbandictionary.com/define.php?term=pwn">
-          <cite><q>An act of dominating an opponent.</q></cite></a>
-        In this case your password. According to <a href="https://haveibeenpwned.com/Passwords">haveibeenpwned.com,</a>
-        <cite><q> <!--<a href="https://www.nottingham.ac.uk/computerscience/">University of NottinghamComputer Science</a>-->
-            Pwned Passwords are 551,509,767 real world passwords previously exposed in data breaches.
-            This exposure makes them unsuitable for ongoing use as they're at much greater risk of
-            being used to take over other accounts. They're searchable online below as well as being
-            downloadable for use in other online systems.
-          </q></cite>
-      </p>
+
+          <div class="card-footer text-muted">
+              <button type="button" class="btn btn-outline-dark" onclick="incidentsPerYearViz()">Incidents Per Year</button>
+              &nbsp;&nbsp;
+              <button type="button" class="btn btn-outline-dark" onclick="TotalVictimsButton()">Victims Per Year</button>
+            
+          </div>
+
+
+
+
+
+
+
+      </div>
       <p>
-        In this example project, I am using a k-Anonymity model that allows a password to be searched for by
-        partial hash. <strong>(Searching by range)</strong> The JavaScript algorithm will convert your plain text
-        into a Secure Hash Algorithm 1 (SHA-1) and use the first 5 characters of the hash to check the
-        pwned passwords repository. The last 35 characters of the hash will then be used to search for a match.
-      </p>
-    </section>
-    <section class="container">
-      <h5>Example:</h5>
-      <p>
-        If you type "password" and click the pwned button.
-        <ul>
-          <li>Full SHA-1 HEX = 5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8</li>
-          <li>First 5 chars to use for API k-Anonymity = 5baa6 (the only characters being sent to the repository)</li>
-          <li>Part to search = 1e4c9b93f3f0682250b6cf8331b7ee68fd8</li>
-          <li>Display hash found or not found</li>
-        </ul>
-        The searching algorithm is being accomplished on the front-end. (your computer, not mine or the server)
+        According to J. Bosman, K. Taylor & T. Arango (2019),<cite>
+        "The motivations of men who commit mass shootings are often muddled, complex or unknown. 
+        But one common thread that connects many of them — other than access to powerful firearms — 
+        is a history of hating women, assaulting wives, girlfriends and female family members, or sharing 
+        misogynistic views online" </cite>
+        <a href="https://www.nytimes.com/2019/08/10/us/mass-shootings-misogyny-dayton.html">(The New York Times)</a>
         
+        
+          
       </p>
+      
     </section>
+    
+ 
    
 
     
@@ -82,10 +88,9 @@
     <footer id="sticky-footer" class="py-4 bg-dark text-light">
         <div class="container text-center">
             Reference Links: &nbsp; &nbsp; &nbsp; 
-            <a href="https://www.youtube.com/user/Computerphile">Computerphile</a>&nbsp; | &nbsp; 
-            <a href="https://bit.ly/nottscomputer">(C/S) University of Nottingham</a> &nbsp; | &nbsp;
-            <a href="https://haveibeenpwned.com/">HIBP</a> &nbsp; | &nbsp;
-            <a href="https://restfulapi.net/">REST API</a> &nbsp; | &nbsp;
+            <a href="https://d3js.org/">D3 Data-Driven Documents</a>&nbsp; | &nbsp; 
+            <a href="https://www.motherjones.com/">Mother Jones</a> &nbsp; | &nbsp;
+           
           <small>Eduardo Estrada 2019</small>
         </div>
     </footer>
