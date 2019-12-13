@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <body onload="allBreachedDomains()">
+  <body onload="allBreachedDomains();">
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -32,7 +32,21 @@
           </div>
         </div>
     </section>
-    <section class="container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container" >
+      <div style="max-width: 58rem;">
       <h5>Purpose:</h5>
       <p>This project was inspired from a video by Dr Mike Pound [Computerphile]
         <a href="https://www.youtube.com/watch?v=hhUb5iknVJs"><cite><q>Have You Been Pwned?</q></cite></a> 
@@ -54,8 +68,11 @@
         into a Secure Hash Algorithm 1 (SHA-1) and use the first 5 characters of the hash to check the
         pwned passwords repository. The last 35 characters of the hash will then be used to search for a match.
       </p>
+
+    </div>
     </section>
     <section class="container">
+      <div style="max-width: 58rem;">
       <h5>Example:</h5>
       <p>
         If you type "password" and click the pwned button.
@@ -68,10 +85,52 @@
         The searching algorithm is being accomplished on the front-end. (your computer, not mine or the server)
         
       </p>
+    </div>
     </section>
+
+    <section id="randomGen" class="container">
+
+      <div style="max-width: 58rem;">
+        <div class="sub-title"><h1>Random Password Generator</h1></div>
+        <h5>Purpose:</h5>
+        <div class="card text-center border-secondary mb-3 user-form" style="max-width: 58rem;">
+          <div class="card-header form-title">Password Generator</div>
+          <div class="card-body text-secondary">
+              <div class="form-group row">
+                <label for="newpass" class="col-sm-2 col-form-label">New Password</label>
+                <div class="col-sm-10">
+                  <input class="form-control" id="pass_display" type="text" name=" " value="" placeholder="new pass here">
+                </div>
+              </div>
+              <button type="button" class="btn btn-outline-secondary btn-lg" onclick="randomPassGen()">random </button>         
+          </div>
+        </div>
+
+      </div>
+
+      
+    </section>
+    <br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    
 
     <section id="breaches" class="container">
+      <div style="max-width: 58rem;">
       <div class="sub-title"><h1>Getting a single breached site</h1></div>
       <h5>Purpose:</h5>
       <p>
@@ -90,6 +149,7 @@
             </div>
             <button type="button" class="btn btn-outline-secondary btn-lg" onclick="siteBreach()">Check Breached Site </button>         
         </div>
+      </div>
     </section>
     <br><br>
     <section id="domainNameDisplay" class="container domainNameDisplay">
@@ -110,6 +170,17 @@
       </div>
       <br><br>
     </section>
+
+ 
+
+
+
+
+
+
+
+
+
     <br><br><br><br>
     <footer id="sticky-footer" class="py-4 bg-dark text-light">
         <div class="container text-center">
@@ -145,5 +216,17 @@
           });
       });
       </script>
+
+
+
+
+
+
+
+
+
+
+
+
   </body>
 </html>
