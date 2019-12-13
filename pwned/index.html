@@ -1,61 +1,55 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <body onload="allBreachedDomains();">
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-      <title>Check Passwords Prototype</title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <link rel="stylesheet" href="site.css">
-    </head>
-    <div class="main-title">
-      <div class="container-fluid">
-        <h1>Check PWNED Passwords - Prototype...</h1>
-      </div>
-    </div> 
-    <section class="container sub-title">
-      <div class="sub-title"><h1>Searching By Range</h1></div>
-      <div class="card text-center border-secondary mb-3 user-form" style="max-width: 58rem;">
-        <div class="card-header form-title">Unencrypted Password</div>
-        <div class="card-body text-secondary">
-          <div class="form-group row">
-            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-              <input class="form-control" id="passField" type="text" name="pass" value="" placeholder="Password">
-            </div>
-          </div>
-          <button type="button" class="btn btn-outline-secondary btn-lg" onclick="creatPassWordSHA()">pwned? </button>
-          <div class="" id="results">
-            <br>
-            <p id="display"></p>
+
+<body onload="allBreachedDomains();">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="Eduardo Estrada">
+    <meta name="revised" content="Friday, December 13th, 2019, 3:48 pm" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Check Passwords Prototype</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="site.css">
+  </head>
+  <div class="main-title">
+    <div class="container-fluid">
+      <h1>Check PWNED Passwords - Prototype...</h1>
+    </div>
+  </div>
+  <section class="container sub-title">
+    <div class="sub-title">
+      <h1>Searching By Range</h1>
+    </div>
+    <div class="card text-center border-secondary mb-3 user-form" style="max-width: 58rem;">
+      <div class="card-header form-title">Unencrypted Password</div>
+      <div class="card-body text-secondary">
+        <div class="form-group row">
+          <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="passField" type="text" name="pass" value="" placeholder="Password">
           </div>
         </div>
-    </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <section class="container" >
-      <div style="max-width: 58rem;">
+        <button type="button" class="btn btn-outline-secondary btn-lg" onclick="creatPassWordSHA()">pwned? </button>
+        <div class="" id="results">
+          <br>
+          <p id="display"></p>
+        </div>
+      </div>
+  </section>
+  <section class="container">
+    <div style="max-width: 58rem;">
       <h5>Purpose:</h5>
       <p>This project was inspired from a video by Dr Mike Pound [Computerphile]
-        <a href="https://www.youtube.com/watch?v=hhUb5iknVJs"><cite><q>Have You Been Pwned?</q></cite></a> 
-        and to showcase using a <mark><span data-toggle="popover" title="What is REST?" 
-        data-content="REST is acronym for REpresentational State Transfer.">REST API.</span></mark>
+        <a href="https://www.youtube.com/watch?v=hhUb5iknVJs"><cite><q>Have You Been Pwned?</q></cite></a>
+        and to showcase using a <mark><span data-toggle="popover" title="What is REST?"
+            data-content="REST is acronym for REpresentational State Transfer.">REST API.</span></mark>
         The term "pwn" means<a href="https://www.urbandictionary.com/define.php?term=pwn">
           <cite><q>An act of dominating an opponent.</q></cite></a>
         In this case your password. According to <a href="https://haveibeenpwned.com/Passwords">haveibeenpwned.com,</a>
-        <cite><q> <!--<a href="https://www.nottingham.ac.uk/computerscience/">University of NottinghamComputer Science</a>-->
+        <cite><q>
+            <!--<a href="https://www.nottingham.ac.uk/computerscience/">University of NottinghamComputer Science</a>-->
             Pwned Passwords are 551,509,767 real world passwords previously exposed in data breaches.
             This exposure makes them unsuitable for ongoing use as they're at much greater risk of
             being used to take over other accounts. They're searchable online below as well as being
@@ -70,9 +64,9 @@
       </p>
 
     </div>
-    </section>
-    <section class="container">
-      <div style="max-width: 58rem;">
+  </section>
+  <section class="container">
+    <div style="max-width: 58rem;">
       <h5>Example:</h5>
       <p>
         If you type "password" and click the pwned button.
@@ -83,55 +77,42 @@
           <li>Display hash found or not found</li>
         </ul>
         The searching algorithm is being accomplished on the front-end. (your computer, not mine or the server)
-        
       </p>
     </div>
-    </section>
-
-    <section id="randomGen" class="container">
-
-      <div style="max-width: 58rem;">
-        <div class="sub-title"><h1>Random Password Generator</h1></div>
-        <h5>Purpose:</h5>
-        <div class="card text-center border-secondary mb-3 user-form" style="max-width: 58rem;">
-          <div class="card-header form-title">Password Generator</div>
-          <div class="card-body text-secondary">
-              <div class="form-group row">
-                <label for="newpass" class="col-sm-2 col-form-label">New Password</label>
-                <div class="col-sm-10">
-                  <input class="form-control" id="pass_display" type="text" name=" " value="" placeholder="new pass here">
-                </div>
-              </div>
-              <button type="button" class="btn btn-outline-secondary btn-lg" onclick="randomPassGen()">random </button>         
-          </div>
-        </div>
-
+  </section>
+  <section id="randomGen" class="container">
+    <div style="max-width: 58rem;">
+      <div class="sub-title">
+        <h1>Random Password Generator</h1>
       </div>
-
-      
-    </section>
-    <br><br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
-    <section id="breaches" class="container">
-      <div style="max-width: 58rem;">
-      <div class="sub-title"><h1>Getting a single breached site</h1></div>
+      <h5>Purpose:</h5>
+      <p>JavaScript random password generator.</p>
+      <div class="card text-center border-secondary mb-3 user-form" style="max-width: 58rem;">
+        <div class="card-header form-title">Password Generator</div>
+        <div class="card-body text-secondary">
+          <div class="form-group row">
+            <label for="newpass" class="col-sm-2 col-form-label">New Password</label>
+            <div class="col-sm-10">
+              <input class="form-control" id="pass_display" type="text"  placeholder="random password" readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="passlength" class="col-sm-2 col-form-label">Length</label>
+            <div class="col-sm-10">
+              <input class="form-control" id="Length" type="number" name="passlength" min="8" max="16">
+            </div>
+          </div>
+          <button type="button" class="btn btn-outline-secondary btn-lg" onclick="randomPassGen()">random </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br><br>
+  <section id="breaches" class="container">
+    <div style="max-width: 58rem;">
+      <div class="sub-title">
+        <h1>Getting a single breached site</h1>
+      </div>
       <h5>Purpose:</h5>
       <p>
         In this section, the user can search for a single breached site.
@@ -141,92 +122,68 @@
       <div class="card text-center border-secondary mb-3 user-form" style="max-width: 58rem;">
         <div class="card-header form-title">All Domain Names in the system</div>
         <div class="card-body text-secondary">
-            <div class="form-group row">
-              <label for="DomainName" class="col-sm-2 col-form-label">Domain Name</label>
-              <div class="col-sm-10">
-                <select class="form-control" id="allbreaches" name="domainName" value="" style="width:80%;"></select>
-              </div>
+          <div class="form-group row">
+            <label for="DomainName" class="col-sm-2 col-form-label">Domain Name</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="allbreaches" name="domainName" value="" style="width:80%;"></select>
             </div>
-            <button type="button" class="btn btn-outline-secondary btn-lg" onclick="siteBreach()">Check Breached Site </button>         
+          </div>
+          <button type="button" class="btn btn-outline-secondary btn-lg" onclick="siteBreach()">Check Breached Site
+          </button>
         </div>
       </div>
-    </section>
+  </section>
+  <br><br>
+  <section id="domainNameDisplay" class="container domainNameDisplay">
+    <div class="card">
+      <div class="row no-gutters">
+        <div class="col-auto">
+          <img id="logo" class="img-fluid" alt="" style="width: 115px; max-height: 100px;">
+        </div>
+        <div class="col">
+          <div class="card-block px-2">
+            <h4 class="card-title" id="domainTitle"></h4>
+            <p class="card-text" id="description"></p>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer w-100 text-muted" id="cardFooter">
+      </div>
+    </div>
     <br><br>
-    <section id="domainNameDisplay" class="container domainNameDisplay">
-      <div class="card">
-        <div class="row no-gutters">
-          <div class="col-auto">
-            <img id="logo" class="img-fluid" alt="" style="width: 115px; max-height: 100px;">
-          </div>
-          <div class="col">
-            <div class="card-block px-2">
-              <h4 class="card-title" id="domainTitle"></h4>
-              <p class="card-text" id="description"></p>
-            </div>
-          </div>
-        </div>
-        <div class="card-footer w-100 text-muted" id="cardFooter">
-        </div>
-      </div>
-      <br><br>
-    </section>
+  </section>
+  <br><br><br><br>
+  <footer id="sticky-footer" class="py-4 bg-dark text-light">
+    <div class="container text-center">
+      Reference Links: &nbsp; &nbsp; &nbsp;
+      <a href="https://www.youtube.com/user/Computerphile">Computerphile</a>&nbsp; | &nbsp;
+      <a href="https://bit.ly/nottscomputer">(C/S) University of Nottingham</a> &nbsp; | &nbsp;
+      <a href="https://haveibeenpwned.com/">HIBP</a> &nbsp; | &nbsp;
+      <a href="https://restfulapi.net/">REST API</a> &nbsp; | &nbsp;
+      <small>Eduardo Estrada 2019</small>
+    </div>
+  </footer>
 
- 
-
-
-
-
-
-
-
-
-
-    <br><br><br><br>
-    <footer id="sticky-footer" class="py-4 bg-dark text-light">
-        <div class="container text-center">
-            Reference Links: &nbsp; &nbsp; &nbsp; 
-            <a href="https://www.youtube.com/user/Computerphile">Computerphile</a>&nbsp; | &nbsp; 
-            <a href="https://bit.ly/nottscomputer">(C/S) University of Nottingham</a> &nbsp; | &nbsp;
-            <a href="https://haveibeenpwned.com/">HIBP</a> &nbsp; | &nbsp;
-            <a href="https://restfulapi.net/">REST API</a> &nbsp; | &nbsp;
-          <small>Eduardo Estrada 2019</small>
-        </div>
-    </footer>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-      </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-      </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-      </script>
-    <script src="/pwned/scripts/siteFunc.js"></script>
-    <script src="/pwned/scripts/sha1.js"></script>
-
-
-
-    <script type="text/javascript">
-      // JQuery for popover (part of bootstrap library)
-      $(document).ready(function(){
-          $('[data-toggle="popover"]').popover({
-              placement : 'top',
-              trigger : 'hover'
-          });
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+  <script src="/pwned/scripts/siteFunc.js"></script>
+  <script src="/pwned/scripts/sha1.js"></script>
+  <script type="text/javascript">
+    // JQuery for popover (part of bootstrap library)
+    $(document).ready(function () {
+      $('[data-toggle="popover"]').popover({
+        placement: 'top',
+        trigger: 'hover'
       });
-      </script>
+    });
+  </script>
+</body>
 
-
-
-
-
-
-
-
-
-
-
-
-  </body>
 </html>
