@@ -4,6 +4,9 @@
 // Would you type your password into a random box on the internet? Dr Mike Pound on ensuring your 
 // password hasn't already been hacked
 
+/**
+ * Creates the SHA-1
+ */
 function creatPassWordSHA(){
   const userInput = document.getElementById("passField").value;
   if(userInput === ""){
@@ -23,7 +26,11 @@ function creatPassWordSHA(){
   }// end if(userInput === "")
 }// end createTheAPIcall()
 
-// Sending and Receiving Data by Using the XMLHttpRequest Object
+/**
+ * Sending and Receiving Data by Using the XMLHttpRequest Object
+ * @param {string} address 
+ * @param {string} find 
+ */
 function callTheAPI(address, find){
   // make a request 
   let apiRequest = new XMLHttpRequest();
@@ -50,7 +57,9 @@ function callTheAPI(address, find){
   apiRequest.send();
 }// end callTheAPI()
 
-// Send data to a web service and receive data from a web service by using the Fetch API object.
+/**
+ * Send data to a web service and receive data from a web service by using the Fetch API object.
+ */
 function siteBreach(){
   let userInput = document.getElementById("allbreaches").value;
   if(userInput === ""){
@@ -85,7 +94,9 @@ function siteBreach(){
   } // end if(userInput === "")
 }// end siteBreach()
 
-// get all domain names from the API and display in options for select element
+/**
+ * get all domain names from the API and display in options for select element
+ */
 function allBreachedDomains(){
   const urlAllDomains = "https://haveibeenpwned.com/api/v2/breaches";
     fetch(urlAllDomains)
@@ -105,29 +116,40 @@ function allBreachedDomains(){
       .catch(error => console.log(error));
 }// end allBreachedDomains()
 
-function randomPassGen( length = 16 ){
-
+/**
+ * Generates a random password.
+ */
+function randomPassGen(){
+  // declare constant variables
   const displayElement = document.getElementById("pass_display")
-
   const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const lowercase = 'abcdefghijklmnopqrstuvwxyz';
   const numbers = '0123456789';
   const symbols = '!"#$%&\'()*+,-./:;<=>?@^[\\]^_`{|}~';
-
   const all = uppercase + lowercase + numbers + symbols;
-
-  var password = '';
-
-  for (var index = 0; index < length; index++) {
-      var character = Math.floor(Math.random() * all.length);
+  const lengthElement = document.getElementById("Length");
+  let length = lengthElement.value;
+  let password = '';
+  // if length is NOT a null string
+  if(length){
+    // loop for the select length
+    for (let index = 0; index < length; index++) {
+      let character = Math.floor(Math.random() * all.length);
       password += all.substring(character, character + 1);
-  }
-
-
-  displayElement.value = password;
+    }// end for
+    // remove the style attribute
+    lengthElement.removeAttribute('style')
+    // display the randomly generated password
+    displayElement.value = password;
+  } else {
+    // display the error
+    displayElement.value = "Length cannot be blank";
+    // add the style attribute
+    lengthElement.setAttribute("style", "background-color: red;");
+  }// end if 
+  // debbug
   console.log(password);
-  // return password;
-}
+}// end randomPassGen()
 
 
 
