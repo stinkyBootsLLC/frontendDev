@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-     <title>Webslesson Tutorial | Append Data to JSON File using PHP</title>
-
+     <meta charset="UTF-8">
+     <title>Recipe Input</title>
 </head>
 
 <body>
      <br />
      <div>
-          <h3>Recipe Input</h3><br>
+          <h1>Recipe Input</h1>
+          <p>Note: To myself - this tool is for ME ONLY, never deploy.  There is NO SANITIZATION</p>
+          <br>
           <form action="process.php" method="post">
-
-
-
                <label>id</label>
                <input type="text" name="id" class="form-control" /><br />
                <label>title</label>
@@ -24,28 +22,16 @@
                <div id="Ingredients">
                     Ingredients
                     <input type="number" id="i_quantity" min="1" max="15">
-                    <button id="i_button" type="button" onclick="addIngredientsInputs();">add</button>
+                    <button id="i_button" type="button" onclick="addIngredientsInputs();"> + </button>
                </div>
-
                <hr>
                <div id="Instructions">
-
                     Instructions
                     <input type="number" id="s_quantity" min="1" max="15">
-                    <button id="s_button" type="button" onclick="addInstructionInputs();">add</button>
-
+                    <button id="s_button" type="button" onclick="addInstructionInputs();"> + </button>
                </div>
                <hr>
                <input type="submit"  value="Append to db" class="btn btn-info" /><br />
-
-
-
-
-
-
-
-
-
           </form>
      </div>
      <br />

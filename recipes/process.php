@@ -10,10 +10,10 @@
 ///// get all the post data
 
 
-$items = array();
-$ingredients = array();
-$steps = array();
-$directions = array();
+    $items = array();
+    $ingredients = array();
+    $steps = array();
+    $directions = array();
 
 
     foreach($post_results as $field => $value) {
@@ -49,8 +49,8 @@ $directions = array();
 
 
 
-    print_r($ingredients);
-    print_r($directions);
+    // print_r($ingredients);
+    // print_r($directions);
 
 
 
@@ -60,31 +60,25 @@ $directions = array();
 
 
 
-if(file_exists('recipes.json')){  
-    $current_data = file_get_contents('recipes.json');  
-    $array_data = json_decode($current_data, true);  
-    $extra = array(  
-        'id'             =>     $_POST['id'],  
-        'title'          =>     $_POST["title"],  
-        'description'    =>     $_POST["description"],
-        'ingredients'    =>     $ingredients,
-        'directions'     =>     $directions
-   );  
+    if(file_exists('recipes.json')){  
+        $current_data = file_get_contents('recipes.json');  
+        $array_data = json_decode($current_data, true);  
+        $extra = array(  
+            'id'             =>     $_POST['id'],  
+            'title'          =>     $_POST["title"],  
+            'description'    =>     $_POST["description"],
+            'ingredients'    =>     $ingredients,
+            'directions'     =>     $directions
+    );  
 
-
-
-
-
-
-
-    $array_data[] = $extra;  
-    $final_data = json_encode($array_data);  
-    if(file_put_contents('recipes.json', $final_data)){  
-        echo "<label class='text-success'>File Appended Success fully</p>";  
+        $array_data[] = $extra;  
+        $final_data = json_encode($array_data);  
+        if(file_put_contents('recipes.json', $final_data)){  
+            echo "<label class='text-success'>File Appended Success fully</p>";  
+        }  
+    } else {  
+        echo "JSON File not exits";  
     }  
-} else {  
-    echo "JSON File not exits";  
-}  
 
 
 
