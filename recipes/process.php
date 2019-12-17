@@ -60,13 +60,14 @@ $directions = array();
 
 
 
-if(file_exists('test.json')){  
-    $current_data = file_get_contents('test.json');  
+if(file_exists('recipes.json')){  
+    $current_data = file_get_contents('recipes.json');  
     $array_data = json_decode($current_data, true);  
     $extra = array(  
-        'id'               =>     $_POST['id'],  
+        'id'             =>     $_POST['id'],  
         'title'          =>     $_POST["title"],  
-        'ingredients'     =>     $ingredients,
+        'description'    =>     $_POST["description"],
+        'ingredients'    =>     $ingredients,
         'directions'     =>     $directions
    );  
 
@@ -78,7 +79,7 @@ if(file_exists('test.json')){
 
     $array_data[] = $extra;  
     $final_data = json_encode($array_data);  
-    if(file_put_contents('test.json', $final_data)){  
+    if(file_put_contents('recipes.json', $final_data)){  
         echo "<label class='text-success'>File Appended Success fully</p>";  
     }  
 } else {  
