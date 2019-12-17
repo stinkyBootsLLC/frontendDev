@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <title>Webslesson Tutorial | Append Data to JSON File using PHP</title>
+
+</head>
+
+<body>
+     <br />
+     <div>
+          <h3>Recipe Input</h3><br>
+          <form action="process.php" method="post">
+
+
+
+               <label>id</label>
+               <input type="text" name="id" class="form-control" /><br />
+               <label>title</label>
+               <input type="text" name="title" class="form-control" /><br />
+               <label>description</label>
+               <input type="text" name="description" class="form-control" /><br />
+               <hr>
+               <div id="Ingredients">
+                    Ingredients
+                    <input type="number" id="i_quantity" min="1" max="15">
+                    <button id="i_button" type="button" onclick="addIngredientsInputs();">add</button>
+               </div>
+
+               <hr>
+               <div id="Instructions">
+
+                    Instructions
+                    <input type="number" id="s_quantity" min="1" max="15">
+                    <button id="s_button" type="button" onclick="addInstructionInputs();">add</button>
+
+               </div>
+               <hr>
+               <input type="submit"  value="Append to db" class="btn btn-info" /><br />
+
+
+
+
+
+
+
+
+
+          </form>
+     </div>
+     <br />
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+     <script src="addRec.js"></script>
+</body>
+
+</html>
