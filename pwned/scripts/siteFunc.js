@@ -21,7 +21,6 @@ function creatPassWordSHA(){
     console.log("Key =  " + shaKey);
     console.log("part to search = " + shaMain);
     let urlpass = "https://api.pwnedpasswords.com/range/" + shaKey; // url that returns the list
-    //console.log("url = " + url);
     callTheAPI(urlpass, shaMain2);
   }// end if(userInput === "")
 }// end createTheAPIcall()
@@ -38,7 +37,6 @@ function callTheAPI(address, find){
     if (this.readyState == 4 && this.status == 200) {
       // store the returned in a string
       let responseString = this.responseText;
-      // console.log(responseString);
       let foundHash = responseString.indexOf(find);// number at start position
       if (foundHash > 0){
         // the hash was found in the database
