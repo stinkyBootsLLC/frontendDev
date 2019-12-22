@@ -5,14 +5,11 @@ body {
   font-family: 'Libre Franklin', sans-serif;
   height: 100%;
 }
-
 h5 {
   border-left: 2px solid #071029;
   padding-left: 3px;
   background-color: #e2e9fc9f;
 }
-
-
 .main-title{
   background-color: #071029;
   padding : 1px;
@@ -30,31 +27,18 @@ div.main-title > div > h1 {
 .form-title{
   font: 40px 'Bahianita', cursive;
   color:#071029;
-
 }
-
 input[type="text"],input[type="number"]{
   width: 80%;
   display: block;
   margin-bottom: 10px;
 }
-
-
-
-
-
-
-
 #sticky-footer {
   flex-shrink: none;
 }
-
 footer > div > a {
   color: white;
 }
-
-
-
 div.sub-title > h1{
   font: 57px 'Bahianita', cursive;
   color: #071029;
@@ -65,7 +49,6 @@ div.sub-title > h1{
 .displaydomainNameResults{
     display: block;
 }
-
 .displaydomainNameResults > div.card{
   width: 84%;
 }

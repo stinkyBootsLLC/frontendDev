@@ -106,18 +106,16 @@ function allBreachedDomains(){
         let domainNameValue = "";
         let name = "";
         for (let i = 0; i < data.length; i++) {
-          //<option value="audi">Audi</option>
           domainNameValue = JSON.stringify(data[i].Domain);
           name = domainNameValue.replace(/['"]+/g, '')
           selectAllDomainNames.options[selectAllDomainNames.options.length] = new Option(name)
-          // console.log(JSON.stringify(data[i].Domain));
         }// end for all domain names
       })
       .catch(error => console.log(error));
 }// end allBreachedDomains()
 
 /**
- * Generates a random password.
+ * Generates a random password based on user length Element.
  */
 function randomPassGen(){
   // declare constant variables
@@ -147,8 +145,6 @@ function randomPassGen(){
     // add the style attribute
     lengthElement.setAttribute("style", "background-color: red;");
   }// end if 
-  // debbug
-  console.log(password);
 }// end randomPassGen()
 
 
