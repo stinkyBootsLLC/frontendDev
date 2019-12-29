@@ -35,9 +35,9 @@ function populateUnitsValues(elementID){
     // select object
     let select = $( '#' + elementID);
     // array of measurement units
-    const units = ["teaspoons","tablespoons","ounces" ,"gills","cups",
+    const units = ["each","tsp","Tbsp","ounces" ,"gills","cups","pounds",
                     "pints","quarts","cups","pints","quarts","pecks",
-                    "bushel"];
+                    "bushel","bag"," "];
     // loop thru array and append option
     for (index = 0; index < units.length; index++) { 
         select.append(new Option(units[index], units[index]));
