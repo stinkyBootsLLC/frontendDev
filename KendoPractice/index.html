@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <title>Page Title Here</title>
+  <meta charset="utf-8">
+  <meta name="description" content="specifically descrpitive content about your page here">
+  <!--scripts here-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- kendo styles -->
+  <link href=" https://kendo.cdn.telerik.com/2020.1.219/styles/kendo.common.min.css" rel="stylesheet" />
+  <link href=" https://kendo.cdn.telerik.com/2020.1.219/styles/kendo.default.min.css" rel="stylesheet" />
+  <link href=" https://kendo.cdn.telerik.com/2020.1.219/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+  <!-- local -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- kendo scripts -->
+  <script src="https://kendo.cdn.telerik.com/2020.1.219/js/jquery.min.js"></script>
+  <!-- for the export -->
+  <script src="https://kendo.cdn.telerik.com/2020.1.219/js/jszip.min.js"></script>
+  <script src="https://kendo.cdn.telerik.com/2020.1.219/js/kendo.all.min.js"></script>
+</head>
+
+<body>
+  <!-- begin page content -->
+  <header></header>
+  <nav class="nav-bar">
+    <ul>
+      <li><a class="active" href="#home">Home</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <div id="top-cars">
+      <div class="card-row">
+        <div class="card-column">
+          <div class="card">
+            <h3>Card 1</h3>
+            <p>Some text</p>
+            <p>Some text</p>
+          </div>
+        </div>
+
+        <div class="card-column">
+          <div class="card">
+            <h3>Card 2</h3>
+            <p>Some text</p>
+            <p>Some text</p>
+          </div>
+        </div>
+
+        <div class="card-column">
+          <div class="card">
+            <h3>Card 3</h3>
+            <p>Some text</p>
+            <p>Some text</p>
+          </div>
+        </div>
+
+        <div class="card-column">
+          <div class="card">
+            <h3>Card 4</h3>
+            <p>Some text</p>
+            <p>Some text</p>
+          </div>
+        </div>
+
+        <div class="card-column">
+          <div class="card">
+            <h3>Card 5</h3>
+            <p>Some text</p>
+            <p>Some text</p>
+          </div>
+        </div>
+
+        <div class="card-column">
+          <div class="card">
+            <h3>Card 6</h3>
+            <p>Some text</p>
+            <p>Some text</p>
+          </div>
+        </div>
+      </div> <!-- end row -->
+    </div><!-- top-cards -->
+    <h1 class=" ">Title Area</h1>
+    <div id="report-title">
+      <h4>Labor Productivity and Costs &nbsp;&nbsp;<span>
+          <a href="https://data.bls.gov/timeseries/PRS85006092">U.S. Bureau of Labor Statistics</a>
+        </span></h4>
+    </div>
+    <div id="chart-area">
+      <div id="chart"></div>
+      <p style="text-align: center; margin-top: -9px;">
+        <em>Select a series legend to toggle ON or OFF</em>
+      </p>
+    </div>
+    <div class="row">
+      <div class="column">
+        <div id="grid"></div>
+      </div><!-- end column -->
+      <div class="column">
+        <p>
+          <b>Major Sector Productivity and Costs </b><br>
+          Series Id: PRS85006092<br>
+          Sector: Nonfarm Business<br>
+          Measure: Labor productivity (output per hour)<br>
+          Duration: Percent change from previous quarter at annual rate<br>
+        </p>
+        <p>
+          Labor productivity is a measure of economic performance that compares
+          the amount of goods and services produced (output) with the number of
+          hours worked to produce those goods and services.
+          The BLS also publishes measures of multifactor productivity.
+        </p>
+        <p>
+          Source: &nbsp;
+          <a href="https://data.bls.gov/timeseries/PRS85006092">
+            U.S. Bureau of Labor Statistics
+          </a>
+        </p>
+      </div><!-- end column -->
+    </div> <!-- end row -->
+  </main>
+  <!--END PAGEWRAP-->
+  <footer>footer</footer>
+  <!-- local -->
+  <script src="js/index.js"></script>
+</body>
+
+</html>
