@@ -12,6 +12,18 @@ let chartInfo = {
     total_deaths: 0,
     total_cases: 0,
 };
+
+function createGauge(sId, nValue) {
+    $("#" + sId).kendoArcGauge({
+        value: nValue,
+        centerTemplate: '#: value #%'
+    });
+}
+
+
+
+
+
 /**
  * Creates a Kendo UI Chart.  
  * Added parameters to make re-usuable
@@ -108,6 +120,20 @@ function getData() {
         "Cases", "#86b1f7", chartInfo.newCases, chartInfo.dates); 
         createChart("deaths-chart", "Total Deaths [" + chartInfo.total_deaths + "]", "line", 
         "Deaths", "#2774f2", chartInfo.newDeaths, chartInfo.dates); 
+        let nCasesPercent = (total_cases / 3282000000 * 100).toFixed(2);
+        let nCasesDeaths = (total_deaths / 3282000000 * 100).toFixed(4);
+        // 2 280 912
+        // 3 282 000
+
+        createGauge("cases", nCasesPercent);
+        createGauge("deaths", nCasesDeaths);
+
+
+
+
+
+
+
         // remove loading indicator
         kendo.ui.progress($(".chart-loading"), false);
     }// end organizeData()

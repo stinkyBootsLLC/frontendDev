@@ -2,6 +2,12 @@ a {
     padding: 14px 16px;
     text-decoration: none;
 }
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
 .nav-bar{
     background-color: #67a9f5;
     color: white;
@@ -14,6 +20,50 @@ a {
 .nav-bar > h3{
     padding: 10px;
 }
+#top-cards{
+    margin-top: 10px;
+}
+
+/* Float four columns side by side */
+.card-column {
+    float: left;
+    width: 15%;
+    padding: 0 10px;
+}
+/* Remove extra left and right margins, due to padding */
+.card-row {
+    margin: 0 -5px;
+    padding-bottom: 55px;
+}
+/* Clear floats after the columns */
+.card-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/* Style the counter cards */
+.card {
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+    padding: 16px;
+    text-align: center;
+    /* background-color: #f1f1f1; */
+}
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 .footer {
     left: 0;
     bottom: 0;
