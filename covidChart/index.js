@@ -1,5 +1,5 @@
 /**
- * Eduardo Estrada 
+ * @author Eduardo Estrada 
  * Source:
  * https://github.com/owid/covid-19-data/tree/master/public/data
  * 06/20/2020
@@ -13,14 +13,15 @@ let chartInfo = {
     total_cases: 0,
 };
 /**
- * Creates a Kendo UI Chart.  Added parameters to make re-usuable
- * @param {string} sID 
- * @param {string} sMainTitle 
- * @param {string} sSeriesType 
- * @param {string} sSeriesName 
- * @param {string} sSeriesColor 
- * @param {array} aSeriesData 
- * @param {array} aCategories 
+ * Creates a Kendo UI Chart.  
+ * Added parameters to make re-usuable
+ * @param {string} sID - html element I.D
+ * @param {string} sMainTitle - Title of the Chart
+ * @param {string} sSeriesType - Chart Type
+ * @param {string} sSeriesName - Chart Series name
+ * @param {string} sSeriesColor - Chart Series color
+ * @param {array} aSeriesData - Chart Series data
+ * @param {array} aCategories - Chart categories (x axis)
  */
 function createChart(sID, sMainTitle, sSeriesType, sSeriesName, sSeriesColor, aSeriesData, aCategories) {
  
@@ -68,9 +69,10 @@ function createChart(sID, sMainTitle, sSeriesType, sSeriesName, sSeriesColor, aS
         tooltip: {
             visible: true,  
             format: "{0}%",
-            template: " #= category#-20: #= value # #= series.name #"
+            template: " #= category#-20: <br/> #= value #  #= series.name #"
         }
     });
+    
 }// end createChart()
 
 /**
@@ -87,7 +89,7 @@ function getData() {
         // cannot use a for each loop , because this is a JSON file
         // using a regular for loop
         for (i = 0; i < Object.keys(data.USA).length; i++) { 
-            if(data.USA[i].new_deaths > 300){
+            if(data.USA[i].new_deaths > 0){
                 chartInfo.dates.push( data.USA[i].date.substring(5) );
                 chartInfo.newDeaths.push( data.USA[i].new_deaths );
                 chartInfo.newCases.push( data.USA[i].new_cases );
@@ -106,6 +108,8 @@ function getData() {
         "Cases", "#86b1f7", chartInfo.newCases, chartInfo.dates); 
         createChart("deaths-chart", "Total Deaths [" + chartInfo.total_deaths + "]", "line", 
         "Deaths", "#2774f2", chartInfo.newDeaths, chartInfo.dates); 
+        // remove loading indicator
+        kendo.ui.progress($(".chart-loading"), false);
     }// end organizeData()
     $.ajax({
         url: sDataSource,
@@ -116,5 +120,7 @@ function getData() {
  * Start the sequence
  */
 $( document ).ready(function() {
+    // display loading indicator
+    kendo.ui.progress($(".chart-loading"), true);
     getData();
 });

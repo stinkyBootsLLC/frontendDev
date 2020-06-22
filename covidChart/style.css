@@ -4,12 +4,25 @@ a {
 }
 .nav-bar{
     background-color: #67a9f5;
-   
     color: white;
-    margin: 0;   
-    padding: 0;
+    text-align: center;
     overflow: hidden;
+    padding: 16px;
+    top: 0;
+    width: 100%;
 }
 .nav-bar > h3{
     padding: 10px;
+}
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #67a9f5;
+    color: white;
+    text-align: center;
+    padding: 10px;
+ }
+ .footer > p{
+    padding: 5px;
 }
