@@ -66,9 +66,9 @@ function createChart(sID, sMainTitle, sSeriesType, sSeriesName, sSeriesColor, aS
             }
         },
         tooltip: {
-            visible: true,
+            visible: true,  
             format: "{0}%",
-            template: "#= series.name #: #= value #"
+            template: " #= category#-20: #= value # #= series.name #"
         }
     });
 }// end createChart()
