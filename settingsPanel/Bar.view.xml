@@ -1,0 +1,98 @@
+<!--selected="{= ${/child1} || ${/child2} || ${/child3} }"
+partiallySelected="{= !(${/child1} &amp;&amp; ${/child2} &amp;&amp; ${/child3})}"-->
+
+<mvc:View 
+    controllerName="sap.erp.epcb.Bar" 
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:viz="sap.viz.ui5.controls" 
+    xmlns:layout="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data" 
+    height="100%">
+    <layout:FixFlex id='chartFixFlex' minFlexSize="250">
+        <!--Below is the setting panel -->
+        <layout:fixContent>
+            <Panel id='settingsPanel' class="panelStyle" expandable="true" expanded="true" headerText="Cost Center Settings" width="auto">
+                <content>
+                    <HBox class='settingsHBox'>
+                    <VBox class='sapUiTinyMargin'>
+                        <Label text="Select Cost Center" design="Bold" class='settingsLabel'></Label>
+                        <ComboBox
+                            selectionChange="onCCchange"
+                            items="{/ccBoxdata}">
+                            <core:Item key="{key}" text="{text}" />
+                        </ComboBox>
+                        <Label text="Select Time Frame" design="Bold" class='settingsLabel'></Label>
+                        <ComboBox
+                            selectionChange="onTimeChange"
+                            items="{/timeData}">
+                            <core:Item key="{key}" text="{text}" />
+                        </ComboBox>
+                    </VBox>
+                    <VBox class='sapUiTinyMargin'>
+                        <Label text="Start Date" labelFor="DP5"/>
+                        <DatePicker
+                            id="startDate"
+                            value="{/startDate}"
+                            valueFormat="yyyy-MM-dd"
+                            displayFormat="long"
+                            secondaryCalendarType="Gregorian"
+                            change="handleChange"
+                            class="sapUiSmallMarginBottom"/>
+
+                        <Label text="End Date" labelFor="DP5"/>
+                        <DatePicker
+                            id="endDate"
+                            value="{/endDate}"
+                            valueFormat="yyyy-MM-dd"
+                            displayFormat="long"
+                            secondaryCalendarType="Gregorian"
+                            change="handleChange"
+                            class="sapUiSmallMarginBottom"/>
+
+                    </VBox>
+                    <VBox class='sapUiTinyMargin'>
+                        <Label text="Radio Btn Group" design="Bold" class='settingsLabel'></Label>
+                        <RadioButtonGroup id="rbg1"  width="100%" class="sapUiMediumMarginBottom" select='onSeriesSelected'>
+                            <RadioButton id="RB1-1" text="1"  />
+                            <RadioButton id="RB1-2" text="2"   />
+                            <RadioButton id="RB1-3" text="3"  />
+                        </RadioButtonGroup>
+                    </VBox>
+                    <VBox class='sapUiTinyMargin'>
+                        <Label text = 'On/Off Switch' design="Bold" class='settingsLabel'></Label>
+                        <Switch class='settingsSwitch' state="true" change='onDataLabelChanged'>
+                            <layoutData>
+                                <FlexItemData growFactor="1" />
+                            </layoutData>
+                        </Switch>
+                    </VBox>
+                    <VBox class='sapUiTinyMargin'>
+                        <Text text="Check Boxes for Settings"/>
+                        <CheckBox
+                            text="select / deselect all"
+                         
+                            select="onParentClicked"/>
+                        <core:HTML content="&lt;hr&gt;"/>
+                        <CheckBox id="ckbox1" text="1" selected="{/child1}"/>
+                        <CheckBox id="ckbox2" text="2"  selected="{/child2}"/>
+                        <CheckBox id="ckbox3" text="3" selected="{/child3}"/>
+                    </VBox>
+                    <VBox class='sapUiTinyMargin'>
+                        <HBox>
+                            <Button type="Accept" text="Save Settings" press="onSaveSettings" class='sapUiTinyMargin'>
+                                <layoutData>
+                                    <FlexItemData growFactor="1" />
+                                </layoutData>
+                            </Button>
+                      
+                        </HBox>
+                    </VBox>
+                    </HBox>
+                </content>
+            </Panel>
+        </layout:fixContent>
+    </layout:FixFlex>
+</mvc:View>
