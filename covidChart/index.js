@@ -3,6 +3,7 @@
  * Source:
  * https://github.com/owid/covid-19-data/tree/master/public/data
  * 06/20/2020
+ * 7/2/2020 -source changed json file structure
  */
 
 let chartInfo = {
@@ -12,17 +13,19 @@ let chartInfo = {
     total_deaths: 0,
     total_cases: 0,
 };
-
+/**
+ * Creates Arc Gauges
+ * @param {string} sId - html element I.D
+ * @param {Number} nValue - value of the gauge
+ */
 function createGauge(sId, nValue) {
     $("#" + sId).kendoArcGauge({
+        color: "#67a9f5",
         value: nValue,
         centerTemplate: '#: value #%'
+       
     });
 }
-
-
-
-
 
 /**
  * Creates a Kendo UI Chart.  
@@ -90,25 +93,26 @@ function createChart(sID, sMainTitle, sSeriesType, sSeriesName, sSeriesColor, aS
 /**
  * Gets the charts data.
  */
-function getData() {
+function downLoadData() {
    
     const sDataSource = "https://covid.ourworldindata.org/data/owid-covid-data.json";
 
     function organizeData(data){
-        //console.log(data.USA);
+        
         let total_deaths = 0;
         let total_cases = 0;
         // cannot use a for each loop , because this is a JSON file
         // using a regular for loop
-        for (i = 0; i < Object.keys(data.USA).length; i++) { 
-            if(data.USA[i].new_deaths > 0){
-                chartInfo.dates.push( data.USA[i].date.substring(5) );
-                chartInfo.newDeaths.push( data.USA[i].new_deaths );
-                chartInfo.newCases.push( data.USA[i].new_cases );
+        for (i = 0; i < Object.keys(data.USA.data).length; i++) {
+            // console.log(data.USA.data[i].new_deaths);
+            if(data.USA.data[i].new_deaths > 0){
+                chartInfo.dates.push( data.USA.data[i].date.substring(5) );
+                chartInfo.newDeaths.push( data.USA.data[i].new_deaths );
+                chartInfo.newCases.push( data.USA.data[i].new_cases );
             }
             // assign totals
-            total_deaths += data.USA[i].new_deaths;
-            total_cases += data.USA[i].new_cases;
+            total_deaths += data.USA.data[i].new_deaths;
+            total_cases += data.USA.data[i].new_cases;
         }// end for data length
         // console.log(total_cases);
         // set the value
@@ -122,18 +126,9 @@ function getData() {
         "Deaths", "#2774f2", chartInfo.newDeaths, chartInfo.dates); 
         let nCasesPercent = (total_cases / 3282000000 * 100).toFixed(2);
         let nCasesDeaths = (total_deaths / 3282000000 * 100).toFixed(4);
-        // 2 280 912
-        // 3 282 000
-
+        // display gauges
         createGauge("cases", nCasesPercent);
         createGauge("deaths", nCasesDeaths);
-
-
-
-
-
-
-
         // remove loading indicator
         kendo.ui.progress($(".chart-loading"), false);
     }// end organizeData()
@@ -148,5 +143,5 @@ function getData() {
 $( document ).ready(function() {
     // display loading indicator
     kendo.ui.progress($(".chart-loading"), true);
-    getData();
+    downLoadData();
 });
