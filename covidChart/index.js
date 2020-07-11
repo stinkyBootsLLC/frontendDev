@@ -16,13 +16,29 @@ let chartInfo = {
 let stats = [];
 
 function refresh() {
-    let chart = $("#cases-chart").data("kendoChart"),
-        categoryAxis = chart.options.categoryAxis,
+    let casesChart = $("#cases-chart").data("kendoChart"),
+        categoryAxis = casesChart.options.categoryAxis,
         baseUnitInputs = $("input:radio[name=baseUnit]");
 
     categoryAxis.baseUnit = baseUnitInputs.filter(":checked").val();
 
-    chart.refresh();
+    casesChart.refresh();
+
+
+    let deathsChart = $("#deaths-chart").data("kendoChart"),
+        deathCategoryAxis = deathsChart.options.categoryAxis,
+        deathBaseUnitInputs = $("input:radio[name=baseUnit]");
+
+        deathCategoryAxis.baseUnit = deathBaseUnitInputs.filter(":checked").val();
+
+    deathsChart.refresh();
+
+
+
+
+
+
+
 }// end refresh()
 
 
