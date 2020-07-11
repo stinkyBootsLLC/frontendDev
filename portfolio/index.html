@@ -5,19 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Eduardo Estrada | Portfolio</title>
+    <link href=" " rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    
 </head>
 
 <body>
-
     <!-- Nav Bar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #011929;">
         <a class="navbar-brand" href="#">Eduardo Estrada</a>
@@ -48,9 +46,9 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="http://ec2-3-94-55-132.compute-1.amazonaws.com/pwned/">JavaScript
                             Development</a>
+                            <a class="dropdown-item" href="http://ec2-3-94-55-132.compute-1.amazonaws.com/covidChart/">Covid-19
+                                USA Data</a>                            
                     </div>
-
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -88,12 +86,16 @@
     </header>
     <section class="features-icons bg-light text-center">
         <h1>Projects</h1>
-        <!--https://pagellapolitica.it/static/plugins/line-icons/-->
+            <!--
+                Simple Line Icons
+                Stored locally in assets/fonts
+                Ref: https://pagellapolitica.it/static/plugins/line-icons/
+            -->
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
                     <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
-                        <div class="d-flex features-icons-icon"><i class="icon-login m-auto text-primary"
+                        <div class="d-flex features-icons-icon"><i class="icon-briefcase m-auto text-primary"
                                 data-bs-hover-animate="pulse"></i></div>
                         <h3>PHP, MySQL Development</h3>
                         <p class="lead mb-0">Tenant Portal Application</p>
@@ -156,7 +158,23 @@
 
                     </div>
                 </div>
-                <!-- max 3 cols-->
+                <div class="col-lg-4">
+                    <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
+                        <div class="d-flex features-icons-icon"><i class="icon-fire m-auto text-primary"
+                                data-bs-hover-animate="pulse"></i></div>
+                        <h3>Covid-19 Pandemic Data</h3>
+                        <p class="lead mb-0">2020 USA Statistics</p>
+                        <p class="lead mb-0">Confirmed cases and deaths</p>
+                        <p></p>
+                        <a href="http://ec2-3-94-55-132.compute-1.amazonaws.com/covidChart/"
+                            class="btn btn-outline-secondary my-2 my-sm-0">Demo</a>
+                        <a href="https://github.com/stinkyBootsLLC/frontendDev/tree/master/covidChart"
+                            class="btn btn-outline-secondary my-2 my-sm-0">Source</a>
+                    </div>
+                </div>
+                <!-- max 3 columns -->
+            </div>
+        </div>
     </section>
     <section class="call-to-action text-white text-center"
         style="background:url(&quot;assets/img/bg-masthead.jpg&quot;) no-repeat center center;background-size:cover;">
