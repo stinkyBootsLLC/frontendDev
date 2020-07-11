@@ -4,6 +4,7 @@
     <title>COVID-19 (Coronavirus) | USA</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="chartIcn.ico" rel="shortcut icon" type="image/x-icon" />
     <!-- kendo styles -->
     <link href=" https://kendo.cdn.telerik.com/2020.2.617/styles/kendo.common.min.css" rel="stylesheet" />
     <link href=" https://kendo.cdn.telerik.com/2020.2.617/styles/kendo.default.min.css" rel="stylesheet" />
@@ -22,7 +23,6 @@
                 by Our World in Data</a>
         </h3>
     </nav>
-
     <div id="top-cards">
         <div class="card-row">
             <div class="card-column">
@@ -41,42 +41,26 @@
             </div>
         </div> <!-- end row -->
     </div><!-- top-cards -->
-    
-
-    <div class="box">
-        <fieldset class="options" id="group1">
-            <input id="baseUnitMonths" name="baseUnit" type="radio" value="months" checked="checked" autocomplete="off" />
-            <label for="baseUnitMonths">Months</label>
-            <input id="baseUnitWeeks" name="baseUnit" type="radio" value="weeks"  autocomplete="off" />
-            <label for="baseUnitWeeks">Weeks</label>
-        </fieldset>
-    </div>
-
-
-
-
-
-
-    <br><br>
-
-
-
-
-
-
-
-
-
     <div id="chart-area" class="container">
         <div id="cases-chart"></div>
         <div id="deaths-chart"></div>
         <div class="chart-loading"></div>
-
     </div>
+    <div class="settings-box">
+        <fieldset class="options" id="group1" >
+            <label><strong>Chart Settings:</strong></label>
+            <input id="baseUnitMonths" name="baseUnit" type="radio" value="months" checked="checked" autocomplete="off" />
+            <label for="baseUnitMonths">Months</label>
+            <input id="baseUnitWeeks" name="baseUnit" type="radio" value="weeks"  autocomplete="off" />
+            <label for="baseUnitWeeks">Weeks</label>
+            <input id="baseUnitDays" name="baseUnit" type="radio" value="days"  autocomplete="off" />
+            <label for="baseUnitDays">Days</label>
+        </fieldset>
+    </div>
+    <br><br>
     <script src="index.js"></script>
 </body>
 <footer class="footer">
     <p>Eduardo Estrada | June 2020</p>
 </footer>
-
 </html>

@@ -4,58 +4,31 @@
  * https://github.com/owid/covid-19-data/tree/master/public/data
  * 06/20/2020
  * 7/2/2020 -source changed json file structure
+ * 7/11/2020 - Changed layout, added settings box, using "bind"
+ *             to bind "refresh()" to "settings-box".
+ *             in "organizeData()" the date string is used to create a 
+ *             new Date() object.  This is needed to be able to change the 
+ *             days, weeks and months thru the kendo.ui library.
  */
 
 let chartInfo = {
-    dates: [],
-    newDeaths: [],
-    newCases:[],
     total_deaths: 0,
     total_cases: 0,
 };
-let stats = [];
+let oStats = [];
 
 function refresh() {
     let casesChart = $("#cases-chart").data("kendoChart"),
-        categoryAxis = casesChart.options.categoryAxis,
-        baseUnitInputs = $("input:radio[name=baseUnit]");
-
-    categoryAxis.baseUnit = baseUnitInputs.filter(":checked").val();
-
+        casesCategoryAxis = casesChart.options.categoryAxis,
+        casesBaseUnitInputs = $("input:radio[name=baseUnit]");
+    casesCategoryAxis.baseUnit = casesBaseUnitInputs.filter(":checked").val();
     casesChart.refresh();
-
-
     let deathsChart = $("#deaths-chart").data("kendoChart"),
         deathCategoryAxis = deathsChart.options.categoryAxis,
         deathBaseUnitInputs = $("input:radio[name=baseUnit]");
-
         deathCategoryAxis.baseUnit = deathBaseUnitInputs.filter(":checked").val();
-
     deathsChart.refresh();
-
-
-
-
-
-
-
 }// end refresh()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * Adds Value to html div
  * @param {string} sId - html element I.D
@@ -63,7 +36,7 @@ function refresh() {
  */
 function displayTotalStats(sId, nValue) {
     $( "#" + sId ).html( nValue + "%" );
-}
+}// end displayTotalStats()
 
 /**
  * Creates a Kendo UI Chart.  
@@ -110,11 +83,8 @@ function createChart(id, oData, sField, sBaseUnits, sSeriesColor, sMainTitle, sS
  * Gets the charts data.
  */
 function downLoadData() {
-   
     const sDataSource = "https://covid.ourworldindata.org/data/owid-covid-data.json";
-
     function organizeData(data){
-        
         let total_deaths = 0;
         let total_cases = 0;
         // cannot use a for each loop , because this is a JSON file
@@ -122,14 +92,11 @@ function downLoadData() {
         for (i = 0; i < Object.keys(data.USA.data).length; i++) {
             // console.log(data.USA.data[i].new_deaths);
             if(data.USA.data[i].new_deaths > 0){
-                chartInfo.dates.push( data.USA.data[i].date.substring(5) );
-                stats.push({
+                oStats.push({
                     date: new Date(data.USA.data[i].date),
                     cases: data.USA.data[i].new_cases ,
                     deaths: data.USA.data[i].new_deaths
                 });
-                chartInfo.newDeaths.push( data.USA.data[i].new_deaths );
-                chartInfo.newCases.push( data.USA.data[i].new_cases );
             }
             // assign totals
             total_deaths += data.USA.data[i].new_deaths;
@@ -140,9 +107,9 @@ function downLoadData() {
         //console.log(chartInfo.total_deaths);
         chartInfo.total_cases = total_cases;
         // display the charts
-        createChart("cases-chart", stats, "cases", "months","#86b1f7", 
+        createChart("cases-chart", oStats, "cases", "months","#86b1f7", 
         "Total Cases [" + chartInfo.total_cases + "]", "area");
-        createChart("deaths-chart", stats, "deaths", "months","#2774f2", 
+        createChart("deaths-chart", oStats, "deaths", "months","#2774f2", 
         "Total Deaths [" + chartInfo.total_deaths + "]", "line");
         let nCasesPercent = (total_cases / 3282000000 * 100).toFixed(2);
         let nCasesDeaths = (total_deaths / 3282000000 * 100).toFixed(4);
@@ -165,8 +132,6 @@ $( document ).ready(function() {
     kendo.ui.progress($(".chart-loading"), true);
     downLoadData();
 });
-
-// $("#chart-area").bind("kendo:skinChange", createChart);
-$(".box").bind("change", refresh);
+$(".settings-box").bind("change", refresh);
 
 //chart-area
