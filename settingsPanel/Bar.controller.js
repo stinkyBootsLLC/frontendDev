@@ -1,29 +1,33 @@
 sap.ui.define([
         'sap/ui/core/mvc/Controller',
-        
         'sap/ui/model/json/JSONModel',
         
     ], function(Controller,  JSONModel) {
     "use strict";
-
-    var oSettingsValues = {
-        radioBtnGrp: "1", // grabbing the default first
-        onSwitch: "true",// grabbing the default first
-        checkBoxes: []
-
-    };
-
+ 
     var Controller = Controller.extend("sap.erp.epcb.Bar", {
+        
+        // need to grab the settings values to store in the MDO 
+        // this object has the values that will be sent to the MDO
+        oSettingsValues: {
+            radioBtnGrp: "1", // grabbing the default first
+            onSwitch: "true",// grabbing the default first
+            checkBoxes: []
+        },
 
         onInit : function (evt) {
-      
-
+            // demo model
+            // add the reserved word "this" allows this variable to be called in other methods
             this.oModel = new JSONModel({
 				child1: false,
 				child2: false,
                 child3: false,
                 ccBoxdata: [{key: "5YOOO", text: "5YOOO"}],
-                timeData: [{key: "week", text: "week"}],
+                timeData: [
+                    {key: "Weekly", text: "Weekly"},
+                    {key: "Monthly", text: "Monthly"},
+                    {key: "TwoMonths", text: "Two Months"}
+                ],
                 startDate: new Date(),
                 endDate: new Date()
 			});
@@ -32,60 +36,44 @@ sap.ui.define([
         },
      
         onAfterRendering : function(){
-            // var datasetRadioGroup = this.getView().byId('datasetRadioGroup');
 
-            // var seriesRadioGroup = this.getView().byId('seriesRadioGroup');
         },
   
         onSeriesSelected : function(oEvent){
-            var txt = oEvent.getSource().getButtons()[oEvent.getParameter("selectedIndex")].getText();
-            
-            oSettingsValues.radioBtnGrp = txt;
-            console.log(oSettingsValues.radioBtnGrp);
-            
+            // grabs the text off the radio button
+            var sTxt = oEvent.getSource().getButtons()[oEvent.getParameter("selectedIndex")].getText();
+            this.oSettingsValues.radioBtnGrp = sTxt;
+            console.log(this.oSettingsValues.radioBtnGrp);
         },
-        onDataLabelChanged : function(oEvent){
-            oSettingsValues.onSwitch = oEvent.getParameter('state');
-            // alert(oEvent.getParameter('state'));
-                  
-          
+        onSwitchChanged : function(oEvent){
+            console.log(oEvent.getParameter('state'));
+            this.oSettingsValues.onSwitch = oEvent.getParameter('state');
         },
         onParentClicked: function (oEvent) {
             // this is all or non
             var bSelected = oEvent.getParameter("selected");
             console.log(bSelected);
-            this.oModel.setData({ 
-                child1: bSelected, 
-                child2: bSelected, 
-                child3: bSelected,
-                ccBoxdata: [{key: "5YOOO", text: "5YOOO"}],
-                timeData: [{key: "week", text: "week"}],
-                startDate: new Date(),
-                endDate: new Date() 
-            
-            });
-
-           
-
-            
-
-            
+            // simply SET all the children to whatever the parent is
+            this.getView().byId("ckbox1").setSelected(bSelected);
+            this.getView().byId("ckbox2").setSelected(bSelected);
+            this.getView().byId("ckbox3").setSelected(bSelected);
         },
         
         onSaveSettings: function (oEvent) {
             // clean out or it cummulates
-            oSettingsValues.checkBoxes = [];
-            oSettingsValues.checkBoxes.push({
+            this.oSettingsValues.checkBoxes = [];
+            // set the properties
+            this.oSettingsValues.checkBoxes.push({
                 box1: this.getView().byId("ckbox1").getSelected(),
                 box2: this.getView().byId("ckbox2").getSelected(),
                 box3: this.getView().byId("ckbox3").getSelected()
 
             });
-            console.log(oSettingsValues);
+            console.log(this.oSettingsValues);
 
         },
         onTimeChange: function(oEvent){
-            
+            // them combo box - demo only 
             console.log(oEvent.getParameter("selectedItem").getText());
             console.log(oEvent.getParameter("selectedItem").getKey());
             this.getView().byId("startDate").setDateValue(new Date("06/28/2020"));

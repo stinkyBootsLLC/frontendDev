@@ -1,6 +1,3 @@
-<!--selected="{= ${/child1} || ${/child2} || ${/child3} }"
-partiallySelected="{= !(${/child1} &amp;&amp; ${/child2} &amp;&amp; ${/child3})}"-->
-
 <mvc:View 
     controllerName="sap.erp.epcb.Bar" 
     xmlns="sap.m"
@@ -63,7 +60,7 @@ partiallySelected="{= !(${/child1} &amp;&amp; ${/child2} &amp;&amp; ${/child3})}
                     </VBox>
                     <VBox class='sapUiTinyMargin'>
                         <Label text = 'On/Off Switch' design="Bold" class='settingsLabel'></Label>
-                        <Switch class='settingsSwitch' state="true" change='onDataLabelChanged'>
+                        <Switch class='settingsSwitch' state="true" change='onSwitchChanged'>
                             <layoutData>
                                 <FlexItemData growFactor="1" />
                             </layoutData>
