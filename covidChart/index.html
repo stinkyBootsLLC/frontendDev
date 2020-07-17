@@ -10,9 +10,12 @@
     <link href=" https://kendo.cdn.telerik.com/2020.2.617/styles/kendo.default.min.css" rel="stylesheet" />
     <link href=" https://kendo.cdn.telerik.com/2020.2.617/styles/kendo.mobile.all.min.css" rel="stylesheet" />
     <link href="style.css" rel="stylesheet">
-    <!-- kendo scripts -->
+    <!-- kendo Scripts -->
     <script src="https://kendo.cdn.telerik.com/2020.2.617/js/jquery.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2020.2.617/js/kendo.all.min.js"></script>
+    <!-- bootstrap 4  popover -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -26,28 +29,42 @@
     <div id="top-cards">
         <div class="card-row">
             <div class="card-column">
-                <div class="card">
-                    <h3>US Population</h3>
+                <div class="card" data-toggle="popover" title=" " 
+                    data-content="Total % infected in the USA">
+                    <h3>USA Population</h3>
                     <div id="cases"></div>
                     <h3>Total Cases</h3>
                 </div>
             </div>
             <div class="card-column">
-                <div class="card">
-                    <h3>US Population</h3>
+                <div class="card" data-toggle="popover" title=" " 
+                    data-content="Total % of people who have died in the USA">
+                    <h3>USA Population</h3>
                     <div id="deaths"></div>
                     <h3>Total Deaths</h3>
                 </div>
             </div>
             <div class="card-column">
-                <div class="card">
-                    <h3>US Population</h3>
+                <div class="card" data-toggle="popover" title=" " 
+                    data-content="Total % of people who have been tested in the USA">
+                    <h3>USA Population</h3>
                     <div id="tests"></div>
                     <h3>Total Tests</h3>
                 </div>
             </div>
+            <div class="card-column">
+                <div class="card" data-toggle="popover" title=" " 
+                    data-content="Total % of people out of every 1000">
+                    <h3>USA Testing</h3>
+                    <div id="usaTesting"></div>
+                    <h3>Tests Per Thousand</h3>
+                </div>
+            </div>
+
+
         </div> <!-- end row -->
     </div><!-- top-cards -->
+
     <div id="chart-area" class="container">
         <div id="cases-chart"></div>
         <div id="deaths-chart"></div>

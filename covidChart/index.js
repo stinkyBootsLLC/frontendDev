@@ -44,7 +44,7 @@ function refresh() {
  * @param {Number} nValue - value of the gauge
  */
 function displayTotalStats(sId, nValue) {
-    $( "#" + sId ).html( nValue + "%" );
+        $( "#" + sId ).html( nValue + "%" );
 }// end displayTotalStats()
 
 /**
@@ -97,6 +97,7 @@ function downLoadData() {
         let total_deaths = 0;
         let total_cases = 0;
         let total_tests = 0;
+        let total_tests_per_thousand = 0;
         // cannot use a for each loop , because this is a JSON file
         // using a regular for loop
         // console.log(data.USA.data);
@@ -106,10 +107,13 @@ function downLoadData() {
 
             let nTests = data.USA.data[i].total_tests;
 
+            
+
             if(nTests !== undefined || nTests > 0){
                 // only saves the last one
                 // this is already cumulative from the source
                 total_tests = data.USA.data[i].total_tests;
+                total_tests_per_thousand = data.USA.data[i].total_tests_per_thousand;
             }
             if(data.USA.data[i].new_deaths > 0){
                 oStats.push({
@@ -123,7 +127,9 @@ function downLoadData() {
             total_cases += data.USA.data[i].new_cases;
         }// end for data length
         // set the value
-        console.log(total_tests);
+
+        
+
         chartInfo.total_deaths = addCommasToNumber(total_deaths);
         chartInfo.total_cases = addCommasToNumber(total_cases);
         // display the charts
@@ -132,12 +138,20 @@ function downLoadData() {
         createChart("deaths-chart", oStats, "deaths", "months","#2774f2", 
         "Total Deaths [" + chartInfo.total_deaths + "]", "line");
         let nCasesPercent = (total_cases / 3282000000 * 100).toFixed(2);
-        let nCasesDeaths = (total_deaths / 3282000000 * 100).toFixed(4);
-        let nTotalTests = (total_tests / 3282000000 * 100).toFixed(2);
+        let nDeathsPercent = (total_deaths / 3282000000 * 100).toFixed(4);
+        let nTotalTestsPercent = (total_tests / 3282000000 * 100).toFixed(2);
+
+        let nTestPerThousPercent = (total_tests_per_thousand / 1000 * 100).toFixed(2);
+        // console.log(nTestPerThousPercent);
+
         // display totals
         displayTotalStats("cases", nCasesPercent);
-        displayTotalStats("deaths", nCasesDeaths);
-        displayTotalStats("tests", nTotalTests);
+        displayTotalStats("deaths", nDeathsPercent);
+        displayTotalStats("tests", nTotalTestsPercent);
+        displayTotalStats("usaTesting", nTestPerThousPercent);
+
+
+        
         // remove loading indicator
         kendo.ui.progress($(".chart-loading"), false);
     }// end organizeData()
@@ -153,6 +167,12 @@ $( document ).ready(function() {
     // display loading indicator
     kendo.ui.progress($(".chart-loading"), true);
     downLoadData();
+
+    // popover effect from the bootstrap 4
+    $('[data-toggle="popover"]').popover({
+        placement : 'bottom',
+        trigger : 'hover'
+    }); 
 });
 /**
  * Jquery bind("event", function)
