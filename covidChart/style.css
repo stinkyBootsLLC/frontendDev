@@ -23,33 +23,30 @@ a {
 #top-cards{
     margin-top: 10px;
 }
-
-/* Float four columns side by side */
-.card-column {
-    float: left;
-    width: 15%;
-    padding: 0 10px;
+.k-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-/* Remove extra left and right margins, due to padding */
-.card-row {
-    margin: 0 -5px;
-    padding-bottom: 55px;
+.k-card {
+    width: 190px;
+    height: 190px;
+    margin: 2%;
 }
-/* Clear floats after the columns */
-.card-row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-/* Style the counter cards */
-.card {
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
-    padding: 16px;
-    text-align: center;
-    /* background-color: #f1f1f1; */
-}
-.card:hover {
+.k-card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.k-card-footer {
+    text-align: center;
+    border-width: 1px 0 0;
+    border-color: inherit;
+}
+
+.indicator{
+    text-align: center;
+    font-size: xx-large;
+    padding-top: 2px;
 }
 .settings-box{
     width: 30%;

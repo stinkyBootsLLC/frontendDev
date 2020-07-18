@@ -142,8 +142,7 @@ function downLoadData() {
         let nTotalTestsPercent = (total_tests / 3282000000 * 100).toFixed(2);
 
         let nTestPerThousPercent = (total_tests_per_thousand / 1000 * 100).toFixed(2);
-        // console.log(nTestPerThousPercent);
-
+        // console.log(nTestPerThousPercent); 
         // display totals
         displayTotalStats("cases", nCasesPercent);
         displayTotalStats("deaths", nDeathsPercent);
@@ -166,13 +165,7 @@ function downLoadData() {
 $( document ).ready(function() {
     // display loading indicator
     kendo.ui.progress($(".chart-loading"), true);
-    downLoadData();
-
-    // popover effect from the bootstrap 4
-    $('[data-toggle="popover"]').popover({
-        placement : 'bottom',
-        trigger : 'hover'
-    }); 
+    downLoadData(); 
 });
 /**
  * Jquery bind("event", function)

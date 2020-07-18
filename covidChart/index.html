@@ -13,9 +13,7 @@
     <!-- kendo Scripts -->
     <script src="https://kendo.cdn.telerik.com/2020.2.617/js/jquery.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2020.2.617/js/kendo.all.min.js"></script>
-    <!-- bootstrap 4  popover -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+ 
 </head>
 
 <body>
@@ -27,42 +25,64 @@
         </h3>
     </nav>
     <div id="top-cards">
-        <div class="card-row">
-            <div class="card-column">
-                <div class="card" data-toggle="popover" title=" " 
-                    data-content="Total % infected in the USA">
-                    <h3>USA Population</h3>
-                    <div id="cases"></div>
-                    <h3>Total Cases</h3>
+        <div class="k-container">
+            <div class="k-card">
+                <div class="k-card-header" style="background-color: #acd0fa;">
+                    <h5 class="k-card-title">USA Population</h5>
+                    <h6 class="k-card-subtitle">Total Cases</h6>
                 </div>
-            </div>
-            <div class="card-column">
-                <div class="card" data-toggle="popover" title=" " 
-                    data-content="Total % of people who have died in the USA">
-                    <h3>USA Population</h3>
-                    <div id="deaths"></div>
-                    <h3>Total Deaths</h3>
+                <!-- <img class="k-card-image" src="../content/web/cards/rome.jpg" /> -->
+                <div class="k-card-body">
+                    <p id="cases" class="indicator"> </p>
                 </div>
-            </div>
-            <div class="card-column">
-                <div class="card" data-toggle="popover" title=" " 
-                    data-content="Total % of people who have been tested in the USA">
-                    <h3>USA Population</h3>
-                    <div id="tests"></div>
-                    <h3>Total Tests</h3>
-                </div>
-            </div>
-            <div class="card-column">
-                <div class="card" data-toggle="popover" title=" " 
-                    data-content="Total % of people out of every 1000">
-                    <h3>USA Testing</h3>
-                    <div id="usaTesting"></div>
-                    <h3>Tests Per Thousand</h3>
+                <div class="k-card-footer" style="background-color: #acd0fa;">
+                    <p style="font-size: 10px;">Total % of the population infected</p>
                 </div>
             </div>
 
+            <div class="k-card">
+                <div class="k-card-header" style="background-color: #acd0fa;">
+                    <h5 class="k-card-title">USA Population</h5>
+                    <h6 class="k-card-subtitle">Total Deaths</h6>
+                </div>
+                <!-- <img class="k-card-image" src="../content/web/cards/rome.jpg" /> -->
+                <div class="k-card-body">
+                    <p id="deaths" class="indicator"> </p>
+                </div>
+                <div class="k-card-footer" style="background-color: #acd0fa;">
+                    <p style="font-size: 10px;">Total % of deaths</p>
+                </div>
+            </div>
 
-        </div> <!-- end row -->
+            <div class="k-card">
+                <div class="k-card-header" style="background-color: #acd0fa;">
+                    <h5 class="k-card-title">USA Population</h5>
+                    <h6 class="k-card-subtitle">Total Test</h6>
+                </div>
+                <!-- <img class="k-card-image" src="../content/web/cards/rome.jpg" /> -->
+                <div class="k-card-body">
+                    <p id="tests" class="indicator"> </p>
+                </div>
+                <div class="k-card-footer" style="background-color: #acd0fa;">
+                    <p style="font-size: 10px;">Total % of the population tested</p>
+                </div>
+            </div>
+
+            <div class="k-card">
+                <div class="k-card-header" style="background-color: #acd0fa;">
+                    <h5 class="k-card-title">USA Population</h5>
+                    <h6 class="k-card-subtitle">Test / Thousand</h6>
+                </div>
+                <!-- <img class="k-card-image" src="../content/web/cards/rome.jpg" /> -->
+                <div class="k-card-body">
+                    <p id="usaTesting" class="indicator"> </p>
+                </div>
+                <div class="k-card-footer" style="background-color: #acd0fa;">
+                    <p style="font-size: 10px;">Total % of every 1000 people</p>
+                </div>
+            </div>
+        </div>
+        <!--end k-container-->
     </div><!-- top-cards -->
 
     <div id="chart-area" class="container">
@@ -71,13 +91,14 @@
         <div class="chart-loading"></div>
     </div>
     <div class="settings-box">
-        <fieldset class="options" id="group1" >
+        <fieldset class="options" id="group1">
             <label><strong>Chart Settings:</strong></label>
-            <input id="baseUnitMonths" name="baseUnit" type="radio" value="months" checked="checked" autocomplete="off" />
+            <input id="baseUnitMonths" name="baseUnit" type="radio" value="months" checked="checked"
+                autocomplete="off" />
             <label for="baseUnitMonths">Months</label>
-            <input id="baseUnitWeeks" name="baseUnit" type="radio" value="weeks"  autocomplete="off" />
+            <input id="baseUnitWeeks" name="baseUnit" type="radio" value="weeks" autocomplete="off" />
             <label for="baseUnitWeeks">Weeks</label>
-            <input id="baseUnitDays" name="baseUnit" type="radio" value="days"  autocomplete="off" />
+            <input id="baseUnitDays" name="baseUnit" type="radio" value="days" autocomplete="off" />
             <label for="baseUnitDays">Days</label>
         </fieldset>
     </div>
@@ -87,4 +108,5 @@
 <footer class="footer">
     <p>Eduardo Estrada | June 2020</p>
 </footer>
+
 </html>
