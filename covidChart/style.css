@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+body{
+    font-family: 'Roboto', sans-serif;
+}
 a {
     padding: 14px 16px;
     text-decoration: none;
 }
+a:visited {
+    color: rgb(0, 0, 0);
+  }
 .container {
     margin-left: auto;
     margin-right: auto;
@@ -9,11 +16,13 @@ a {
     padding-right: 15px;
 }
 .nav-bar{
+    /* font-family: 'Roboto', sans-serif; */
+    font-size: 2em;
     background-color: #67a9f5;
     color: white;
     text-align: center;
     overflow: hidden;
-    padding: 16px;
+    /* padding: 16px; */
     top: 0;
     width: 100%;
 }
@@ -51,7 +60,7 @@ a {
 .settings-box{
     width: 30%;
     padding: 16px;
-    text-align: left;
+    
 }
 .settings-box:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);

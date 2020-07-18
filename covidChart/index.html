@@ -13,7 +13,7 @@
     <!-- kendo Scripts -->
     <script src="https://kendo.cdn.telerik.com/2020.2.617/js/jquery.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2020.2.617/js/kendo.all.min.js"></script>
- 
+
 </head>
 
 <body>
@@ -90,17 +90,19 @@
         <div id="deaths-chart"></div>
         <div class="chart-loading"></div>
     </div>
-    <div class="settings-box">
-        <fieldset class="options" id="group1">
-            <label><strong>Chart Settings:</strong></label>
-            <input id="baseUnitMonths" name="baseUnit" type="radio" value="months" checked="checked"
-                autocomplete="off" />
-            <label for="baseUnitMonths">Months</label>
-            <input id="baseUnitWeeks" name="baseUnit" type="radio" value="weeks" autocomplete="off" />
-            <label for="baseUnitWeeks">Weeks</label>
-            <input id="baseUnitDays" name="baseUnit" type="radio" value="days" autocomplete="off" />
-            <label for="baseUnitDays">Days</label>
-        </fieldset>
+    <div class="k-container">
+        <div class="settings-box">
+            <fieldset class="options" id="group1">
+                <label><strong>Chart Settings:</strong></label>
+                <input id="baseUnitMonths" name="baseUnit" type="radio" value="months" checked="checked"
+                    autocomplete="off" />
+                <label for="baseUnitMonths">Months</label>
+                <input id="baseUnitWeeks" name="baseUnit" type="radio" value="weeks" autocomplete="off" />
+                <label for="baseUnitWeeks">Weeks</label>
+                <input id="baseUnitDays" name="baseUnit" type="radio" value="days" autocomplete="off" />
+                <label for="baseUnitDays">Days</label>
+            </fieldset>
+        </div>
     </div>
     <br><br>
     <script src="index.js"></script>
