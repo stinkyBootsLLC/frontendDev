@@ -11,13 +11,19 @@
           <h1>Recipe Input</h1>
           <p>Note: To myself - this tool is for ME ONLY, never deploy.  There is NO SANITIZATION</p>
           <br>
-          <form action="process.php" method="post">
+          <form action="process.php" method="post" enctype="multipart/form-data">
                <label>id</label>
                <input type="text" name="id" class="form-control" /><br />
                <label>title</label>
                <input type="text" name="title" class="form-control" /><br />
                <label>description</label>
                <input type="text" name="description" class="form-control" /><br />
+
+               <label>Picture</label>
+               <input type="file" name="picture" id="picture" class="form-control" /><br />
+
+
+
                <hr>
                <div id="Ingredients">
                     Ingredients
@@ -30,8 +36,15 @@
                     <input type="number" id="s_quantity" min="1" max="15">
                     <button id="s_button" type="button" onclick="addInstructionInputs();"> + </button>
                </div>
+
+
+
+
+
+
+
                <hr>
-               <input type="submit"  value="Append to db" class="btn btn-info" /><br />
+               <input type="submit"  name="submit" value="Append to db" class="btn btn-info" /><br />
           </form>
      </div>
      <br />
