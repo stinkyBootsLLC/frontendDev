@@ -17,7 +17,7 @@ fetch(recipes)
       // <div class="card bg-light mb-3" style="max-width: 36rem;">
       let recipeDiv = $("<div></div>");
       recipeDiv.attr('id', idName);
-      recipeDiv.attr('class', 'card bg-light mb-3');
+      recipeDiv.attr('class', 'card bg-light mb-5');
       recipeDiv.attr('style', 'max-width: 36rem;');
       // add to div
       let recipeHeaderDiv = $("<div></div>");
@@ -28,6 +28,8 @@ fetch(recipes)
       recipeBodyDiv.attr('class','card-body');
       recipeDiv.append(recipeBodyDiv);
       recipeBodyDiv.append("<p class='card-text'>" + data[recipe]["description"] + "</p>");
+      recipeBodyDiv.append("<img src=recipeImages/" + data[recipe]["picture"] 
+      + " alt=" + data[recipe]["picture"] + " width='100' height='100'></img>");
       // create variables 
       let ingredients = data[recipe]["ingredients"];
       let instructions = data[recipe]["directions"];
