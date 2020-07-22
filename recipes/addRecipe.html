@@ -13,27 +13,27 @@
           <br>
           <form action="process.php" method="post" enctype="multipart/form-data">
                <label>id</label>
-               <input type="text" name="id" class="form-control" /><br />
+               <input type="text" name="id" class="form-control" required/><br />
                <label>title</label>
-               <input type="text" name="title" class="form-control" /><br />
+               <input type="text" name="title" class="form-control" required/><br />
                <label>description</label>
-               <input type="text" name="description" class="form-control" /><br />
+               <input type="text" name="description" class="form-control" required/><br />
 
                <label>Picture</label>
-               <input type="file" name="picture" id="picture" class="form-control" /><br />
+               <input type="file" name="picture" id="picture" class="form-control" required/><br />
 
 
 
                <hr>
                <div id="Ingredients">
                     Ingredients
-                    <input type="number" id="i_quantity" min="1" max="15">
+                    <input type="number" id="i_quantity" min="1" max="15" required />
                     <button id="i_button" type="button" onclick="addIngredientsInputs();"> + </button>
                </div>
                <hr>
                <div id="Instructions">
                     Instructions
-                    <input type="number" id="s_quantity" min="1" max="15">
+                    <input type="number" id="s_quantity" min="1" max="15" required />
                     <button id="s_button" type="button" onclick="addInstructionInputs();"> + </button>
                </div>
 

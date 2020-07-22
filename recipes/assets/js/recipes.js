@@ -12,7 +12,7 @@ fetch(recipes)
     // loop thru the recipes in the data obj
     for (recipe in data) {
       // create id name for the element
-      idName = "recipe" + recipe;
+      idName = "recipe-" + recipe;
       // create the div
       // <div class="card bg-light mb-3" style="max-width: 36rem;">
       let recipeDiv = $("<div></div>");
@@ -29,7 +29,7 @@ fetch(recipes)
       recipeDiv.append(recipeBodyDiv);
       recipeBodyDiv.append("<p class='card-text'>" + data[recipe]["description"] + "</p>");
       recipeBodyDiv.append("<img src=recipeImages/" + data[recipe]["picture"] 
-      + " alt=" + data[recipe]["picture"] + " width='100' height='100'></img>");
+      + " alt=\"" + data[recipe]["title"] + "\" width='100' height='100'></img>");
       // create variables 
       let ingredients = data[recipe]["ingredients"];
       let instructions = data[recipe]["directions"];

@@ -70,7 +70,7 @@ if ($uploadOk == 0) {
     }// end foreach
     $post_results = array_combine($fields, $values);
 
-    print_r ($post_results);
+    //print_r ($post_results);
 ///// end get all the post data
 
     $items = array();

@@ -6,8 +6,8 @@ function addIngredientsInputs(){
     const ingredientsBtn = $('#i_button');
     let ingredientsQty = $('#i_quantity').val();
     for(index=0; index<ingredientsQty; index++){
-        ingredientsDiv.append("<br><label>name</label><input type='text'name='name_"+ index +"'/>"
-        +"<label>amount</label><input type='text' name='amount_"+ index +"' />"
+        ingredientsDiv.append("<br><label>name</label><input type='text'name='name_"+ index +" required '/>"
+        +"<label>amount</label><input type='text' name='amount_"+ index +"' required />"
         +" <label>unit</label><select id='unit_"+ index +"' name='unit_" + index 
         + "' onclick='populateUnitsValues(this.id);'></select>");
     }// end for
@@ -22,7 +22,7 @@ function addInstructionInputs(){
     const stepBtn = $('#s_button');
     let stepQuantity = $('#s_quantity').val();
     for(index=0; index<stepQuantity; index++){
-        stepDiv.append("<br><label>Step</label><input type='text'name='step_"+index+"'/>");
+        stepDiv.append("<br><label>Step</label><input type='text'name='step_"+index+"'required/>");
     }// end for
     stepBtn.remove();
 }// end addInstructionInputs()
