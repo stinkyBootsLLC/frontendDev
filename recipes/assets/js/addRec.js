@@ -6,8 +6,10 @@ function addIngredientsInputs(){
     const ingredientsBtn = $('#i_button');
     let ingredientsQty = $('#i_quantity').val();
     for(index=0; index<ingredientsQty; index++){
-        ingredientsDiv.append("<br><label>name</label><input type='text'name='name_"+ index +" required '/>"
-        +"<label>amount</label><input type='text' name='amount_"+ index +"' required />"
+        ingredientsDiv.append("<br><label>name</label><input type='text'name='name_"+ index 
+        + "\' pattern='[a-zA-Z0-9\s]+' title='Letters and Numbers only' required />"
+        +"<label>amount</label><input type='text' name='amount_"+ index 
+        +"\' pattern='[a-zA-Z0-9\s]+' title='Letters and Numbers only' required />"
         +" <label>unit</label><select id='unit_"+ index +"' name='unit_" + index 
         + "' onclick='populateUnitsValues(this.id);'></select>");
     }// end for
@@ -22,7 +24,8 @@ function addInstructionInputs(){
     const stepBtn = $('#s_button');
     let stepQuantity = $('#s_quantity').val();
     for(index=0; index<stepQuantity; index++){
-        stepDiv.append("<br><label>Step</label><input type='text'name='step_"+index+"'required/>");
+        stepDiv.append("<br><label>Step</label><input type='text'name='step_"+index
+        +"\' pattern='[a-zA-Z0-9\s]+' title='Letters and Numbers only' required  />");
     }// end for
     stepBtn.remove();
 }// end addInstructionInputs()
@@ -46,3 +49,81 @@ function populateUnitsValues(elementID){
     // remove the attribute or it keeps populating
     select.removeAttr("onclick");
 }// end populateUnitsValues()
+/**
+ * Validate Qty is greater than zero
+ * @param {HTMLelement} oButton 
+ */
+function validate(oButton){
+    if(oButton.id === "i_button"){
+        if(document.getElementById("i_quantity").value > 0){
+            console.log("good ingredient count"); 
+            addIngredientsInputs();
+        }else{
+            alert("Ingredients QTY must be > 0");
+        }
+    }else{
+        // its the instructions button
+        if(document.getElementById("s_quantity").value > 0){
+            addInstructionInputs();
+        }else{
+            alert("Instructions QTY must be > 0");
+        }
+    }
+} // end validate(oButton)
+
+
+
+function validateForm(){
+
+   // dont use jQuery in here - validity.patternMismatch is not supported 
+   // it is a Web api
+
+    let button = document.getElementById("submit");
+    let titleField = document.getElementById("title");     
+    let descField = document.getElementById("description");    
+
+
+    
+    
+    titleField.addEventListener("input", function (event) {
+       if(titleField.validity.patternMismatch){
+            button.disabled = true;
+            titleField.classList.add("not-valid");
+       } else {
+            button.disabled = false;
+            titleField.classList.remove("not-valid");
+       }
+    });
+    descField.addEventListener("input", function (event) {
+        if(descField.validity.patternMismatch){
+            button.disabled = true;
+            descField.classList.add("not-valid");
+        } else {
+            button.disabled = false;
+            descField.classList.remove("not-valid");
+        }
+    });
+
+   
+}
+
+$(document).ready(function(){
+    /**
+     * Creates a unique record ID
+     */
+    let oToday = new Date();
+    let nYear = oToday.getFullYear();
+    let nDay = oToday.getDate();  // day
+    let nMonth = oToday.getMonth();
+    let nMillSec = oToday.getMilliseconds();
+    let nRand = Math.floor((Math.random() * 100) + 1);
+    let sRecordID = `${nYear}${nMonth}${nDay}${nRand}${nMillSec}`;
+    document.getElementById("record-id").value = sRecordID;
+
+
+    validateForm();
+
+
+
+
+});
