@@ -6,12 +6,11 @@ function addIngredientsInputs(){
     const ingredientsBtn = $('#i_button');
     let ingredientsQty = $('#i_quantity').val();
     for(index=0; index<ingredientsQty; index++){
-        ingredientsDiv.append("<br><label>name</label><input type='text'name='name_"+ index 
-        + "\' pattern='[a-zA-Z0-9\\s]+' title='Letters and Numbers only' required />"
-        +"<label>amount</label><input type='text' name='amount_"+ index 
-        +"\' pattern='[0-9]+' title='Numbers only' required />"
-        +" <label>unit</label><select id='unit_"+ index +"' name='unit_" + index 
-        + "' onclick='populateUnitsValues(this.id);'></select>");
+        ingredientsDiv.append(`<br><label>name</label><input type='text'name='name_${index}' 
+        pattern='^[^<>%$]*$' title='Letters and Numbers only' required /><label>amount</label><input 
+        type='text' name='amount_${index}' pattern='^[^<>%$]*$' title='Numbers only' required /> 
+        <label>unit</label><select id='unit_${index}' name='unit_${index}' 
+        onclick='populateUnitsValues(this.id);'></select>`);
     }// end for
     ingredientsBtn.remove();
 }// end addIngredientsInputs()
@@ -24,8 +23,8 @@ function addInstructionInputs(){
     const stepBtn = $('#s_button');
     let stepQuantity = $('#s_quantity').val();
     for(index=0; index<stepQuantity; index++){
-        stepDiv.append("<br><label>Step</label><input type='text'name='step_"+index
-        +"\' pattern='[a-zA-Z0-9\\s]+' title='Letters and Numbers only' required  />");
+        stepDiv.append(`<br><label>Step</label><input type='text'name='step_${index}' 
+        pattern='^[^<>%$]*$' title='Letters and Numbers only' required  />`);
     }// end for
     stepBtn.remove();
 }// end addInstructionInputs()
@@ -81,7 +80,7 @@ function validateForm(){
  
 
     $(aFormValues).each(function(i, field){
-        if(field.value.match("[a-zA-Z0-9\s]+")){
+        if(field.value.match("^[^<>%$]*$")){
             // all good 
         } else {
             // the only way we end up in here is IF the form patterns have 
