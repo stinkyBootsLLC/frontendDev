@@ -22,6 +22,9 @@ a:hover{
 main {
     font-family: 'Roboto', sans-serif;
 }
+.not-valid{
+    border: 2px solid red; 
+}
 .footer {
     position: absolute;
     bottom: 0;
