@@ -53,33 +53,35 @@
      <br />
      <main class="container">
           <h1>Recipe Input</h1>
-          <p>Note: To myself - this tool is for ME ONLY, never deploy. There is NO SANITIZATION</p>
           <br>
-          <!-- action="process.php"  -->
-          
           <form id="rec-form"   action="process.php" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
                <label>id</label>
                <input id="record-id" type="text" name="id" class="form-control" required readonly /><br />
                <label>Title</label>
                <input id="title" type="text" name="title" class="form-control" pattern="[a-zA-Z0-9\s]+"
                     title="Letters and Numbers only" required /><br />
-
                <label>Description</label>
                <input id="description" type="text" name="description" class="form-control" pattern="[a-zA-Z0-9\s]+"
-                    title="Letters and Numbers only" required /><br />
-
-             
-
-
-
-
-
+                    title="Letters and Numbers only" required style="height:100px;"/><br />
                <label>Picture</label>
                <input type="file" name="picture" id="picture" class="form-control" required /><br />
+
+               <label for="inputCat">Category</label>
+               <select id="inputCat" class="form-control" name="foodCategory">
+                    <option selected>Choose...</option>
+                    <option value="Appetizers">Appetizers</option>
+                    <option value="Soups-Salads">Soups, Salads.</option>
+                    <option value="Main Dishes">Main Dishes.</option>
+                    <option value="Desserts">Desserts.</option>
+                    <option value="Miscellaneous">Miscellaneous.</option>
+               </select>
+
+
+
+
                <hr>
                <div>
-                    <p>1. Increment Quantity</p>
-                    <p>2. Click the "+" add button</p>
+                    <p>For this next section: 1. Increment Quantity and 2. Click the "+" add button</p>
                </div>
                <hr>
                <div id="Ingredients">
@@ -98,9 +100,6 @@
           </form>
      </main>
      <br />
-
- 
-
      <footer class="footer">
           <div class="container">
                <span class="text-muted">Place sticky footer content here.</span>

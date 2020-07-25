@@ -7,9 +7,9 @@ function addIngredientsInputs(){
     let ingredientsQty = $('#i_quantity').val();
     for(index=0; index<ingredientsQty; index++){
         ingredientsDiv.append("<br><label>name</label><input type='text'name='name_"+ index 
-        + "\' pattern='[a-zA-Z0-9\s]+' title='Letters and Numbers only' required />"
+        + "\' pattern='[a-zA-Z0-9\\s]+' title='Letters and Numbers only' required />"
         +"<label>amount</label><input type='text' name='amount_"+ index 
-        +"\' pattern='[a-zA-Z0-9\s]+' title='Letters and Numbers only' required />"
+        +"\' pattern='[0-9]+' title='Numbers only' required />"
         +" <label>unit</label><select id='unit_"+ index +"' name='unit_" + index 
         + "' onclick='populateUnitsValues(this.id);'></select>");
     }// end for
@@ -25,7 +25,7 @@ function addInstructionInputs(){
     let stepQuantity = $('#s_quantity').val();
     for(index=0; index<stepQuantity; index++){
         stepDiv.append("<br><label>Step</label><input type='text'name='step_"+index
-        +"\' pattern='[a-zA-Z0-9\s]+' title='Letters and Numbers only' required  />");
+        +"\' pattern='[a-zA-Z0-9\\s]+' title='Letters and Numbers only' required  />");
     }// end for
     stepBtn.remove();
 }// end addInstructionInputs()
@@ -74,38 +74,31 @@ function validate(oButton){
 
 
 function validateForm(){
-
-   // dont use jQuery in here - validity.patternMismatch is not supported 
-   // it is a Web api
-
-    let button = document.getElementById("submit");
-    let titleField = document.getElementById("title");     
-    let descField = document.getElementById("description");    
-
-
     
-    
-    titleField.addEventListener("input", function (event) {
-       if(titleField.validity.patternMismatch){
-            button.disabled = true;
-            titleField.classList.add("not-valid");
-       } else {
-            button.disabled = false;
-            titleField.classList.remove("not-valid");
-       }
-    });
-    descField.addEventListener("input", function (event) {
-        if(descField.validity.patternMismatch){
-            button.disabled = true;
-            descField.classList.add("not-valid");
+    let isValid = true;
+
+    let aFormValues = $("#rec-form").serializeArray();
+ 
+
+    $(aFormValues).each(function(i, field){
+        if(field.value.match("[a-zA-Z0-9\s]+")){
+            // all good 
         } else {
-            button.disabled = false;
-            descField.classList.remove("not-valid");
+            // the only way we end up in here is IF the form patterns have 
+            // been broken by someone
+            isValid = false;
+            console.log( field.value);
+            $( "[name=" +  field.name + "]" ).addClass( "not-valid" );
+            alert("stop fucking with the form");
+            document.getElementById("submit").disabled = true;
+            // window.history.back();
         }
+        // dataObj[field.name] = field.value;
     });
 
-   
-}
+    return isValid;
+
+}// end validateForm()
 
 $(document).ready(function(){
     /**
@@ -121,7 +114,14 @@ $(document).ready(function(){
     document.getElementById("record-id").value = sRecordID;
 
 
-    validateForm();
+    // validateForm();
+
+    // $( "form" ).on( "submit", function( event ) {
+    //     event.preventDefault();
+    //     validateForm();
+
+    //     //console.log( $( this ).serialize() );
+    // });
 
 
 

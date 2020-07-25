@@ -27,6 +27,7 @@ fetch(recipes)
       let recipeBodyDiv = $("<div></div>");
       recipeBodyDiv.attr('class','card-body');
       recipeDiv.append(recipeBodyDiv);
+      recipeBodyDiv.append("<p class='card-text'>Category: " + data[recipe]["Category"] + "</p>");
       recipeBodyDiv.append("<p class='card-text'>" + data[recipe]["description"] + "</p>");
       recipeBodyDiv.append("<img src=recipeImages/" + data[recipe]["picture"] 
       + " alt=\"" + data[recipe]["title"] + "\" width='100' height='100'></img>");
