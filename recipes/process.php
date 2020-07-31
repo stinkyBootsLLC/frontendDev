@@ -1,5 +1,6 @@
 
 <?php
+  include 'siteFunctions.php';
     // allowed char for random file name
     $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $target_dir = "recipeImages/";
@@ -11,57 +12,32 @@
     $target_file = $target_dir . $newFileName;
     // for the database entry
     $imageName = $newFileName;
-    $uploadOk = 1;
+    $uploadOk = 0;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     $isImageLoaded = false;
-    // Check if image file is a actual image or fake image
+
+    // if submit
     if(isset($_POST["submit"])) {
-      $check = getimagesize($_FILES["picture"]["tmp_name"]);
-      if($check !== false) {
-      // echo "File is an image - " . $check["mime"] . ".";
+      // check if the file is allowed 
+      if(isFileAllowed($_FILES["picture"]["tmp_name"], $_FILES["picture"]["size"])){
+        // then 
         $uploadOk = 1;
         $isImageLoaded = true;
-      } else {
-        echo "File is not an image.<br>";
-        $uploadOk = 0;
-      }
+      }else{
+        echo "File is not allowed.<br>";
+        //$uploadOk = 0;
+
+      }// end if isFileAllowed
     }// end if(isset($_POST["submit"]))
 
-    // Check if file already exists
-    if (file_exists($target_file)) {
-      echo "Sorry, file already exists.<br>";
-      $uploadOk = 0;
-      $isImageLoaded = false;
-    }// end if (file_exists($target_file))
-
-    // Check file size
-    if ($_FILES["picture"]["size"] > 500000) {
-      echo "Sorry, your file is too large.<br>";
-      $uploadOk = 0;
-      $isImageLoaded = false;
-    }// end if ($_FILES["picture"]["size"] > 500000) 
-
-    // Allow certain file formats
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-    && $imageFileType != "gif" ) {
-      echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.<br>";
-      $uploadOk = 0;
-      $isImageLoaded = false;
-    }
-
     // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-      echo "Sorry, your file was not uploaded.<br>";
-    // if everything is ok, try to upload file
+    if ($uploadOk == 1) {
+      // then move the file into new dir w/ new name
+      move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file);
     } else {
-      if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file)) {
-        // if the file was sucessfully uploaded
-        // then do nothing right now 
-      } else {
         echo "Sorry, there was an error uploading your file.<br>";
-      }
+        exit;
     }// end if ($uploadOk == 0) 
-
     /** Start building the JSON file */
 
     ///// get all the post data
@@ -123,7 +99,6 @@
               echo "<script> setTimeout(function () {window.location.href = 'index.html';
                 }, 1000); </script>";
           }
-        
 
         }else {  
             echo "JSON File not exits <br>";  
@@ -134,37 +109,7 @@
     }// if($isImageLoaded)
 
 
-    /**
-     * Sanatize untrusted data
-     * @param string - data
-     * @return string - clean data
-     */
-    function sanatizeData($data){
-      $badChars = array('!','@','#','$','%','^','&','*','(',')','{','}','[',']','|','?','.');
-      $specCharData = htmlspecialchars($data);
-      $cleanData = str_replace($badChars, '', $specCharData);
-      return $cleanData;
-    }// end sanatize data
-
-    /**
-     * Phase: Architecture and Design
-     * Generate a new, unique filename for an uploaded file instead of using the 
-     * user-supplied filename, so that no external input is used at all 
-     * @param string - input
-     * @param int - strength
-     * @return string - random_name
-     */
-    function generate_Random_FileName($input, $strength) {
-      $num = rand(1, 100 );
-      $input_length = strlen($input);
-      $random_name = 'img_'.' '.$num;
-      for($i = 0; $i < $strength; $i++) {
-        $random_character = $input[mt_rand(0, $input_length - 1)];
-        $random_name .= $random_character;
-      }
-      //img_468dGdh
-      return $random_name;
-    }// end generate_Random_FileName()
+    
 
 
 
