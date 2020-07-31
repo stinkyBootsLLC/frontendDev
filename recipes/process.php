@@ -1,12 +1,19 @@
 
 <?php
+    // allowed char for random file name
+    $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $target_dir = "recipeImages/";
-    $target_file = $target_dir . basename($_FILES["picture"]["name"]);
-    $imageName = basename($_FILES["picture"]["name"]);
+    // get the file extension
+    $file_ext = strtolower(end(explode('.', $_FILES['picture']['name'])));
+    // rename the uploaded file
+    $newFileName = generate_Random_FileName($permitted_chars, 5).".".$file_ext;
+    // the newly created file name and dir to upload
+    $target_file = $target_dir . $newFileName;
+    // for the database entry
+    $imageName = $newFileName;
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     $isImageLoaded = false;
-
     // Check if image file is a actual image or fake image
     if(isset($_POST["submit"])) {
       $check = getimagesize($_FILES["picture"]["tmp_name"]);
@@ -18,21 +25,21 @@
         echo "File is not an image.<br>";
         $uploadOk = 0;
       }
-    }
+    }// end if(isset($_POST["submit"]))
 
     // Check if file already exists
     if (file_exists($target_file)) {
       echo "Sorry, file already exists.<br>";
       $uploadOk = 0;
       $isImageLoaded = false;
-    }
+    }// end if (file_exists($target_file))
 
     // Check file size
     if ($_FILES["picture"]["size"] > 500000) {
       echo "Sorry, your file is too large.<br>";
       $uploadOk = 0;
       $isImageLoaded = false;
-    }
+    }// end if ($_FILES["picture"]["size"] > 500000) 
 
     // Allow certain file formats
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
@@ -48,11 +55,14 @@
     // if everything is ok, try to upload file
     } else {
       if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file)) {
-      // echo "The file ". basename( $_FILES["picture"]["name"]). " has been uploaded.";
+        // if the file was sucessfully uploaded
+        // then do nothing right now 
       } else {
         echo "Sorry, there was an error uploading your file.<br>";
       }
-    }
+    }// end if ($uploadOk == 0) 
+
+    /** Start building the JSON file */
 
     ///// get all the post data
     $fields = array();
@@ -110,6 +120,8 @@
           $final_data = json_encode($array_data);  
           if(file_put_contents('assets/db/recipes.json', $final_data)){  
               echo "<label class='text-success'>File Appended Success fully</p><br>"; 
+              echo "<script> setTimeout(function () {window.location.href = 'index.html';
+                }, 1000); </script>";
           }
         
 
@@ -124,8 +136,8 @@
 
     /**
      * Sanatize untrusted data
-     * @param string
-     * @return string
+     * @param string - data
+     * @return string - clean data
      */
     function sanatizeData($data){
       $badChars = array('!','@','#','$','%','^','&','*','(',')','{','}','[',']','|','?','.');
@@ -133,5 +145,35 @@
       $cleanData = str_replace($badChars, '', $specCharData);
       return $cleanData;
     }// end sanatize data
+
+    /**
+     * Phase: Architecture and Design
+     * Generate a new, unique filename for an uploaded file instead of using the 
+     * user-supplied filename, so that no external input is used at all 
+     * @param string - input
+     * @param int - strength
+     * @return string - random_name
+     */
+    function generate_Random_FileName($input, $strength) {
+      $num = rand(1, 100 );
+      $input_length = strlen($input);
+      $random_name = 'img_'.' '.$num;
+      for($i = 0; $i < $strength; $i++) {
+        $random_character = $input[mt_rand(0, $input_length - 1)];
+        $random_name .= $random_character;
+      }
+      //img_468dGdh
+      return $random_name;
+    }// end generate_Random_FileName()
+
+
+
+
+
+
+
+
+
+
 ?>
 
