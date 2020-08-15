@@ -5,6 +5,20 @@
 // password hasn't already been hacked
 
 /**
+ * UPDATE 8/15/2020
+ * Displaying the amount of times the password has been comprimised
+ */
+
+/**
+ * Adds commas to numbers
+ * @param {Number} nNumber 
+ * @returns {String}
+ */
+function addCommasToNumber(nNumber) {
+  return nNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}// addCommasToNumber()
+
+/**
  * Creates the SHA-1
  */
 function creatPassWordSHA(){
@@ -37,12 +51,18 @@ function callTheAPI(address, find){
     if (this.readyState == 4 && this.status == 200) {
       // store the returned in a string
       let responseString = this.responseText;
-      let foundHash = responseString.indexOf(find);// number at start position
-      if (foundHash > 0){
+      let nFoundHash = responseString.indexOf(find);// number at start position
+      //////////// F I N D  T H E  A M O U N T ////////////////////////////////////////
+      let x = responseString.slice(nFoundHash+36, nFoundHash+77);
+      let aRespString = x.split("\n");  // now this is an array 
+      let sCompAmount = addCommasToNumber(aRespString[0]); // index 0 is the amount
+      console.log (sCompAmount);
+      //////////// F I N D  T H E  A M O U N T ////////////////////////////////////////
+      if (nFoundHash > 0){
         // the hash was found in the database
         let badPassResult = document.getElementById("display");
         badPassResult.style.color = "red";
-        badPassResult.innerHTML = "Password is compromised!";
+        badPassResult.innerHTML = "Password has been compromised <mark><strong>" + sCompAmount + " </strong></mark>times!";
       } else {
         // not found
         let goodPassResult = document.getElementById("display");
