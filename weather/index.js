@@ -41,7 +41,7 @@ function display(data) {
       bg_color = "#000000";
 
       $(".weathercon").html(
-        "<img src= 'moon2.svg'alt='sun'height='100' width= '100' />"
+        "<img src= 'moon.svg'alt='sun'height='100' width= '100' />"
       );
 
     }// end if(bIsDayTime)
