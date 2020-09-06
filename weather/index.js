@@ -29,11 +29,11 @@ function display(data) {
 
       if (sShortForeCast === "Sunny") {  
         $(".weathercon").html(
-          "<i class='fas fa-sun fa-lg' style='color: #EAB703;'></i>"
+          "<img src= 'sun.svg'alt='sun'height='100' width= '100' />"
         );
       } else {
         $(".weathercon").html(
-          "<i class='fas fa-cloud fa-lg' style='color: #EAB703;'></i>"
+          "<img src= 'clouds.svg'alt='sun'height='100' width= '100' />"
         );
       }
     } else {
@@ -41,7 +41,7 @@ function display(data) {
       bg_color = "#000000";
 
       $(".weathercon").html(
-        "<i class='fas fa-moon fa-lg' style='color: #44c3de;'></i>"
+        "<img src= 'moon2.svg'alt='sun'height='100' width= '100' />"
       );
 
     }// end if(bIsDayTime)
