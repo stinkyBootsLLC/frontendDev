@@ -53,6 +53,8 @@ function display(data) {
     $(".box").css("background", bg_color);
     $(".location").css("color", font_color);
     $(".temp").css("color", font_color);
+
+    $("#forecast").html(sShortForeCast);
   } // end display(data)
 
 function getGovWeather(sURL){
