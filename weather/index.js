@@ -33,7 +33,7 @@ function display(data) {
         );
       } else {
         $(".weathercon").html(
-          "<img src= 'clouds.svg'alt='sun'height='100' width= '100' />"
+          "<img src= 'clouds.svg'alt='clouds'height='100' width= '100' />"
         );
       }
     } else {
@@ -41,7 +41,7 @@ function display(data) {
       bg_color = "#000000";
 
       $(".weathercon").html(
-        "<img src= 'moon.svg'alt='sun'height='100' width= '100' />"
+        "<img src= 'moon.svg'alt='moon'height='100' width= '100' />"
       );
 
     }// end if(bIsDayTime)
