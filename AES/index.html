@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AES Encrypt</title>
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.js"
+        integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="index.js"></script>
+    <style>
+        .area {
+            border: solid;
+            border-radius: 10px;
+            border-color: #c5c5c5f5;
+            padding: 15px
+        }
+
+        .missing{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <br><br>
+        <h1>AES Encryption</h1>
+        <p>
+            CryptoJS supports AES-128, AES-192, and AES-256. It will pick the variant by the size of 
+            the key you pass in. If you use a passphrase, then it will generate a 256-bit key.
+        </p>
+        <div class="row area">
+            <div class="col-lg-6">
+                <div class="card" style="width: 100%;">
+                    <div class="card-header">
+                         Plain Text Area: 
+                    </div>
+                    <textarea class="form-control" id="plainTextArea_id" rows="4" cols="50"></textarea>
+                </div>  
+            </div>
+            <div class="col-lg-6">
+                <div class="card" style="width: 100%;">
+                    <div class="card-header">
+                        Encrypted Output Area:
+                    </div>
+                    <textarea class="form-control" id="cypher-text-id" rows="4" cols="50"> </textarea>
+                </div>
+                <br>
+                <input class="btn btn-outline-dark" id="encrypt-Btn-id" type="submit" value="Encrypt" style="float: right;">
+            </div>
+        </div> <!-- end row -->
+        <br><br>
+        <div class="row area">
+            <div class="col-lg-6">
+                <div class="card" style="width: 100%;">
+                    <div class="card-header">
+                        Cipher-Text Area:
+                    </div>
+                    <textarea class="form-control" id="cipherTextArea_id" rows="4" cols="50"></textarea>
+                </div>  
+            </div>
+            <div class="col-lg-6">
+                <div class="card" style="width: 100%;">
+                    <div class="card-header">
+                        Plain Text Area:
+                    </div>
+                    <textarea class="form-control" id="plain-text-id" rows="4" cols="50"></textarea>
+                </div>
+                <br>
+                <input class="btn btn-outline-dark" id="decrypt-Btn-id" type="submit" value="Decrypt" style="float: right;">
+            </div>
+        </div><!-- end row -->
+        <br> 
+        <label for="password-id">Password:</label>
+        <input type="text" id="password-id" class="form-control">
+        <br><br>
+    </main>
+</body>
+</html>
