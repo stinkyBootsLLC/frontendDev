@@ -2,15 +2,39 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AES Encrypt</title>
-    <link rel="shortcut icon" href="">
+    <link rel="shortcut icon" href=" ">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.js"
-        integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
-    <script src="index.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Bahianita&display=swap');
+
+        body {
+            font-family: 'Libre Franklin', sans-serif;
+            height: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .main-title {
+            background-color: #071029;
+            padding: 1px;
+        }
+
+        div.main-title>div>h1 {
+            font: 57px 'Bahianita';
+            color: rgb(87, 96, 126);
+        }
+
         .area {
             border: solid;
             border-radius: 10px;
@@ -18,27 +42,37 @@
             padding: 15px
         }
 
-        .missing{
+        .missing {
             background-color: red;
+        }
+
+        #sticky-footer {
+            flex-shrink: none;
         }
     </style>
 </head>
+
 <body>
+    <div class="main-title">
+        <div class="container-fluid">
+            <h1>AES Encryption</h1>
+        </div>
+    </div>
     <main class="container">
         <br><br>
-        <h1>AES Encryption</h1>
+
         <p>
-            CryptoJS supports AES-128, AES-192, and AES-256. It will pick the variant by the size of 
+            CryptoJS supports AES-128, AES-192, and AES-256. It will pick the variant by the size of
             the key you pass in. If you use a passphrase, then it will generate a 256-bit key.
         </p>
         <div class="row area">
             <div class="col-lg-6">
                 <div class="card" style="width: 100%;">
                     <div class="card-header">
-                         Plain Text Area: 
+                        Plain Text Area:
                     </div>
                     <textarea class="form-control" id="plainTextArea_id" rows="4" cols="50"></textarea>
-                </div>  
+                </div>
             </div>
             <div class="col-lg-6">
                 <div class="card" style="width: 100%;">
@@ -48,7 +82,8 @@
                     <textarea class="form-control" id="cypher-text-id" rows="4" cols="50"> </textarea>
                 </div>
                 <br>
-                <input class="btn btn-outline-dark" id="encrypt-Btn-id" type="submit" value="Encrypt" style="float: right;">
+                <input class="btn btn-outline-dark" id="encrypt-Btn-id" type="submit" value="Encrypt"
+                    style="float: right;">
             </div>
         </div> <!-- end row -->
         <br><br>
@@ -59,7 +94,7 @@
                         Cipher-Text Area:
                     </div>
                     <textarea class="form-control" id="cipherTextArea_id" rows="4" cols="50"></textarea>
-                </div>  
+                </div>
             </div>
             <div class="col-lg-6">
                 <div class="card" style="width: 100%;">
@@ -69,13 +104,29 @@
                     <textarea class="form-control" id="plain-text-id" rows="4" cols="50"></textarea>
                 </div>
                 <br>
-                <input class="btn btn-outline-dark" id="decrypt-Btn-id" type="submit" value="Decrypt" style="float: right;">
+                <input class="btn btn-outline-dark" id="decrypt-Btn-id" type="submit" value="Decrypt"
+                    style="float: right;">
             </div>
         </div><!-- end row -->
-        <br> 
+        <br>
         <label for="password-id">Password:</label>
         <input type="text" id="password-id" class="form-control">
         <br><br>
     </main>
+    <br><br><br><br>
+    <footer id="sticky-footer" class="py-4 bg-dark text-light">
+        <div class="container text-center">
+            Reference Links: &nbsp; &nbsp; &nbsp;
+            <a href="https://cryptojs.gitbook.io/docs/">CryptoJS</a>&nbsp; | &nbsp;
+            <a href="https://code.google.com/archive/p/crypto-js/">CryptoJS - Google Code Archive</a> &nbsp; | &nbsp;
+
+            <small>Eduardo Estrada 2020</small>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="index.js"></script>
 </body>
+
 </html>
