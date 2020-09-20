@@ -14,7 +14,7 @@ $(document).ready(function () {
         let sPlainText = $("#plainTextArea_id").val();
 
         if(sPassword === "" || null){
-            alert("password is blank");
+            $('#alert-modal').modal('show');
             $( "#password-id" ).addClass( "missing" );
         } else {
             let encryptedMessage = CryptoJS.AES.encrypt(sPlainText, sPassword);
@@ -26,7 +26,7 @@ $(document).ready(function () {
         let sPassword = $("#password-id").val();
         let sCipherText = $("#cipherTextArea_id").val();
         if(sPassword === "" || null){
-            alert("password is blank");
+            $('#alert-modal').modal('show');
             $( "#password-id" ).addClass( "missing" );
         } else {
             let decryptedBytes = CryptoJS.AES.decrypt(sCipherText, sPassword);

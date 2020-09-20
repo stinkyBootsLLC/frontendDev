@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,54 +61,56 @@
     </div>
     <main class="container">
         <br><br>
-
         <p>
             CryptoJS supports AES-128, AES-192, and AES-256. It will pick the variant by the size of
             the key you pass in. If you use a passphrase, then it will generate a 256-bit key.
         </p>
-        <div class="row area">
-            <div class="col-lg-6">
-                <div class="card" style="width: 100%;">
-                    <div class="card-header">
-                        Plain Text Area:
+        <section class="area">
+            <h3>Encrypt</h3>
+            <div class="row">
+
+                <div class="col-lg-6">
+
+                    <div class="card" style="width: 100%;">
+                        <div class="card-header">
+                            Plain Text Area:
+                        </div>
+                        <textarea class="form-control" id="plainTextArea_id" rows="4" cols="50"></textarea>
                     </div>
-                    <textarea class="form-control" id="plainTextArea_id" rows="4" cols="50"></textarea>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="card" style="width: 100%;">
-                    <div class="card-header">
-                        Encrypted Output Area:
+                <div class="col-lg-6">
+                    <div class="card" style="width: 100%;">
+                        <div class="card-header">
+                            Encrypted Output Area:
+                        </div>
+                        <textarea class="form-control" id="cypher-text-id" rows="4" cols="50"> </textarea>
                     </div>
-                    <textarea class="form-control" id="cypher-text-id" rows="4" cols="50"> </textarea>
+                    <br>
+                    <input class="btn btn-outline-dark" id="encrypt-Btn-id" type="submit" value="Encrypt"
+                        style="float: right;">
                 </div>
-                <br>
-                <input class="btn btn-outline-dark" id="encrypt-Btn-id" type="submit" value="Encrypt"
-                    style="float: right;">
-            </div>
-        </div> <!-- end row -->
-        <br><br>
-        <div class="row area">
-            <div class="col-lg-6">
-                <div class="card" style="width: 100%;">
-                    <div class="card-header">
-                        Cipher-Text Area:
+            </div> <!-- end row -->
+        </section><br><br>
+        <section class="area">
+            <h3>Decrypt</h3>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card" style="width: 100%;">
+                        <div class="card-header">Cipher-Text Area:</div>
+                        <textarea class="form-control" id="cipherTextArea_id" rows="4" cols="50"></textarea>
                     </div>
-                    <textarea class="form-control" id="cipherTextArea_id" rows="4" cols="50"></textarea>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="card" style="width: 100%;">
-                    <div class="card-header">
-                        Plain Text Area:
+                <div class="col-lg-6">
+                    <div class="card" style="width: 100%;">
+                        <div class="card-header">Plain Text Area:</div>
+                        <textarea class="form-control" id="plain-text-id" rows="4" cols="50"></textarea>
                     </div>
-                    <textarea class="form-control" id="plain-text-id" rows="4" cols="50"></textarea>
+                    <br>
+                    <input class="btn btn-outline-dark" id="decrypt-Btn-id" type="submit" value="Decrypt"
+                        style="float: right;">
                 </div>
-                <br>
-                <input class="btn btn-outline-dark" id="decrypt-Btn-id" type="submit" value="Decrypt"
-                    style="float: right;">
-            </div>
-        </div><!-- end row -->
+            </div><!-- end row -->
+        </section>
         <br>
         <label for="password-id">Password:</label>
         <input type="text" id="password-id" class="form-control">
@@ -119,12 +122,40 @@
             Reference Links: &nbsp; &nbsp; &nbsp;
             <a href="https://cryptojs.gitbook.io/docs/">CryptoJS</a>&nbsp; | &nbsp;
             <a href="https://code.google.com/archive/p/crypto-js/">CryptoJS - Google Code Archive</a> &nbsp; | &nbsp;
-
             <small>Eduardo Estrada 2020</small>
         </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <!-- Modal -->
+    <div class="modal fade" id="alert-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-white bg-danger">
+                    <h5 class="modal-title" id="exampleModalLabel">AES Error</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>Password field cannot be blank.</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
     <script src="index.js"></script>
 </body>
