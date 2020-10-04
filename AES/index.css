@@ -39,7 +39,8 @@ div.main-title>div>h1 {
 }
 
 .missing {
-    background-color: red;
+    /* background-color: red; */
+    border: 3px solid red;
 }
 
 #introduction{

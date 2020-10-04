@@ -3,6 +3,7 @@
  * Using "CryptoJS" library
  * https://code.google.com/archive/p/crypto-js/
  * https://cryptojs.gitbook.io/docs/
+ * Eduardo Estrada 10/4/2020
  */
 $(document).ready(function () {
     $( "#password-id" ).click(function(){
@@ -16,6 +17,7 @@ $(document).ready(function () {
         if(sPassword === "" || null){
             $('#alert-modal').modal('show');
             $( "#password-id" ).addClass( "missing" );
+            $( "#password-id" ).focus();
         } else {
             let encryptedMessage = CryptoJS.AES.encrypt(sPlainText, sPassword);
             $("#cypher-text-id").val(encryptedMessage);
@@ -28,6 +30,7 @@ $(document).ready(function () {
         if(sPassword === "" || null){
             $('#alert-modal').modal('show');
             $( "#password-id" ).addClass( "missing" );
+            $( "#password-id" ).focus();
         } else {
             let decryptedBytes = CryptoJS.AES.decrypt(sCipherText, sPassword);
             let sDecryptedMessage = decryptedBytes.toString(CryptoJS.enc.Utf8);

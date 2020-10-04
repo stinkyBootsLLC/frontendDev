@@ -23,7 +23,8 @@
         <section id="introduction" tabindex="0">
             <p>
                 CryptoJS supports AES-128, AES-192, and AES-256. It will pick the variant by the size of
-                the key you pass in. If you use a passphrase, then it will generate a 256-bit key.
+                the key you pass in. &nbsp;&nbsp; If you use a passphrase, then it will generate a 256-bit key. <mark>This demo 
+                will require a passphrase.</mark>
             </p>
         </section>
         <section class="area" aria-label="encryption area" tabindex="0">
@@ -34,7 +35,8 @@
                         <div class="card-header">
                             <label for="plainTextArea_id">Plain Text Area:</label>
                         </div>
-                        <textarea class="form-control" id="plainTextArea_id" rows="4" cols="50"></textarea>
+                        <textarea class="form-control" id="plainTextArea_id" rows="4" cols="50"
+                        placeholder="Place plain text here..."></textarea>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -60,7 +62,8 @@
                             <label for="cipherTextArea_id">Cipher-Text Area:</label>
 
                         </div>
-                        <textarea class="form-control" id="cipherTextArea_id" rows="4" cols="50"></textarea>
+                        <textarea class="form-control" id="cipherTextArea_id" rows="4" cols="50"
+                        placeholder="Place encrypted text here..."></textarea>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -92,18 +95,22 @@
         </div>
     </footer>
     <!-- Modal -->
-    <div class="modal fade" id="alert-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <!-- 
+        ARIA Documentation
+        https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/dialog_role 
+    -->
+    <div class="modal fade" id="alert-modal" tabindex="-1" role="dialog" aria-labelledby="errorModalLbl"
+        aria-describedby="errorDesc" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header text-white bg-danger">
-                    <h3 class="modal-title" id="exampleModalLabel">AES Error</h3>
+                    <h3 class="modal-title" id="errorModalLbl">AES Error</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div>Password field cannot be blank.</div>
+                    <div><p id="errorDesc">Password field cannot be blank.</p></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -111,7 +118,7 @@
             </div>
         </div>
     </div>
-    <!-- Modal -->
+    <!-- end Modal -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -124,6 +131,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
     <script src="index.js"></script>
+    <noscript>Your browser does not support JavaScript!</noscript>
 </body>
 
 </html>
