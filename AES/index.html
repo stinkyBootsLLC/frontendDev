@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 
 <head>
     <meta charset="UTF-8">
@@ -8,72 +8,31 @@
     <link rel="shortcut icon" href=" ">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap');
-        @import url('https://fonts.googleapis.com/css?family=Bahianita&display=swap');
-
-        body {
-            font-family: 'Libre Franklin', sans-serif;
-            height: 100%;
-        }
-
-        a {
-            text-decoration: none;
-            color: white;
-        }
-
-        a:hover {
-            text-decoration: none;
-        }
-
-        .main-title {
-            background-color: #071029;
-            padding: 1px;
-        }
-
-        div.main-title>div>h1 {
-            font: 57px 'Bahianita';
-            color: rgb(87, 96, 126);
-        }
-
-        .area {
-            border: solid;
-            border-radius: 10px;
-            border-color: #c5c5c5f5;
-            padding: 15px
-        }
-
-        .missing {
-            background-color: red;
-        }
-
-        #sticky-footer {
-            flex-shrink: none;
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-    <div class="main-title">
-        <div class="container-fluid">
-            <h1>AES Encryption</h1>
+    <header>
+        <div class="main-title">
+            <div class="container-fluid">
+                <h1>AES Encryption</h1>
+            </div>
         </div>
-    </div>
+    </header>
     <main class="container">
-        <br><br>
-        <p>
-            CryptoJS supports AES-128, AES-192, and AES-256. It will pick the variant by the size of
-            the key you pass in. If you use a passphrase, then it will generate a 256-bit key.
-        </p>
-        <section class="area">
-            <h3>Encrypt</h3>
+        <section id="introduction" tabindex="0">
+            <p>
+                CryptoJS supports AES-128, AES-192, and AES-256. It will pick the variant by the size of
+                the key you pass in. If you use a passphrase, then it will generate a 256-bit key.
+            </p>
+        </section>
+        <section class="area" aria-label="encryption area" tabindex="0">
+            <h2>Encrypt</h2>
             <div class="row">
-
                 <div class="col-lg-6">
-
                     <div class="card" style="width: 100%;">
                         <div class="card-header">
-                            Plain Text Area:
+                            <label for="plainTextArea_id">Plain Text Area:</label>
                         </div>
                         <textarea class="form-control" id="plainTextArea_id" rows="4" cols="50"></textarea>
                     </div>
@@ -81,7 +40,7 @@
                 <div class="col-lg-6">
                     <div class="card" style="width: 100%;">
                         <div class="card-header">
-                            Encrypted Output Area:
+                            <label for="cypher-text-id">Encrypted Output Area:</label>
                         </div>
                         <textarea class="form-control" id="cypher-text-id" rows="4" cols="50"> </textarea>
                     </div>
@@ -90,19 +49,25 @@
                         style="float: right;">
                 </div>
             </div> <!-- end row -->
-        </section><br><br>
-        <section class="area">
-            <h3>Decrypt</h3>
+        </section>
+        <br><br>
+        <section class="area" aria-label="decryption area" tabindex="0">
+            <h2>Decrypt</h2>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="card" style="width: 100%;">
-                        <div class="card-header">Cipher-Text Area:</div>
+                        <div class="card-header">
+                            <label for="cipherTextArea_id">Cipher-Text Area:</label>
+
+                        </div>
                         <textarea class="form-control" id="cipherTextArea_id" rows="4" cols="50"></textarea>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="card" style="width: 100%;">
-                        <div class="card-header">Plain Text Area:</div>
+                        <div class="card-header">
+                            <label for="plain-text-id">Plain Text Area:</label>
+                        </div>
                         <textarea class="form-control" id="plain-text-id" rows="4" cols="50"></textarea>
                     </div>
                     <br>
@@ -117,11 +82,12 @@
         <br><br>
     </main>
     <br><br><br><br>
-    <footer id="sticky-footer" class="py-4 bg-dark text-light">
+    <footer id="sticky-footer" class="py-4 bg-dark text-light" aria-label="Reference area" tabindex="0">
         <div class="container text-center">
             Reference Links: &nbsp; &nbsp; &nbsp;
             <a href="https://cryptojs.gitbook.io/docs/">CryptoJS</a>&nbsp; | &nbsp;
             <a href="https://code.google.com/archive/p/crypto-js/">CryptoJS - Google Code Archive</a> &nbsp; | &nbsp;
+            <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES</a>&nbsp; | &nbsp;
             <small>Eduardo Estrada 2020</small>
         </div>
     </footer>
@@ -131,7 +97,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header text-white bg-danger">
-                    <h5 class="modal-title" id="exampleModalLabel">AES Error</h5>
+                    <h3 class="modal-title" id="exampleModalLabel">AES Error</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

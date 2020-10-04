@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bahianita&display=swap');
+
+body {
+    font-family: 'Libre Franklin', sans-serif;
+    height: 100%;
+}
+h2{
+    font-size: 14pt;
+}
+h3{
+    font-size: 12pt; 
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.main-title {
+    background-color: #071029;
+    padding: 1px;
+}
+
+div.main-title>div>h1 {
+    font: 57px 'Bahianita';
+    color: rgb(87, 96, 126);
+}
+
+.area {
+    border: solid;
+    border-radius: 10px;
+    border-color: #c5c5c5f5;
+    padding: 15px
+}
+
+.missing {
+    background-color: red;
+}
+
+#introduction{
+    margin-top: 0.5em;
+}
+#sticky-footer {
+    flex-shrink: none;
+}
