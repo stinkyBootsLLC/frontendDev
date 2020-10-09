@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
@@ -19,7 +19,9 @@
     <!-- local styles -->
     <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
+<header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand mylogo" href="index.html">Francine's Famous Recipes</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -33,27 +35,78 @@
                 <!-- <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li> -->
             </ul>
             <!-- right side -->
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fab fa-facebook-square fa-2x"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fab fa-instagram fa-2x"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fab fa-twitter-square fa-2x"></i>
-                    </a>
-                </li>
-            </ul>
+            <div aria-label="social media links" tabindex="0">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="www.facebook.com" aria-label="Facebook">
+                            <i class="fab fa-facebook-square fa-2x"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="www.instagram.com" aria-label="instagram">
+                            <i class="fab fa-instagram fa-2x"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="www.twitter.com" aria-label="twitter">
+                            <i class="fab fa-twitter-square fa-2x"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
+</header>
 
     <main>
+        <!-- temp -->
+        <style>
+            #billboard {
+                display: flex;
+            }
+            #billboard>div {
+                margin: 10px;
+                padding: 20px;
+                font-size: 30px;
+            }
+        </style>
+
+
+
+        <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                  <!-- One of three columns -->
+              </div>
+              <div class="col-sm">
+                <div id="billboard">
+                    <div>
+                        <p style="text-align: center;">
+                            <strong>UNDER CONSTRUCTION <br>COMING SOON</strong>
+                        </p>
+                    </div>
+                </div>   
+
+              </div>
+              <div class="col-sm">
+                <!-- One of three columns -->
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- temp -->
 
 
     </main>
