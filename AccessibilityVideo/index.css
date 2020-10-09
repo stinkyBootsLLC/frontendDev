@@ -1,0 +1,105 @@
+/*
+ * custom accessible video control panel
+ * Eduardo Estrada 10/09/2020
+*/
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    font-size: 14pt;
+}
+.button {
+    background-color: #40bfb5;
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12pt;
+    border-radius: .25rem;
+}
+.button:hover {
+    background-color: #c3e9e6ec;
+    color: black;
+}
+.button:active {
+    background-color: black;
+}
+.button:visited {
+    background-color: #ccc;
+}
+h1,h2,h3 {
+    margin: 0px;
+}
+.message-box {
+    border-radius: 10px;
+    border: 1px solid rgb(0, 0, 0);
+}
+.card-header {
+    padding: 1px;
+    border-bottom: 1px solid;
+    background-color: #8ed9d3;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.card-header>h1 {
+    margin-top: 0px;
+    padding: 5px;
+    text-transform: uppercase;
+    color: black;
+    text-align: center;
+}
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+.three-colums {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+}
+.outer-column {
+    float: left;
+    width: 10%;
+}
+.center-column {
+    float: left;
+    width: 80%;
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+    padding-bottom: 5px;
+}
+.one-column {
+    background-color: white;
+    float: left;
+    width: 100%;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+.item {
+    border-left: #6ad5cc solid;
+    border-left-width: 3px;
+    background-color: #ecf9f84d;
+    width: 90%;
+    padding-left: 10px;
+    margin-top: 0.5em;
+    height: auto;
+}
+.item>p {
+    margin: 0.5em;
+}
+.button-area {
+    padding-left: 10px;
+}
+.left-img {
+    border: 0px solid black;
+    border-image: none;
+    width: 82px;
+    height: 50px;
+}
