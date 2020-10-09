@@ -1,3 +1,16 @@
+function keyHandler(event)
+  {
+    switch (event.which) {
+      case KEY_SPACE: {
+        event.stopPropagation;
+        return doStuff();
+        break;
+      }
+    } //end switch
+    return true;
+  }
+
+
 /**
  * Appends Ingredients based on user selected quantity
  */
@@ -6,11 +19,18 @@ function addIngredientsInputs(){
     const ingredientsBtn = $('#i_button');
     let ingredientsQty = $('#i_quantity').val();
     for(index=0; index<ingredientsQty; index++){
-        ingredientsDiv.append(`<br><label>name</label><input type='text'name='name_${index}' 
-        pattern='^[^<>%$]*$' title='Letters and Numbers only' required /><label>amount</label><input 
-        type='text' name='amount_${index}' pattern='^[^<>%$]*$' title='Numbers only' required /> 
-        <label>unit</label><select id='unit_${index}' name='unit_${index}' 
-        onclick='populateUnitsValues(this.id);'></select>`);
+        let nCount = index + 1;
+        ingredientsDiv.append(`<br><label for='name_${index}'>name</label>
+        <input id='name_${index}' type='text'name='name_${index}' 
+        pattern='^[^<>%$]*$' title='Letters and Numbers only' aria-label='ingredient name ${nCount}' required />
+        
+        
+        
+        <label for='amount_${index}'>amount</label><input id='amount_${index}' type='text' name='amount_${index}' 
+        pattern='^[^<>%$]*$' title='Numbers only' aria-label='ingredient amount ${nCount}' required />
+        <label for='unit_${index}'>unit</label><select id='unit_${index}' name='unit_${index}' 
+        aria-label='select ingredient unit ${nCount}. press the space bar' onclick='populateUnitsValues(this.id);'
+        aria-pressed='false' onkeypress='populateUnitsValues(this.id);'></select>`);
     }// end for
     ingredientsBtn.remove();
 }// end addIngredientsInputs()
@@ -23,8 +43,10 @@ function addInstructionInputs(){
     const stepBtn = $('#s_button');
     let stepQuantity = $('#s_quantity').val();
     for(index=0; index<stepQuantity; index++){
-        stepDiv.append(`<br><label>Step</label><input type='text'name='step_${index}' 
-        pattern='^[^<>%$]*$' title='Letters and Numbers only' required  />`);
+        let nCount = index + 1;
+        stepDiv.append(`<br><label for='step_${index}'>Step</label><input id='step_${index}' 
+        type='text'name='step_${index}' pattern='^[^<>%$]*$' title='Letters and Numbers only' 
+        aria-label='recipe step ${nCount}' required />`);
     }// end for
     stepBtn.remove();
 }// end addInstructionInputs()
