@@ -1,15 +1,22 @@
-function keyHandler(event)
-  {
-    switch (event.which) {
-      case KEY_SPACE: {
-        event.stopPropagation;
-        return doStuff();
-        break;
-      }
-    } //end switch
-    return true;
-  }
 
+/**
+ * Only allow the "space" key to call 
+ * the populateUnitsValues() function.
+ * This of for accessibility only
+ * @param {object} event 
+ * @param {string} id 
+ */
+function keyHandler(event, id){
+    let oElement = $("#" + id);
+    if(event.code === "Space"){
+        oElement.focus();
+        console.log("space pressed");
+        populateUnitsValues(id);
+    }else{
+        event.preventDefault();
+        oElement.focus();
+    }
+}// end keyHandler()
 
 /**
  * Appends Ingredients based on user selected quantity
@@ -23,14 +30,11 @@ function addIngredientsInputs(){
         ingredientsDiv.append(`<br><label for='name_${index}'>name</label>
         <input id='name_${index}' type='text'name='name_${index}' 
         pattern='^[^<>%$]*$' title='Letters and Numbers only' aria-label='ingredient name ${nCount}' required />
-        
-        
-        
         <label for='amount_${index}'>amount</label><input id='amount_${index}' type='text' name='amount_${index}' 
         pattern='^[^<>%$]*$' title='Numbers only' aria-label='ingredient amount ${nCount}' required />
         <label for='unit_${index}'>unit</label><select id='unit_${index}' name='unit_${index}' 
-        aria-label='select ingredient unit ${nCount}. press the space bar' onclick='populateUnitsValues(this.id);'
-        aria-pressed='false' onkeypress='populateUnitsValues(this.id);'></select>`);
+        aria-label='select ingredient ${nCount} unit. press the space bar' onclick='populateUnitsValues(this.id);'
+        aria-pressed='false' onkeypress='keyHandler(event, this.id);'></select>`);
     }// end for
     ingredientsBtn.remove();
 }// end addIngredientsInputs()
@@ -93,14 +97,14 @@ function validate(oButton){
 } // end validate(oButton)
 
 
-
+/**
+ * Sanitize user input
+ */
 function validateForm(){
     
     let isValid = true;
-
     let aFormValues = $("#rec-form").serializeArray();
  
-
     $(aFormValues).each(function(i, field){
         if(field.value.match("^[^<>%$]*$")){
             // all good 
@@ -133,18 +137,4 @@ $(document).ready(function(){
     let nRand = Math.floor((Math.random() * 100) + 1);
     let sRecordID = `${nYear}${nMonth}${nDay}${nRand}${nMillSec}`;
     document.getElementById("record-id").value = sRecordID;
-
-
-    // validateForm();
-
-    // $( "form" ).on( "submit", function( event ) {
-    //     event.preventDefault();
-    //     validateForm();
-
-    //     //console.log( $( this ).serialize() );
-    // });
-
-
-
-
 });

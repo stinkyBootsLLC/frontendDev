@@ -1,5 +1,6 @@
 // creates a more user friendly view of all 
 // the recipes in the json file
+// 10/10/20 - added accessibility tabindex
 
 const mainDivElement = $("#main-div");
 const recipes = 'assets/db/recipes.json';
@@ -20,15 +21,15 @@ fetch(recipes)
       recipeDiv.attr('class', 'card bg-light mb-5');
       recipeDiv.attr('style', 'max-width: 36rem;');
       // add to div
-      let recipeHeaderDiv = $("<div></div>");
+      let recipeHeaderDiv = $("<div tabindex='0'></div>");
       recipeHeaderDiv.attr('class','card-header');
       recipeDiv.append(recipeHeaderDiv);
       recipeHeaderDiv.append(`<i class='fas fa-utensils'></i>&nbsp;&nbsp;${data[recipe]["title"]}`);
-      let recipeBodyDiv = $("<div></div>");
+      let recipeBodyDiv = $("<div tabindex='0'></div>");
       recipeBodyDiv.attr('class','card-body');
       recipeDiv.append(recipeBodyDiv);
       recipeBodyDiv.append( `<img class='card-img-top' src='recipeImages/${data[recipe]["picture"]}' 
-                                alt='${data[recipe]["picture"]}' style='height: 500px;'> ` );
+                                alt='picture of ${data[recipe]["title"]}' style='height: 500px;'> ` );
       recipeBodyDiv.append(`<p class='card-text'>Category: ${data[recipe]["Category"]}</p>`);
       recipeBodyDiv.append(`<p class='card-text'>${data[recipe]["description"]}</p>`);
       // create variables 

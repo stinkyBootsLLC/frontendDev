@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8" />
@@ -11,69 +11,67 @@
   <meta name="description" content="description here">
   <meta name="keywords" content="keywords,here">
   <title>Francine's Recipes</title>
-  <link rel="icon" type="image/png" href=" "/>
+  <link rel="icon" type="image/png" href=" " />
   <!-- imported styles -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
   <!-- local styles -->
   <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand mylogo" href="index.html">Francine's Famous Recipes</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a class="nav-link" href="addRecipe.html">Admin Tools</a></li>
-        <li class="nav-item active"><a class="nav-link disabled">All Recipes</a></li>
-        <!-- <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li> -->
-      </ul>
-      <!-- right side -->
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fab fa-facebook-square fa-2x"></i>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fab fa-instagram fa-2x"></i>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fab fa-twitter-square fa-2x"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <main>
+  <a class="skip-main" href="#main">Skip to main content</a>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand mylogo" href="index.html">Francine's Famous Recipes</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="addRecipe.html">Admin Tools</a></li>
+          <li class="nav-item active"><a class="nav-link disabled">All Recipes</a></li>
+          <!-- <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li> -->
+        </ul>
+        <!-- right side -->
+        <div aria-label="social media links" tabindex="0">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="www.facebook.com" aria-label="Facebook">
+                <i class="fab fa-facebook-square fa-2x"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="www.instagram.com" aria-label="instagram">
+                <i class="fab fa-instagram fa-2x"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="www.twitter.com" aria-label="twitter">
+                <i class="fab fa-twitter-square fa-2x"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main id="main">
     <br>
-    <section class="container"><div id="main-div"> </div></section>
-    <br><hr><br>]
+    <section class="container">
+      <div id="main-div"> </div>
+    </section>
+    <br>
+    <hr><br>
   </main>
-
   <footer class="footer">
     <div class="container">
       <span class="text-muted">Place sticky footer content here.</span>
     </div>
   </footer>
-
-
-
-
-
-
-
   <!-- Boostrap requirements -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
@@ -84,8 +82,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-  <!-- Boostrap requirements -->
-
+  <!-- local -->
   <script src="assets/js/recipes.js"></script>
 </body>
 

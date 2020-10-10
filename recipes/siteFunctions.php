@@ -31,10 +31,6 @@
         return $isImageAllowed;
 
     }// end isFileImage()
-
-
-
-
     /**
      * Sanatize untrusted data
      * @param string - data
@@ -67,4 +63,4 @@
       return $random_name;
     }// end generate_Random_FileName()
 
-    ?>
+?>
