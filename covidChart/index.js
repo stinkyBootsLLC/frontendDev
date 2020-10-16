@@ -15,8 +15,7 @@ let chartInfo = {
     total_deaths: 0,
     total_cases: 0,
 };
-let oStats = [];
-
+let aStats = [];
 /**
  * Adds commas to numbers
  * @param {Number} nNumber 
@@ -24,8 +23,10 @@ let oStats = [];
  */
 function addCommasToNumber(nNumber) {
     return nNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}// addCommasToNumber()
-
+}// end addCommasToNumber()
+/**
+ * Bound to settings box
+ */
 function refresh() {
     let casesChart = $("#cases-chart").data("kendoChart"),
         casesCategoryAxis = casesChart.options.categoryAxis,
@@ -86,8 +87,6 @@ function createChart(id, oData, sField, sBaseUnits, sSeriesColor, sMainTitle, sS
         }
     });
 }// end createChart()
-
-
 /**
  * Gets the charts data.
  */
@@ -100,15 +99,9 @@ function downLoadData() {
         let total_tests_per_thousand = 0;
         // cannot use a for each loop , because this is a JSON file
         // using a regular for loop
-        // console.log(data.USA.data);
-        // console.log(data.USA.data[data.USA.data.length - 3].total_tests);
-
         for (i = 0; i < Object.keys(data.USA.data).length; i++) {
 
             let nTests = data.USA.data[i].total_tests;
-
-            
-
             if(nTests !== undefined || nTests > 0){
                 // only saves the last one
                 // this is already cumulative from the source
@@ -116,7 +109,7 @@ function downLoadData() {
                 total_tests_per_thousand = data.USA.data[i].total_tests_per_thousand;
             }
             if(data.USA.data[i].new_deaths > 0){
-                oStats.push({
+                aStats.push({
                     date: new Date(data.USA.data[i].date),
                     cases: data.USA.data[i].new_cases ,
                     deaths: data.USA.data[i].new_deaths
@@ -127,30 +120,22 @@ function downLoadData() {
             total_cases += data.USA.data[i].new_cases;
         }// end for data length
         // set the value
-
-        
-
         chartInfo.total_deaths = addCommasToNumber(total_deaths);
         chartInfo.total_cases = addCommasToNumber(total_cases);
         // display the charts
-        createChart("cases-chart", oStats, "cases", "months","#86b1f7", 
+        createChart("cases-chart", aStats, "cases", "months","#86b1f7", 
         "Total Cases [" + chartInfo.total_cases + "]", "area");
-        createChart("deaths-chart", oStats, "deaths", "months","#2774f2", 
+        createChart("deaths-chart", aStats, "deaths", "months","#2774f2", 
         "Total Deaths [" + chartInfo.total_deaths + "]", "line");
         let nCasesPercent = (total_cases / 3282000000 * 100).toFixed(2);
         let nDeathsPercent = (total_deaths / 3282000000 * 100).toFixed(4);
         let nTotalTestsPercent = (total_tests / 3282000000 * 100).toFixed(2);
-
         let nTestPerThousPercent = (total_tests_per_thousand / 1000 * 100).toFixed(2);
-        // console.log(nTestPerThousPercent); 
         // display totals
         displayTotalStats("cases", nCasesPercent);
         displayTotalStats("deaths", nDeathsPercent);
         displayTotalStats("tests", nTotalTestsPercent);
         displayTotalStats("usaTesting", nTestPerThousPercent);
-
-
-        
         // remove loading indicator
         kendo.ui.progress($(".chart-loading"), false);
     }// end organizeData()
@@ -158,7 +143,6 @@ function downLoadData() {
         url: sDataSource,
     }).done(organizeData);
 }// end getdata
-
 /**
  * Start the sequence
  */
