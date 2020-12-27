@@ -7,6 +7,7 @@
  * @param {string} id 
  */
 function keyHandler(event, id){
+    // console.log(event);
     let oElement = $("#" + id);
     if(event.code === "Space"){
         oElement.focus();
