@@ -64,13 +64,13 @@ function populateUnitsValues(elementID){
     // select object
     let select = $( '#' + elementID);
     // array of measurement units
-    const units = ["each","tsp","Tbsp","ounces" ,"gills","cups","pounds",
-                    "pints","quarts","cups","pints","quarts","pecks",
-                    "bushel","bag"," "];
+    const units = ["Each","Tsp","Tbsp","Ounces" ,"Gills","Cup","pound",
+                    "Pint","Quart","Drop","Peck",
+                    "Bushel","Bag"," "];
     // loop thru array and append option
     for (index = 0; index < units.length; index++) { 
         select.append(new Option(units[index], units[index]));
-        console.log(units[index]); 
+        // console.log(units[index]); 
     }// end for 
     // remove the attribute or it keeps populating
     select.removeAttr("onclick");
@@ -113,7 +113,7 @@ function validateForm(){
             // the only way we end up in here is IF the form patterns have 
             // been broken by someone
             isValid = false;
-            console.log( field.value);
+            //console.log( field.value);
             $( "[name=" +  field.name + "]" ).addClass( "not-valid" );
             alert("stop fucking with the form");
             document.getElementById("submit").disabled = true;
@@ -128,12 +128,14 @@ function validateForm(){
 
 $(document).ready(function(){
     /**
-     * Creates a unique record ID
+     * Creates a unique record ID.
+     * YYYY MM DD RN MSEc
+     * 2020 12 27 74 711
      */
     let oToday = new Date();
     let nYear = oToday.getFullYear();
     let nDay = oToday.getDate();  // day
-    let nMonth = oToday.getMonth();
+    let nMonth = oToday.getMonth() + 1;
     let nMillSec = oToday.getMilliseconds();
     let nRand = Math.floor((Math.random() * 100) + 1);
     let sRecordID = `${nYear}${nMonth}${nDay}${nRand}${nMillSec}`;
