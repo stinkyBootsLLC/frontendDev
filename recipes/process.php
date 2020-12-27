@@ -25,8 +25,6 @@
         $isImageLoaded = true;
       }else{
         echo "File is not allowed.<br>";
-        //$uploadOk = 0;
-
       }// end if isFileAllowed
     }// end if(isset($_POST["submit"]))
 
@@ -99,13 +97,11 @@
               echo "<script> setTimeout(function () {window.location.href = 'index.html';
                 }, 1000); </script>";
           }
-
         }else {  
             echo "JSON File not exits <br>";  
         } // end if(file_exists())
     }else{
       echo "problem with image file <br> Record NOT added";  
-
     }// if($isImageLoaded)
 
 
