@@ -63,8 +63,11 @@
           <main id="main" tabindex="-1">
                <form id="rec-form" action="process.php" onsubmit="return validateForm()" method="post"
                     enctype="multipart/form-data">
-                    <label for="record-id" aria-label="Recipe ID">ID</label>
-                    <input id="record-id" type="text" name="id" class="form-control" required readonly /><br />
+                    <span style="display: none;">
+                    <!-- hide the field from the user 12/29/2020-->
+                         <label for="record-id" aria-label="Recipe ID">ID</label>
+                         <input id="record-id" type="text" name="id" class="form-control" required readonly />
+                    </span>
                     <label for="title" aria-label="Recipe title"> Title</label>
                     <input id="title" type="text" name="title" class="form-control" pattern="^[^<>%$]*$"
                          title="Letters and Numbers only" required /><br />
@@ -91,8 +94,7 @@
                               4. Main Dishes. 5. Desserts. 6. Miscellaneous.
                          </p>
                     </div>
-          <hr>
-          
+               <hr>
                <div>
                     <p>For this next section: 1. Increment Quantity and 2. Click the "+" add button</p>
                </div>
@@ -106,7 +108,6 @@
                      </p>
                </div>
                <hr>
-              
                <div id="Ingredients" aria-describedby="info-add-ingredients" tabindex="0">
                     <label for="i_quantity" aria-label="Recipe ingredients">Ingredients</label>
                     <input id="i_quantity" type="number"  min="1" max="15" 
@@ -114,7 +115,6 @@
                     <button id="i_button" type="button" onclick="validate(this);" aria-label="add ingredients"> 
                          + </button>
                </div>
-             
                <hr>
                <div id="Instructions" aria-describedby="info-add-instructions" tabindex="0">
                     <label for="s_quantity" aria-label="Recipe instructions">Instructions</label>
