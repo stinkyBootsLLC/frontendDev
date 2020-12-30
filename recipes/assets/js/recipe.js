@@ -1,21 +1,17 @@
+/**
+ * Display just one recipe.
+ * Find the recipe id in the JSON file.
+ */
 function displayRecipe(){
     const mainDivElement = $("#main-div");
     const recipes = 'assets/db/recipes.json';
-    // get the recipe ID
-    let recipeID = localStorage.getItem('recipe').trim();
-
-
-   
-
+    // Get saved data from sessionStorage
+    let recipeID = sessionStorage.getItem('recipe').trim();
     fetch(recipes).then(response => {
         return response.json()
     }).then(data => {
         // loop thru the recipes in the data obj
         for (recipe in data) {
-
-
-
-
             if(data[recipe]["id"] === recipeID){
                 // create id name for the element
                 idName = "recipe-" + recipe;
@@ -62,21 +58,12 @@ function displayRecipe(){
                 }// end for(step in instructions)
                 // add as a child to the main div
                 mainDivElement.append(recipeDiv);
-
-
-                console.log(data[recipe]["id"]);
-
-
-
             }// end if match
-
         }// end for (recipe in data)
     }).catch(err => {
         // Do something for an error here
         alert('unable to fetch recipes.json ' + err);
     });
-
-
 }// end displayRecipe()
 
 

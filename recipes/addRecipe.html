@@ -29,7 +29,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link disabled">Admin Tools</a></li>
+                    <li class="nav-item active"><a class="nav-link disabled">Add Recipe</a></li>
                     <li class="nav-item"><a class="nav-link" href="allRecipes.html">All Recipes</a></li>
                     <!-- <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li> -->
                </ul>
@@ -63,7 +63,7 @@
           <main id="main" tabindex="-1">
                <form id="rec-form" action="process.php" onsubmit="return validateForm()" method="post"
                     enctype="multipart/form-data">
-                    <span style="display: none;">
+                    <span class="hide">
                     <!-- hide the field from the user 12/29/2020-->
                          <label for="record-id" aria-label="Recipe ID">ID</label>
                          <input id="record-id" type="text" name="id" class="form-control" required readonly />
