@@ -26,7 +26,8 @@ function displayTable(){
             // recipeRow.append(`<th scope='row'>x</th>`);
             recipeRow.append(`<td><a id='${data[recipe]["id"]}' onclick='setRecipeID(this.id);'  
             href='recipe.html'><img src='recipeImages/${data[recipe]["picture"]}' 
-            alt='picture of ${data[recipe]["title"]}' style='height: 50px;'></a></td>`);
+            alt='picture of ${data[recipe]["title"]}' style='height: 50px;' 
+            aria-label='click for ${data[recipe]["title"]} recipe details'></a></td>`);
             recipeRow.append(`<td>${data[recipe]["title"]}</td>`);
             recipeRow.append(`<td>${data[recipe]["Category"]}</td>`);
             mainTableElement.append(recipeRow);
