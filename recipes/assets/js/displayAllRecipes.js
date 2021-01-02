@@ -3,7 +3,7 @@
  * @param {String} element_ID 
  */
 function setRecipeID(element_ID){
-    // currently this escape protects app but breaks logic
+    // error handling has been added in recipe.js (2 Jan 21)
     sessionStorage.setItem('recipe', escape(element_ID) );
 }// end setRecipeID()
 
