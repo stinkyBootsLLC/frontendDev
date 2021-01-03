@@ -1,3 +1,33 @@
+// put all globals inside here
+var recipes = {
+    counter: 1,
+    stepLimit: 25
+};
+/**
+ * Adds another step to the form
+ * @param {String} divName 
+ */
+function addStep(divName){
+    let instDiv = $("#" + divName);
+    if (recipes.counter == recipes.stepLimit)  {
+        alert("You have reached the limit of adding " + recipes.counter + " inputs");
+    } else {
+        instDiv.append(`<label for="step_${recipes.counter}">Step&nbsp;</label><input id="step_${recipes.counter}" type="text" 
+        name="step_${recipes.counter}" pattern="^[^<>%$]*$" title="Letters and Numbers only" 
+        aria-label="recipe step ${recipes.counter + 1}" required=""></input><br>`);
+        recipes.counter++; 
+    }               
+}// end addStep()
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Only allow the "space" key to call 
@@ -43,18 +73,18 @@ function addIngredientsInputs(){
 /**
  * Appends Steps based on user selected quantity
  */
-function addInstructionInputs(){
-    const stepDiv = $('#Instructions');
-    const stepBtn = $('#s_button');
-    let stepQuantity = $('#s_quantity').val();
-    for(index=0; index<stepQuantity; index++){
-        let nCount = index + 1;
-        stepDiv.append(`<br><label for='step_${index}'>Step</label><input id='step_${index}' 
-        type='text'name='step_${index}' pattern='^[^<>%$]*$' title='Letters and Numbers only' 
-        aria-label='recipe step ${nCount}' required />`);
-    }// end for
-    stepBtn.remove();
-}// end addInstructionInputs()
+// function addInstructionInputs(){
+//     const stepDiv = $('#Instructions');
+//     const stepBtn = $('#s_button');
+//     let stepQuantity = $('#s_quantity').val();
+//     for(index=0; index<stepQuantity; index++){
+//         let nCount = index + 1;
+//         stepDiv.append(`<br><label for='step_${index}'>Step</label><input id='step_${index}' 
+//         type='text'name='step_${index}' pattern='^[^<>%$]*$' title='Letters and Numbers only' 
+//         aria-label='recipe step ${nCount}' required />`);
+//     }// end for
+//     stepBtn.remove();
+// }// end addInstructionInputs()
 
 /**
  * Populates the "units" options
@@ -125,6 +155,7 @@ function validateForm(){
     return isValid;
 
 }// end validateForm()
+
 
 $(document).ready(function(){
     /**
