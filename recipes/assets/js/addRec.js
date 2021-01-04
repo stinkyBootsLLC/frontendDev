@@ -1,7 +1,8 @@
 // put all globals inside here
 var recipes = {
     counter: 1,
-    stepLimit: 25
+    stepLimit: 25,
+    ing_counter: 1
 };
 /**
  * Adds another step to the form
@@ -18,16 +19,29 @@ function addStep(divName){
         recipes.counter++; 
     }               
 }// end addStep()
+/**
+ * Add another ingredient to the form
+ * @param {String} divName 
+ */
+function addIngredient(divName){
+    let ingedDiv = $("#" + divName);
 
+    if (recipes.ing_counter == recipes.stepLimit)  {
+        alert("You have reached the limit of adding " + recipes.counter + " inputs");
+    } else {
+        ingedDiv.append(`<label for="name_0">name&nbsp;</label><input id="name_${recipes.ing_counter}" 
+        type="text" name="name_${recipes.ing_counter}" pattern="^[^<>%$]*$" title="Letters and Numbers only" 
+        aria-label="ingredient name ${recipes.ing_counter + 1}" required=""><label for="amount_${recipes.ing_counter}">
+        amount&nbsp;</label><input id="amount_${recipes.ing_counter}" type="text" name="amount_${recipes.counter}" 
+        pattern="^[^<>%$]*$" title="Numbers only" aria-label="ingredient amount ${recipes.ing_counter}" required="">
+        <label for="unit_${recipes.ing_counter}">unit&nbsp;</label><select id="unit_${recipes.ing_counter}" 
+        name="unit_${recipes.ing_counter}" aria-label="select ingredient ${recipes.ing_counter + 1} unit. 
+        press the space bar" onclick="populateUnitsValues(this.id);" aria-pressed="false" 
+        onkeypress="keyHandler(event, this.id);"></select><br>`);
+        recipes.ing_counter++; 
+    }  
 
-
-
-
-
-
-
-
-
+}// end addIngredient()
 
 /**
  * Only allow the "space" key to call 
@@ -52,23 +66,23 @@ function keyHandler(event, id){
 /**
  * Appends Ingredients based on user selected quantity
  */
-function addIngredientsInputs(){
-    const ingredientsDiv = $('#Ingredients');
-    const ingredientsBtn = $('#i_button');
-    let ingredientsQty = $('#i_quantity').val();
-    for(index=0; index<ingredientsQty; index++){
-        let nCount = index + 1;
-        ingredientsDiv.append(`<br><label for='name_${index}'>name</label>
-        <input id='name_${index}' type='text'name='name_${index}' 
-        pattern='^[^<>%$]*$' title='Letters and Numbers only' aria-label='ingredient name ${nCount}' required />
-        <label for='amount_${index}'>amount</label><input id='amount_${index}' type='text' name='amount_${index}' 
-        pattern='^[^<>%$]*$' title='Numbers only' aria-label='ingredient amount ${nCount}' required />
-        <label for='unit_${index}'>unit</label><select id='unit_${index}' name='unit_${index}' 
-        aria-label='select ingredient ${nCount} unit. press the space bar' onclick='populateUnitsValues(this.id);'
-        aria-pressed='false' onkeypress='keyHandler(event, this.id);'></select>`);
-    }// end for
-    ingredientsBtn.remove();
-}// end addIngredientsInputs()
+// function addIngredientsInputs(){
+//     const ingredientsDiv = $('#Ingredients');
+//     const ingredientsBtn = $('#i_button');
+//     let ingredientsQty = $('#i_quantity').val();
+//     for(index=0; index<ingredientsQty; index++){
+//         let nCount = index + 1;
+//         ingredientsDiv.append(`<br><label for='name_${index}'>name</label>
+//         <input id='name_${index}' type='text'name='name_${index}' 
+//         pattern='^[^<>%$]*$' title='Letters and Numbers only' aria-label='ingredient name ${nCount}' required />
+//         <label for='amount_${index}'>amount</label><input id='amount_${index}' type='text' name='amount_${index}' 
+//         pattern='^[^<>%$]*$' title='Numbers only' aria-label='ingredient amount ${nCount}' required />
+//         <label for='unit_${index}'>unit</label><select id='unit_${index}' name='unit_${index}' 
+//         aria-label='select ingredient ${nCount} unit. press the space bar' onclick='populateUnitsValues(this.id);'
+//         aria-pressed='false' onkeypress='keyHandler(event, this.id);'></select>`);
+//     }// end for
+//     ingredientsBtn.remove();
+// }// end addIngredientsInputs()
 
 /**
  * Appends Steps based on user selected quantity
@@ -91,6 +105,7 @@ function addIngredientsInputs(){
  * @param {String} elementID 
  */
 function populateUnitsValues(elementID){
+    console.log(elementID);
     // select object
     let select = $( '#' + elementID);
     // array of measurement units
