@@ -97,7 +97,7 @@
                     </div>
                <hr>
                <div>
-                    <p>For this next section: 1. Increment Quantity and 2. Click the "+" add button</p>
+                    <p>For this next section: Click the "+" button to add another ingredient or instruction step </p>
                </div>
                <div style="display: none;">
                     <p id="info-add-ingredients">
@@ -110,19 +110,20 @@
                </div>
                <hr>
                <div id="Ingredients" aria-describedby="info-add-ingredients" tabindex="0">
-                    <label for="i_quantity" aria-label="Recipe ingredients">Ingredients</label>
-                    <input id="i_quantity" type="number"  min="1" max="15" 
-                    aria-valuemin="1" aria-valuemax="15" required />
-                    <button id="i_button" type="button" onclick="validate(this);" aria-label="add ingredients"> 
-                         + </button>
+                    <p>Ingredients:</p>
+                    <label for="name_0">name&nbsp;</label>
+                    <input id="name_0" type="text" name="name_0" pattern="^[^<>%$]*$" title="Letters and Numbers only" 
+                    aria-label="ingredient name 1" required="">
+                    <label for="amount_0">amount</label>
+                    <input id="amount_0" type="text" name="amount_0" pattern="^[^<>%$]*$" title="Numbers only" aria-label="ingredient amount 1" required="">
+                    <label for="unit_0">unit</label>
+                    <select id="unit_0" name="unit_0" aria-label="select ingredient 1 unit. press the space bar" 
+                    onclick="populateUnitsValues(this.id);" aria-pressed="false" onkeypress="keyHandler(event, this.id);">
+                    </select> 
+                    <button id="i_button" type="button" onclick="addIngredient('Ingredients');" aria-label="add ingredients">
+                         + </button> <br>
                </div>
                <hr>
-
-
-
-
-
-
                 <div id="Instructions">
                     <p>Instructions:</p>
                     <label for="step_0">Step</label>
@@ -131,11 +132,6 @@
                     <button id="i_button" type="button" onclick="addStep('Instructions');" aria-label="add steps"> 
                     + </button><br>
                 </div>
-
-
-
-
-
                <hr>
                <input id="submit" type="submit" name="submit" value="Append to db" class="btn btn-info"
                     aria-label="Submit Recipe to database" /><br />
