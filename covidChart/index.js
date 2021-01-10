@@ -9,11 +9,15 @@
  *             in "organizeData()" the date string is used to create a 
  *             new Date() object.  This is needed to be able to change the 
  *             days, weeks and months thru the kendo.ui library.
+ * 1/10/2021 - custom loading image and message
  */
 
 let chartInfo = {
     total_deaths: 0,
     total_cases: 0,
+    // this number comes from https://www.census.gov/popclock/
+    // how can i make this number dynamic
+    nUsPopulation:  330782991
 };
 let aStats = [];
 /**
@@ -45,7 +49,7 @@ function refresh() {
  * @param {Number} nValue - value of the gauge
  */
 function displayTotalStats(sId, nValue) {
-        $( "#" + sId ).html( nValue + "%" );
+        $( "#" + sId ).text( nValue + "%" );
 }// end displayTotalStats()
 
 /**
@@ -91,7 +95,9 @@ function createChart(id, oData, sField, sBaseUnits, sSeriesColor, sMainTitle, sS
  * Gets the charts data.
  */
 function downLoadData() {
+
     const sDataSource = "https://covid.ourworldindata.org/data/owid-covid-data.json";
+
     function organizeData(data){
         let total_deaths = 0;
         let total_cases = 0;
@@ -108,17 +114,29 @@ function downLoadData() {
                 total_tests = data.USA.data[i].total_tests;
                 total_tests_per_thousand = data.USA.data[i].total_tests_per_thousand;
             }
-            if(data.USA.data[i].new_deaths > 0){
+            // if(data.USA.data[i].new_deaths > 0){
                 aStats.push({
                     date: new Date(data.USA.data[i].date),
                     cases: data.USA.data[i].new_cases ,
                     deaths: data.USA.data[i].new_deaths
                 });
-            }
+            // }
+
             // assign totals
-            total_deaths += data.USA.data[i].new_deaths;
-            total_cases += data.USA.data[i].new_cases;
+            // 12/3/2020
+            // had to add this check
+            // some of the raw data is "undefined"
+            // causes the chart to break
+            if ( data.USA.data[i].new_deaths != null){
+                total_deaths += data.USA.data[i].new_deaths;
+            }   
+            if (data.USA.data[i].new_cases != null){
+                total_cases += data.USA.data[i].new_cases;
+            }
         }// end for data length
+
+        // console.log("total tests = " + total_tests);
+
         // set the value
         chartInfo.total_deaths = addCommasToNumber(total_deaths);
         chartInfo.total_cases = addCommasToNumber(total_cases);
@@ -127,9 +145,9 @@ function downLoadData() {
         "Total Cases [" + chartInfo.total_cases + "]", "area");
         createChart("deaths-chart", aStats, "deaths", "months","#2774f2", 
         "Total Deaths [" + chartInfo.total_deaths + "]", "line");
-        let nCasesPercent = (total_cases / 3282000000 * 100).toFixed(2);
-        let nDeathsPercent = (total_deaths / 3282000000 * 100).toFixed(4);
-        let nTotalTestsPercent = (total_tests / 3282000000 * 100).toFixed(2);
+        let nCasesPercent = (total_cases / chartInfo.nUsPopulation * 100).toFixed(2);
+        let nDeathsPercent = (total_deaths / chartInfo.nUsPopulation * 100).toFixed(4);
+        let nTotalTestsPercent = (total_tests / chartInfo.nUsPopulation * 100).toFixed(2);
         let nTestPerThousPercent = (total_tests_per_thousand / 1000 * 100).toFixed(2);
         // display totals
         displayTotalStats("cases", nCasesPercent);
@@ -138,17 +156,19 @@ function downLoadData() {
         displayTotalStats("usaTesting", nTestPerThousPercent);
         // remove loading indicator
         kendo.ui.progress($(".chart-loading"), false);
+        // remove loading text
+        $("div.chart-loading").attr("style","display: none;");
     }// end organizeData()
     $.ajax({
         url: sDataSource,
     }).done(organizeData);
-}// end getdata
+}// end downLoadData
 /**
  * Start the sequence
  */
 $( document ).ready(function() {
-    // display loading indicator
-    kendo.ui.progress($(".chart-loading"), true);
+    // display loading indicator  cases-chart  chart-loading
+   kendo.ui.progress($(".chart-loading"), true);
     downLoadData(); 
 });
 /**
