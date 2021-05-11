@@ -13,16 +13,9 @@
     <!-- kendo Scripts -->
     <script src="https://kendo.cdn.telerik.com/2020.2.617/js/jquery.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2020.2.617/js/kendo.all.min.js"></script>
-
-
-    <style>
-        /** Custom loading image 1/10/2021 */
-        .k-loading-image {
-            background-image:url('gear_duo.gif');
-            background-size: 90px 90px;
-        }
-    </style>
-
+    <!-- for the table excel export -->
+    <script src="https://kendo.cdn.telerik.com/2020.1.219/js/jszip.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.1.219/js/kendo.all.min.js"></script>
 </head>
 
 <body>
@@ -69,33 +62,33 @@
                 </div>
             </div>
 
-            <div class="k-card">
+            <!-- <div class="k-card">
                 <div class="k-card-header" style="background-color: #acd0fa;">
                     <h5 class="k-card-title">USA Population</h5>
                     <h6 class="k-card-subtitle">Total Test</h6>
                 </div>
-                <!-- <img class="k-card-image" src="../content/web/cards/rome.jpg" /> -->
+                <img class="k-card-image" src="../content/web/cards/rome.jpg" />
                 <div class="k-card-body">
                     <p id="tests" class="indicator"> </p>
                 </div>
                 <div class="k-card-footer" style="background-color: #acd0fa;">
                     <p style="font-size: 10px;">Total % of the population tested</p>
                 </div>
-            </div>
+            </div> 
 
             <div class="k-card">
                 <div class="k-card-header" style="background-color: #acd0fa;">
                     <h5 class="k-card-title">USA Population</h5>
                     <h6 class="k-card-subtitle">Test / Thousand</h6>
                 </div>
-                <!-- <img class="k-card-image" src="../content/web/cards/rome.jpg" /> -->
+                 <img class="k-card-image" src="../content/web/cards/rome.jpg" />
                 <div class="k-card-body">
                     <p id="usaTesting" class="indicator"> </p>
                 </div>
                 <div class="k-card-footer" style="background-color: #acd0fa;">
                     <p style="font-size: 10px;">Total % per 1000 people</p>
                 </div>
-            </div>
+            </div>-->
         </div>
         <!--end k-container-->
     </div><!-- top-cards -->
@@ -120,14 +113,20 @@
         </div>
     </div>
     <br><br>
-
-
-    
-
+    <section id="grid-area" class="container">
+        <h2 style="margin-bottom: 0;">New Cases and Deaths by State </h2>
+        <p style="margin-top: 0;">
+            <a href="https://covid.cdc.gov/covid-data-tracker/#trends_dailytrendscases">
+                <em>Source: CDC daily trends cases</em>
+            </a>
+        </p>
+        
+        <div id="grid"></div>
+    </section>
+    <br><br>
     <script src="index.js"></script>
 </body>
 <footer class="footer">
     <p>Eduardo Estrada | June 2020</p>
 </footer>
-
 </html>

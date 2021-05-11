@@ -10,16 +10,69 @@
  *             new Date() object.  This is needed to be able to change the 
  *             days, weeks and months thru the kendo.ui library.
  * 1/10/2021 - custom loading image and message
+ * 5/10/2021 - nUsPopulation is now dynamic, already in the imported data by country
+ * 5/11/2021 - added kendo grid (table) with cases by state. Data from the CDC API
  */
 
 let chartInfo = {
     total_deaths: 0,
     total_cases: 0,
-    // this number comes from https://www.census.gov/popclock/
-    // how can i make this number dynamic
-    nUsPopulation:  330782991
+    nUsPopulation: 0  
 };
 let aStats = [];
+/**
+ * Creates a Kendo UI Grid
+ * 5/11/2021
+ * @param {Array} extdata - array of objects
+ */
+function createTable(extdata){
+
+    let headers =[
+        { field: "Date", title: "Date", format: "{0: yyyy-MM-dd}", width: "50px" },
+        { field: "State", title: "State",  width: "50px" },
+        { field: "NewCases", title: "New Cases", width: "50px" },
+        { field: "NewDeaths", title: "New Deaths", width: "50px" }
+    ];
+    /**
+     * Make the grid
+     */
+    $("#grid").kendoGrid({
+        dataSource: {
+            data: extdata,
+            schema: {
+                model: {
+                    fields: {
+                        Date: { type: "date" },
+                        State: { type: "string" },
+                        NewCases: { type: "number" },
+                        NewDeaths: { type: "number" }
+                    }
+                }
+            },
+            pageSize: 20
+        },
+        toolbar: ["excel"],
+        excel: {
+            fileName: "byState.xlsx",
+            proxyURL: "https://demos.telerik.com/kendo-ui/service/export",
+            filterable: true
+        },
+        height: 550,
+        scrollable: true,
+        sortable: true,
+        filterable: true,
+        columnMenu: true,
+
+        pageable: {
+            input: true,
+            numeric: false
+        },
+        columns: [{
+            title:"New Cases and Deaths By State",
+            columns: headers 
+        }]
+    });
+}// end createTable()
 /**
  * Adds commas to numbers
  * @param {Number} nNumber 
@@ -51,7 +104,6 @@ function refresh() {
 function displayTotalStats(sId, nValue) {
         $( "#" + sId ).text( nValue + "%" );
 }// end displayTotalStats()
-
 /**
  * Creates a Kendo UI Chart.  
  * Added parameters to make re-usuable
@@ -93,27 +145,33 @@ function createChart(id, oData, sField, sBaseUnits, sSeriesColor, sMainTitle, sS
 }// end createChart()
 /**
  * Gets the charts data.
+ * 5/11/2021 - removed total_tests and total_tests_per_thousand
  */
 function downLoadData() {
 
     const sDataSource = "https://covid.ourworldindata.org/data/owid-covid-data.json";
 
     function organizeData(data){
+        // 5/10/2021
+        chartInfo.nUsPopulation = data.USA.population;
         let total_deaths = 0;
         let total_cases = 0;
-        let total_tests = 0;
-        let total_tests_per_thousand = 0;
+        // 5/11/2021
+        // let total_tests = 0;
+        // let total_tests_per_thousand = 0;
+
         // cannot use a for each loop , because this is a JSON file
         // using a regular for loop
         for (i = 0; i < Object.keys(data.USA.data).length; i++) {
 
-            let nTests = data.USA.data[i].total_tests;
-            if(nTests !== undefined || nTests > 0){
-                // only saves the last one
-                // this is already cumulative from the source
-                total_tests = data.USA.data[i].total_tests;
-                total_tests_per_thousand = data.USA.data[i].total_tests_per_thousand;
-            }
+            // let nTests = data.USA.data[i].total_tests;
+
+            // if(nTests !== undefined || nTests > 0){
+            //     // only saves the last one
+            //     // this is already cumulative from the source
+            //     total_tests = data.USA.data[i].total_tests;
+            //     total_tests_per_thousand = data.USA.data[i].total_tests_per_thousand;
+            // }
             // if(data.USA.data[i].new_deaths > 0){
                 aStats.push({
                     date: new Date(data.USA.data[i].date),
@@ -135,8 +193,6 @@ function downLoadData() {
             }
         }// end for data length
 
-        // console.log("total tests = " + total_tests);
-
         // set the value
         chartInfo.total_deaths = addCommasToNumber(total_deaths);
         chartInfo.total_cases = addCommasToNumber(total_cases);
@@ -147,13 +203,19 @@ function downLoadData() {
         "Total Deaths [" + chartInfo.total_deaths + "]", "line");
         let nCasesPercent = (total_cases / chartInfo.nUsPopulation * 100).toFixed(2);
         let nDeathsPercent = (total_deaths / chartInfo.nUsPopulation * 100).toFixed(4);
-        let nTotalTestsPercent = (total_tests / chartInfo.nUsPopulation * 100).toFixed(2);
-        let nTestPerThousPercent = (total_tests_per_thousand / 1000 * 100).toFixed(2);
+        // 5/11/2021 removed
+        // let nTotalTestsPercent = (total_tests / chartInfo.nUsPopulation * 100).toFixed(2);
+        // let nTestPerThousPercent = (total_tests_per_thousand / 1000 * 100).toFixed(2);
         // display totals
         displayTotalStats("cases", nCasesPercent);
         displayTotalStats("deaths", nDeathsPercent);
+        /*
+        // I removed these on 5/10/2021
+        // there are more tests than people in the USA.
+        // I did not take into account people get tested multiple times.
         displayTotalStats("tests", nTotalTestsPercent);
         displayTotalStats("usaTesting", nTestPerThousPercent);
+        */
         // remove loading indicator
         kendo.ui.progress($(".chart-loading"), false);
         // remove loading text
@@ -161,14 +223,63 @@ function downLoadData() {
     }// end organizeData()
     $.ajax({
         url: sDataSource,
-    }).done(organizeData);
+    })
+    .done(organizeData)
+    .fail(function() {
+        alert( "Doesn't look like anything to me.");
+        // remove loading indicator
+        kendo.ui.progress($(".chart-loading"), false);
+        // remove loading text
+        $("div.chart-loading").attr("style","display: none;");
+    });
 }// end downLoadData
+
+/**
+ * Will fetch the data from the CDC JSON File
+ */
+function getTableData(){
+
+    let tableData = [];
+
+    function organizeData(data){
+        for (let i = 0; i < Object.keys(data).length; i++) {
+            let sDate = data[i].submission_date;
+            let sSate = data[i].state;
+            let sNewCase = data[i].new_case;
+            let sNewDeath = data[i].new_death;
+
+            tableData.push({
+                "Date": new Date(sDate),
+                "State": sSate,
+                "NewCases": Number(sNewCase),
+                "NewDeaths": Number(sNewDeath)
+            });
+        }// end for loop
+        // go make the table
+        createTable(tableData)
+    }// end organizeData()
+
+    $.ajax({
+        url: "https://data.cdc.gov/resource/9mfq-cb36.json",
+    })
+    .done(organizeData)
+    .fail(function() {
+        alert( "Doesn't look like anything to me.");
+        console.error("There was a problem fetching the table data");
+        // remove loading indicator
+        kendo.ui.progress($(".chart-loading"), false);
+        // remove loading text
+        $("div.chart-loading").attr("style","display: none;");
+    });
+}// end getTableData()
 /**
  * Start the sequence
  */
 $( document ).ready(function() {
     // display loading indicator  cases-chart  chart-loading
-   kendo.ui.progress($(".chart-loading"), true);
+    kendo.ui.progress($(".chart-loading"), true);
+    // 5/11/2021 New Feature
+    getTableData();
     downLoadData(); 
 });
 /**
