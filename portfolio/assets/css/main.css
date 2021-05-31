@@ -1,8 +1,0 @@
-.email > i{
-    color:rgb(232, 232, 232);
-}
-
-.email > a[href^="mailto:"]{
-    text-decoration: none;
-    color:rgb(232, 232, 232);
-}
