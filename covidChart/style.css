@@ -32,6 +32,14 @@ a:visited {
 #top-cards{
     margin-top: 10px;
 }
+.chart-loading{
+    color: red;
+}
+/** Custom loading image 1/10/2021 */
+.k-loading-image {
+    background-image:url('gear_duo.gif');
+    background-size: 90px 90px;
+}
 .k-container {
     display: flex;
     flex-wrap: wrap;

@@ -134,13 +134,20 @@ function createChart(id, oData, sField, sBaseUnits, sSeriesColor, sMainTitle, sS
             categoryField: "date"
         }],
         categoryAxis: {
-            baseUnit: sBaseUnits
+            baseUnit: sBaseUnits,
+            // added 8/20/2021
+            crosshair: {
+                color: sSeriesColor,
+                opacity: 0.3,
+                width: 2,
+                visible: true
+            }
         },
         tooltip: {
             visible: true,  
             format: "{0}%",
             template: "#= value #  <br/>New #= series.field #"
-        }
+        },
     });
 }// end createChart()
 /**
@@ -163,28 +170,11 @@ function downLoadData() {
         // cannot use a for each loop , because this is a JSON file
         // using a regular for loop
         for (i = 0; i < Object.keys(data.USA.data).length; i++) {
-
-            // let nTests = data.USA.data[i].total_tests;
-
-            // if(nTests !== undefined || nTests > 0){
-            //     // only saves the last one
-            //     // this is already cumulative from the source
-            //     total_tests = data.USA.data[i].total_tests;
-            //     total_tests_per_thousand = data.USA.data[i].total_tests_per_thousand;
-            // }
-            // if(data.USA.data[i].new_deaths > 0){
-                aStats.push({
-                    date: new Date(data.USA.data[i].date),
-                    cases: data.USA.data[i].new_cases ,
-                    deaths: data.USA.data[i].new_deaths
-                });
-            // }
-
-            // assign totals
-            // 12/3/2020
-            // had to add this check
-            // some of the raw data is "undefined"
-            // causes the chart to break
+            aStats.push({
+                date: new Date(data.USA.data[i].date),
+                cases: data.USA.data[i].new_cases ,
+                deaths: data.USA.data[i].new_deaths
+            });
             if ( data.USA.data[i].new_deaths != null){
                 total_deaths += data.USA.data[i].new_deaths;
             }   
