@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
     <title>COVID-19 (Coronavirus) | USA</title>
     <meta charset="utf-8">
@@ -16,6 +16,7 @@
     <!-- for the table excel export -->
     <script src="https://kendo.cdn.telerik.com/2020.1.219/js/jszip.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2020.1.219/js/kendo.all.min.js"></script>
+    <!-- Validated 9/12/2021 W3C Validator Version: 21.9.13-->
 </head>
 
 <body>
@@ -61,34 +62,6 @@
                     <p style="font-size: 10px;">Total % of deaths</p>
                 </div>
             </div>
-
-            <!-- <div class="k-card">
-                <div class="k-card-header" style="background-color: #acd0fa;">
-                    <h5 class="k-card-title">USA Population</h5>
-                    <h6 class="k-card-subtitle">Total Test</h6>
-                </div>
-                <img class="k-card-image" src="../content/web/cards/rome.jpg" />
-                <div class="k-card-body">
-                    <p id="tests" class="indicator"> </p>
-                </div>
-                <div class="k-card-footer" style="background-color: #acd0fa;">
-                    <p style="font-size: 10px;">Total % of the population tested</p>
-                </div>
-            </div> 
-
-            <div class="k-card">
-                <div class="k-card-header" style="background-color: #acd0fa;">
-                    <h5 class="k-card-title">USA Population</h5>
-                    <h6 class="k-card-subtitle">Test / Thousand</h6>
-                </div>
-                 <img class="k-card-image" src="../content/web/cards/rome.jpg" />
-                <div class="k-card-body">
-                    <p id="usaTesting" class="indicator"> </p>
-                </div>
-                <div class="k-card-footer" style="background-color: #acd0fa;">
-                    <p style="font-size: 10px;">Total % per 1000 people</p>
-                </div>
-            </div>-->
         </div>
         <!--end k-container-->
     </div><!-- top-cards -->
@@ -102,12 +75,11 @@
         <div class="settings-box">
             <fieldset class="options" id="group1">
                 <label><strong>Chart Settings:</strong></label>
-                <input id="baseUnitMonths" name="baseUnit" type="radio" value="months" checked="checked"
-                    autocomplete="off" />
+                <input id="baseUnitMonths" name="baseUnit" type="radio" value="months" checked="checked"/>
                 <label for="baseUnitMonths">Months</label>
-                <input id="baseUnitWeeks" name="baseUnit" type="radio" value="weeks" autocomplete="off" />
+                <input id="baseUnitWeeks" name="baseUnit" type="radio" value="weeks"/>
                 <label for="baseUnitWeeks">Weeks</label>
-                <input id="baseUnitDays" name="baseUnit" type="radio" value="days" autocomplete="off" />
+                <input id="baseUnitDays" name="baseUnit" type="radio" value="days"/>
                 <label for="baseUnitDays">Days</label>
             </fieldset>
         </div>
@@ -124,9 +96,10 @@
         <div id="grid"></div>
     </section>
     <br><br>
+    <footer class="footer">
+    	<p>Eduardo Estrada | June 2020</p>
+	</footer>
     <script src="index.js"></script>
 </body>
-<footer class="footer">
-    <p>Eduardo Estrada | June 2020</p>
-</footer>
+
 </html>
