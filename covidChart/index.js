@@ -12,6 +12,7 @@
  * 1/10/2021 - custom loading image and message
  * 5/10/2021 - nUsPopulation is now dynamic, already in the imported data by country
  * 5/11/2021 - added kendo grid (table) with cases by state. Data from the CDC API
+ * 8/20/2021 - added cross hairs to charts
  */
 
 let chartInfo = {
@@ -129,7 +130,6 @@ function createChart(id, oData, sField, sBaseUnits, sSeriesColor, sMainTitle, sS
         seriesColors: [sSeriesColor],
         series: [{
             type: sSeriesType,
-           // aggregate: "avg",
             field: sField,
             categoryField: "date"
         }],
@@ -163,10 +163,6 @@ function downLoadData() {
         chartInfo.nUsPopulation = data.USA.population;
         let total_deaths = 0;
         let total_cases = 0;
-        // 5/11/2021
-        // let total_tests = 0;
-        // let total_tests_per_thousand = 0;
-
         // cannot use a for each loop , because this is a JSON file
         // using a regular for loop
         for (i = 0; i < Object.keys(data.USA.data).length; i++) {
@@ -182,7 +178,6 @@ function downLoadData() {
                 total_cases += data.USA.data[i].new_cases;
             }
         }// end for data length
-
         // set the value
         chartInfo.total_deaths = addCommasToNumber(total_deaths);
         chartInfo.total_cases = addCommasToNumber(total_cases);
@@ -193,19 +188,8 @@ function downLoadData() {
         "Total Deaths [" + chartInfo.total_deaths + "]", "line");
         let nCasesPercent = (total_cases / chartInfo.nUsPopulation * 100).toFixed(2);
         let nDeathsPercent = (total_deaths / chartInfo.nUsPopulation * 100).toFixed(4);
-        // 5/11/2021 removed
-        // let nTotalTestsPercent = (total_tests / chartInfo.nUsPopulation * 100).toFixed(2);
-        // let nTestPerThousPercent = (total_tests_per_thousand / 1000 * 100).toFixed(2);
-        // display totals
         displayTotalStats("cases", nCasesPercent);
         displayTotalStats("deaths", nDeathsPercent);
-        /*
-        // I removed these on 5/10/2021
-        // there are more tests than people in the USA.
-        // I did not take into account people get tested multiple times.
-        displayTotalStats("tests", nTotalTestsPercent);
-        displayTotalStats("usaTesting", nTestPerThousPercent);
-        */
         // remove loading indicator
         kendo.ui.progress($(".chart-loading"), false);
         // remove loading text
