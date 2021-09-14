@@ -5,25 +5,30 @@ body {
   font-family: 'Libre Franklin', sans-serif;
   height: 100%;
 }
+h2{
+  font: 45px 'Bahianita', cursive;
+  color: #071029
+
+}
 h5 {
   border-left: 2px solid #071029;
   padding-left: 3px;
   background-color: #e2e9fc9f;
 }
+a{
+  color:rgb(12, 12, 120);
+}
 .main-title{
   background-color: #071029;
   padding : 1px;
 }
-
 div.main-title > div > h1 {
   font: 57px 'Bahianita', cursive;
   color: rgb(87, 96, 126);
 }
-
 .user-form{
   margin-top: 0.1in;
 }
-
 .form-title{
   font: 40px 'Bahianita', cursive;
   color:#071029;
@@ -39,10 +44,10 @@ input[type="text"],input[type="number"]{
 footer > div > a {
   color: white;
 }
-div.sub-title > h1{
+/* div.sub-title > h1{
   font: 57px 'Bahianita', cursive;
   color: #071029;
-}
+} */
 .domainNameDisplay { 
     display: none;   
 }
@@ -50,5 +55,30 @@ div.sub-title > h1{
     display: block;
 }
 .displaydomainNameResults > div.card{
-  width: 84%;
+  width: 100%;
+}
+
+@media screen and (min-width: 280px) and (max-width: 299px){
+  div.main-title > div > h1 {
+    font: 21pt 'Bahianita', cursive;
+    color: rgb(87, 96, 126);
+    width: 100%;
+  }
+  .btn-lg{
+    font-size: 1rem !important;
+  }
+}
+@media screen and (min-width: 300px) and (max-width: 411px){
+  div.main-title > div > h1 {
+    font: 23pt 'Bahianita', cursive;
+    color: rgb(87, 96, 126);
+    width: 100%;
+  }
+}
+@media screen and (min-width: 414px)and (max-width: 730px){
+  div.main-title > div > h1 {
+    font: 32pt 'Bahianita', cursive;
+    color: rgb(87, 96, 126);
+    width: 100%;
+  }
 }
