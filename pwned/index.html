@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
   <meta charset="utf-8">
   <meta name="author" content="Eduardo Estrada">
@@ -10,7 +9,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="site.css">
 </head>
-
 <body>
   <header>
     <div class="main-title container-fluid">
@@ -20,11 +18,39 @@
     </div>
   </header>
   <main class="container">
+  <br>
+  <section class="container">
+      <div style="max-width: 58rem;">
+        <h3>Purpose:</h3>
+        <p tabindex="0">This project was inspired from a video by Dr Mike Pound [Computerphile]
+          <a href="https://www.youtube.com/watch?v=hhUb5iknVJs"><cite><q>Have You Been Pwned?</q></cite></a>
+          and to showcase using a <mark><span data-toggle="popover" title="What is REST?" data-content="REST is acronym for REpresentational State Transfer.">REST API.</span></mark>
+          The term "pwn" means<a href="https://www.urbandictionary.com/define.php?term=pwn">
+            <cite><q>An act of dominating an opponent.</q></cite></a>
+          In this case your password. According to <a href="https://haveibeenpwned.com/Passwords">haveibeenpwned.com,</a>
+          <cite><q>
+              <!--<a href="https://www.nottingham.ac.uk/computerscience/">University of NottinghamComputer Science</a>-->
+              Pwned Passwords are 551,509,767 real world passwords previously exposed in data breaches.
+              This exposure makes them unsuitable for ongoing use as they're at much greater risk of
+              being used to take over other accounts. They're searchable online below as well as being
+              downloadable for use in other online systems.
+            </q></cite>
+        </p>
+        <p tabindex="0">
+          In this example project, I am using a k-Anonymity model that allows a password to be searched for by
+          partial hash. <strong>(Searching by range)</strong> The JavaScript algorithm will convert your plain text
+          into a Secure Hash Algorithm 1 (SHA-1) and use the first 5 characters of the hash to check the
+          pwned passwords repository. The last 35 characters of the hash will then be used to search for a match.
+        </p>
+      </div>
+    </section>
     <section class="container sub-title">
       <div class="sub-title">
-        <h2>Searching By Range</h2>
+        <h2 tabindex="0">Searching By Range</h2>
       </div>
-      <div class="card text-center border-secondary mb-3 user-form" style="max-width: 58rem;">
+      <div id="findPasswordSection" style="display: none;">in this section you will provide a password to check against the repository to see if the 
+      password has been comprimised. There is a password input field and a execute button.</div>
+      <div  tabindex="0" class="card text-center border-secondary mb-3 user-form" aria-labelledby="findPasswordSection" style="max-width: 58rem;">
         <div class="card-header form-title">Unencrypted Password</div>
         <div class="card-body text-secondary">
           <div class="form-group row">
@@ -42,33 +68,7 @@
       </div>
     </section>
     <section class="container">
-      <div style="max-width: 58rem;">
-        <h3>Purpose:</h3>
-        <p>This project was inspired from a video by Dr Mike Pound [Computerphile]
-          <a href="https://www.youtube.com/watch?v=hhUb5iknVJs"><cite><q>Have You Been Pwned?</q></cite></a>
-          and to showcase using a <mark><span data-toggle="popover" title="What is REST?" data-content="REST is acronym for REpresentational State Transfer.">REST API.</span></mark>
-          The term "pwn" means<a href="https://www.urbandictionary.com/define.php?term=pwn">
-            <cite><q>An act of dominating an opponent.</q></cite></a>
-          In this case your password. According to <a href="https://haveibeenpwned.com/Passwords">haveibeenpwned.com,</a>
-          <cite><q>
-              <!--<a href="https://www.nottingham.ac.uk/computerscience/">University of NottinghamComputer Science</a>-->
-              Pwned Passwords are 551,509,767 real world passwords previously exposed in data breaches.
-              This exposure makes them unsuitable for ongoing use as they're at much greater risk of
-              being used to take over other accounts. They're searchable online below as well as being
-              downloadable for use in other online systems.
-            </q></cite>
-        </p>
-        <p>
-          In this example project, I am using a k-Anonymity model that allows a password to be searched for by
-          partial hash. <strong>(Searching by range)</strong> The JavaScript algorithm will convert your plain text
-          into a Secure Hash Algorithm 1 (SHA-1) and use the first 5 characters of the hash to check the
-          pwned passwords repository. The last 35 characters of the hash will then be used to search for a match.
-        </p>
-
-      </div>
-    </section>
-    <section class="container">
-      <div style="max-width: 58rem;">
+      <div tabindex="0" style="max-width: 58rem;">
         <h3>Example:</h3>
         <p>
           If you type "password" and click the pwned button.
@@ -90,7 +90,7 @@
           <h2>Random Password Generator</h2>
         </div>
         <h3>Purpose:</h3>
-        <p>JavaScript random password generator.</p>
+        <p tabindex="0">JavaScript random password generator.</p>
         <div class="card text-center border-secondary mb-3 user-form" style="max-width: 58rem;">
           <div class="card-header form-title">Password Generator</div>
           <div class="card-body text-secondary">
@@ -115,10 +115,10 @@
     <section id="breaches" class="container">
       <div style="max-width: 58rem;">
         <div class="sub-title">
-          <h2>Getting a single breached site</h2>
+          <h2 tabindex="0">Getting a single breached site</h2>
         </div>
         <h3>Purpose:</h3>
-        <p>
+        <p tabindex="0">
           In this section, the user can search for a single breached site.
           A "breach" is an instance of a system having been compromised by an attacker and the data disclosed.
           For example, Adobe was a breach, Gawker was a breach etc.
@@ -140,7 +140,7 @@
       </div><!-- end  -->
     </section>
     <br><br>
-    <section id="domainNameDisplay" class="domainNameDisplay">
+    <section tabindex="0" id="domainNameDisplay" class="domainNameDisplay">
       <div class="card">
         <div class="row no-gutters">
           <div class="col-auto">
@@ -159,10 +159,10 @@
       <br><br>
     </section>
   </main>
-  <br><br><br><br>
+  <br><br>
   <footer id="sticky-footer" class="py-4 bg-dark text-light">
     <div class="container text-center">
-      Reference Links: &nbsp; &nbsp; &nbsp;
+      <span tabindex="0">Reference Links: &nbsp; &nbsp; &nbsp;</span>
       <a href="https://www.youtube.com/user/Computerphile">Computerphile</a>&nbsp; | &nbsp;
       <a href="https://bit.ly/nottscomputer">(C/S) University of Nottingham</a> &nbsp; | &nbsp;
       <a href="https://haveibeenpwned.com/">HIBP</a> &nbsp; | &nbsp;
@@ -172,9 +172,9 @@
   </footer>
   <!-- Modal -->
   <!-- 
-        ARIA Documentation
-        https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/dialog_role 
-    -->
+    ARIA Documentation
+    https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/dialog_role 
+  -->
   <div class="modal fade" id="alert-modal" tabindex="-1" role="dialog" aria-labelledby="errorModalLbl" aria-describedby="errorDesc" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -205,5 +205,4 @@
   <script src="scripts/siteFunc.js"></script>
   <script src="scripts/sha1.js"></script>
 </body>
-
 </html>
