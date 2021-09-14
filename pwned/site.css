@@ -10,7 +10,7 @@ h2{
   color: #071029
 
 }
-h5 {
+h3 {
   border-left: 2px solid #071029;
   padding-left: 3px;
   background-color: #e2e9fc9f;
@@ -56,6 +56,9 @@ footer > div > a {
 }
 .displaydomainNameResults > div.card{
   width: 100%;
+}
+.missing {
+  border: 3px solid red;
 }
 
 @media screen and (min-width: 280px) and (max-width: 299px){

@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
   <meta charset="utf-8">
   <meta name="author" content="Eduardo Estrada">
-  <meta name="revised" content="Friday, December 13th, 2019, 3:48 pm" />
+  <meta name="revised" content="Tuesday, September 14th, 2021, 3:48 pm" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <title>Check Passwords Prototype</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="site.css">
 </head>
+
 <body>
   <header>
     <div class="main-title container-fluid">
@@ -41,7 +43,7 @@
     </section>
     <section class="container">
       <div style="max-width: 58rem;">
-        <h5>Purpose:</h5>
+        <h3>Purpose:</h3>
         <p>This project was inspired from a video by Dr Mike Pound [Computerphile]
           <a href="https://www.youtube.com/watch?v=hhUb5iknVJs"><cite><q>Have You Been Pwned?</q></cite></a>
           and to showcase using a <mark><span data-toggle="popover" title="What is REST?" data-content="REST is acronym for REpresentational State Transfer.">REST API.</span></mark>
@@ -67,7 +69,7 @@
     </section>
     <section class="container">
       <div style="max-width: 58rem;">
-        <h5>Example:</h5>
+        <h3>Example:</h3>
         <p>
           If you type "password" and click the pwned button.
         </p>
@@ -87,7 +89,7 @@
         <div class="sub-title">
           <h2>Random Password Generator</h2>
         </div>
-        <h5>Purpose:</h5>
+        <h3>Purpose:</h3>
         <p>JavaScript random password generator.</p>
         <div class="card text-center border-secondary mb-3 user-form" style="max-width: 58rem;">
           <div class="card-header form-title">Password Generator</div>
@@ -115,7 +117,7 @@
         <div class="sub-title">
           <h2>Getting a single breached site</h2>
         </div>
-        <h5>Purpose:</h5>
+        <h3>Purpose:</h3>
         <p>
           In this section, the user can search for a single breached site.
           A "breach" is an instance of a system having been compromised by an attacker and the data disclosed.
@@ -141,9 +143,9 @@
     <section id="domainNameDisplay" class="domainNameDisplay">
       <div class="card">
         <div class="row no-gutters">
-        <div class="col-auto">
-          <img id="logo" class="img-fluid" src="placeholder.jpg" alt="" style="width: 115px; max-height: 100px;">
-        </div>
+          <div class="col-auto">
+            <img id="logo" class="img-fluid" src="placeholder.jpg" alt="" style="width: 115px; max-height: 100px;">
+          </div>
           <div class="col">
             <div class="card-block px-2">
               <h4 class="card-title" id="domainTitle"></h4>
@@ -168,7 +170,32 @@
       <small>Eduardo Estrada 2019</small>
     </div>
   </footer>
-
+  <!-- Modal -->
+  <!-- 
+        ARIA Documentation
+        https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/dialog_role 
+    -->
+  <div class="modal fade" id="alert-modal" tabindex="-1" role="dialog" aria-labelledby="errorModalLbl" aria-describedby="errorDesc" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-white bg-danger">
+          <h4 class="modal-title" id="errorModalLbl">Blank Field Error</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <p id="errorDesc">Password field cannot be blank.</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end Modal -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
