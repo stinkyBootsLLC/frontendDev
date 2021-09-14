@@ -14,7 +14,7 @@
  * @param {Number} nNumber 
  * @returns {String}
  */
-function addCommasToNumber(nNumber) {
+ function addCommasToNumber(nNumber) {
   return nNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }// addCommasToNumber()
 
@@ -22,9 +22,13 @@ function addCommasToNumber(nNumber) {
  * Creates the SHA-1
  */
 function creatPassWordSHA(){
+  $( "#passField" ).removeClass("missing");
   const userInput = document.getElementById("passField").value;
-  if(userInput === ""){
-    alert("password field cannot be BLANK");
+  if(userInput === "" || null){
+    // display the error
+    $('#alert-modal').modal('show');
+    $( "#passField" ).addClass( "missing" );
+    $( "#passField" ).focus();
   } else {
     let shaHex = sha1(userInput);
     // first four to send
@@ -61,7 +65,7 @@ function callTheAPI(address, find){
       if (nFoundHash > 0){
         // the hash was found in the database
         let badPassResult = document.getElementById("display");
-        badPassResult.style.color = "red";
+        badPassResult.style.color = "#e60000";
         badPassResult.innerHTML = "Password has been compromised <mark><strong>" + sCompAmount + " </strong></mark>times!";
       } else {
         // not found
@@ -79,9 +83,12 @@ function callTheAPI(address, find){
  * Send data to a web service and receive data from a web service by using the Fetch API object.
  */
 function siteBreach(){
+  $( "#allbreaches" ).removeClass("missing");
   let userInput = document.getElementById("allbreaches").value;
+  
   if(userInput === ""){
     alert("Domain Name cannot be BLANK");
+    $( "#allbreaches" ).addClass( "missing" );
   } else {
     let urlDomainName = "https://haveibeenpwned.com/api/breaches?domain=" + userInput;
     fetch(urlDomainName)
@@ -165,13 +172,28 @@ function randomPassGen(){
   }// end if 
 }// end randomPassGen()
 
+/**
+ * Entry Point
+ */
+$(document).ready(function () {
+  const oPwnedBtn = document.getElementById("pwned-btn");
+  const oRandomBtn = document.getElementById("random-btn");
+  const oBreachBtn = document.getElementById("breach-btn");
 
-
-
-
-
-
-
-
-
- 
+  allBreachedDomains();
+  // bootstrap popover
+  $('[data-toggle="popover"]').popover({
+    placement: 'top',
+    trigger: 'hover'
+  });
+  // event listeners
+  oPwnedBtn.addEventListener('click',function() {
+    creatPassWordSHA();
+  });
+  oRandomBtn.addEventListener('click',function() {
+    randomPassGen();
+  });
+  oBreachBtn.addEventListener('click',function() {
+    siteBreach();
+  });
+});// end document ready
