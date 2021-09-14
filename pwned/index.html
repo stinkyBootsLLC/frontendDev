@@ -1,157 +1,162 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
-<body onload="allBreachedDomains();">
-
-  <head>
-    <meta charset="utf-8">
-    <meta name="author" content="Eduardo Estrada">
-    <meta name="revised" content="Friday, December 13th, 2019, 3:48 pm" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Check Passwords Prototype</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="site.css">
-  </head>
-  <div class="main-title">
-    <div class="container-fluid">
-      <h1>Check PWNED Passwords - Prototype...</h1>
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Eduardo Estrada">
+  <meta name="revised" content="Friday, December 13th, 2019, 3:48 pm" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Check Passwords Prototype</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <header>
+    <div class="main-title container-fluid">
+      <div>
+        <h1>Check PWNED Passwords - Prototype...</h1>
+      </div>
     </div>
-  </div>
-  <section class="container sub-title">
-    <div class="sub-title">
-      <h1>Searching By Range</h1>
-    </div>
-    <div class="card text-center border-secondary mb-3 user-form" style="max-width: 58rem;">
-      <div class="card-header form-title">Unencrypted Password</div>
-      <div class="card-body text-secondary">
-        <div class="form-group row">
-          <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-          <div class="col-sm-10">
-            <input class="form-control" id="passField" type="text" name="pass" value="" placeholder="Password">
+  </header>
+  <main class="container">
+    <section class="container sub-title">
+      <div class="sub-title">
+        <h2>Searching By Range</h2>
+      </div>
+      <div class="card text-center border-secondary mb-3 user-form" style="max-width: 58rem;">
+        <div class="card-header form-title">Unencrypted Password</div>
+        <div class="card-body text-secondary">
+          <div class="form-group row">
+            <label for="passField" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input class="form-control" id="passField" type="text" name="pass" placeholder="Password">
+            </div>
+          </div>
+          <button id="pwned-btn" type="button" class="btn btn-outline-secondary btn-lg">pwned?</button>
+          <div class="" id="results">
+            <br>
+            <p id="display"></p>
           </div>
         </div>
-        <button type="button" class="btn btn-outline-secondary btn-lg" onclick="creatPassWordSHA()">pwned? </button>
-        <div class="" id="results">
-          <br>
-          <p id="display"></p>
-        </div>
       </div>
-  </section>
-  <section class="container">
-    <div style="max-width: 58rem;">
-      <h5>Purpose:</h5>
-      <p>This project was inspired from a video by Dr Mike Pound [Computerphile]
-        <a href="https://www.youtube.com/watch?v=hhUb5iknVJs"><cite><q>Have You Been Pwned?</q></cite></a>
-        and to showcase using a <mark><span data-toggle="popover" title="What is REST?"
-            data-content="REST is acronym for REpresentational State Transfer.">REST API.</span></mark>
-        The term "pwn" means<a href="https://www.urbandictionary.com/define.php?term=pwn">
-          <cite><q>An act of dominating an opponent.</q></cite></a>
-        In this case your password. According to <a href="https://haveibeenpwned.com/Passwords">haveibeenpwned.com,</a>
-        <cite><q>
-            <!--<a href="https://www.nottingham.ac.uk/computerscience/">University of NottinghamComputer Science</a>-->
-            Pwned Passwords are 551,509,767 real world passwords previously exposed in data breaches.
-            This exposure makes them unsuitable for ongoing use as they're at much greater risk of
-            being used to take over other accounts. They're searchable online below as well as being
-            downloadable for use in other online systems.
-          </q></cite>
-      </p>
-      <p>
-        In this example project, I am using a k-Anonymity model that allows a password to be searched for by
-        partial hash. <strong>(Searching by range)</strong> The JavaScript algorithm will convert your plain text
-        into a Secure Hash Algorithm 1 (SHA-1) and use the first 5 characters of the hash to check the
-        pwned passwords repository. The last 35 characters of the hash will then be used to search for a match.
-      </p>
+    </section>
+    <section class="container">
+      <div style="max-width: 58rem;">
+        <h5>Purpose:</h5>
+        <p>This project was inspired from a video by Dr Mike Pound [Computerphile]
+          <a href="https://www.youtube.com/watch?v=hhUb5iknVJs"><cite><q>Have You Been Pwned?</q></cite></a>
+          and to showcase using a <mark><span data-toggle="popover" title="What is REST?" data-content="REST is acronym for REpresentational State Transfer.">REST API.</span></mark>
+          The term "pwn" means<a href="https://www.urbandictionary.com/define.php?term=pwn">
+            <cite><q>An act of dominating an opponent.</q></cite></a>
+          In this case your password. According to <a href="https://haveibeenpwned.com/Passwords">haveibeenpwned.com,</a>
+          <cite><q>
+              <!--<a href="https://www.nottingham.ac.uk/computerscience/">University of NottinghamComputer Science</a>-->
+              Pwned Passwords are 551,509,767 real world passwords previously exposed in data breaches.
+              This exposure makes them unsuitable for ongoing use as they're at much greater risk of
+              being used to take over other accounts. They're searchable online below as well as being
+              downloadable for use in other online systems.
+            </q></cite>
+        </p>
+        <p>
+          In this example project, I am using a k-Anonymity model that allows a password to be searched for by
+          partial hash. <strong>(Searching by range)</strong> The JavaScript algorithm will convert your plain text
+          into a Secure Hash Algorithm 1 (SHA-1) and use the first 5 characters of the hash to check the
+          pwned passwords repository. The last 35 characters of the hash will then be used to search for a match.
+        </p>
 
-    </div>
-  </section>
-  <section class="container">
-    <div style="max-width: 58rem;">
-      <h5>Example:</h5>
-      <p>
-        If you type "password" and click the pwned button.
-        <ul>
-          <li>Full SHA-1 HEX = 5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8</li>
-          <li>First 5 chars to use for API k-Anonymity = 5baa6 (the only characters being sent to the repository)</li>
-          <li>Part to search = 1e4c9b93f3f0682250b6cf8331b7ee68fd8</li>
-          <li>Display hash found or not found</li>
+      </div>
+    </section>
+    <section class="container">
+      <div style="max-width: 58rem;">
+        <h5>Example:</h5>
+        <p>
+          If you type "password" and click the pwned button.
+        </p>
+        <ul class="list-group">
+          <li class="list-group-item">Full SHA-1 HEX = 5baa61e4c9b93f3f068 2250b6cf8331b7ee68fd8</li>
+          <li class="list-group-item">First 5 chars to use for API k-Anonymity = 5baa6 (the only characters being sent to the repository)</li>
+          <li class="list-group-item">Part to search = 1e4c9b93f3f0682 250b6cf8331b7ee68fd8</li>
+          <li class="list-group-item">Display hash found or not found</li>
         </ul>
-        The searching algorithm is being accomplished on the front-end. (your computer, not mine or the server)
-      </p>
-    </div>
-  </section>
-  <section id="randomGen" class="container">
-    <div style="max-width: 58rem;">
-      <div class="sub-title">
-        <h1>Random Password Generator</h1>
+        <p>
+          The searching algorithm is being accomplished on the front-end. (your computer, not mine or the server)
+        </p>
       </div>
-      <h5>Purpose:</h5>
-      <p>JavaScript random password generator.</p>
-      <div class="card text-center border-secondary mb-3 user-form" style="max-width: 58rem;">
-        <div class="card-header form-title">Password Generator</div>
-        <div class="card-body text-secondary">
-          <div class="form-group row">
-            <label for="newpass" class="col-sm-2 col-form-label">New Password</label>
-            <div class="col-sm-10">
-              <input class="form-control" id="pass_display" type="text"  placeholder="random password" readonly>
+    </section>
+    <section id="randomGen" class="container">
+      <div style="max-width: 58rem;">
+        <div class="sub-title">
+          <h2>Random Password Generator</h2>
+        </div>
+        <h5>Purpose:</h5>
+        <p>JavaScript random password generator.</p>
+        <div class="card text-center border-secondary mb-3 user-form" style="max-width: 58rem;">
+          <div class="card-header form-title">Password Generator</div>
+          <div class="card-body text-secondary">
+            <div class="form-group row">
+              <label for="pass_display" class="col-sm-2 col-form-label">New Password</label>
+              <div class="col-sm-10">
+                <input class="form-control" id="pass_display" type="text" placeholder="random password" readonly>
+              </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label for="passlength" class="col-sm-2 col-form-label">Length</label>
-            <div class="col-sm-10">
-              <input class="form-control" id="Length" type="number" name="passlength" min="8" max="16">
+            <div class="form-group row">
+              <label for="Length" class="col-sm-2 col-form-label">Length</label>
+              <div class="col-sm-10">
+                <input class="form-control" id="Length" type="number" name="passlength" min="8" max="16">
+              </div>
             </div>
-          </div>
-          <button type="button" class="btn btn-outline-secondary btn-lg" onclick="randomPassGen()">random </button>
-        </div>
-      </div>
-    </div>
-  </section>
-  <br><br>
-  <section id="breaches" class="container">
-    <div style="max-width: 58rem;">
-      <div class="sub-title">
-        <h1>Getting a single breached site</h1>
-      </div>
-      <h5>Purpose:</h5>
-      <p>
-        In this section, the user can search for a single breached site.
-        A "breach" is an instance of a system having been compromised by an attacker and the data disclosed.
-        For example, Adobe was a breach, Gawker was a breach etc.
-      </p>
-      <div class="card text-center border-secondary mb-3 user-form" style="max-width: 58rem;">
-        <div class="card-header form-title">All Domain Names in the system</div>
-        <div class="card-body text-secondary">
-          <div class="form-group row">
-            <label for="DomainName" class="col-sm-2 col-form-label">Domain Name</label>
-            <div class="col-sm-10">
-              <select class="form-control" id="allbreaches" name="domainName" value="" style="width:80%;"></select>
-            </div>
-          </div>
-          <button type="button" class="btn btn-outline-secondary btn-lg" onclick="siteBreach()">Check Breached Site
-          </button>
-        </div>
-      </div>
-  </section>
-  <br><br>
-  <section id="domainNameDisplay" class="container domainNameDisplay">
-    <div class="card">
-      <div class="row no-gutters">
-        <div class="col-auto">
-          <img id="logo" class="img-fluid" alt="" style="width: 115px; max-height: 100px;">
-        </div>
-        <div class="col">
-          <div class="card-block px-2">
-            <h4 class="card-title" id="domainTitle"></h4>
-            <p class="card-text" id="description"></p>
+            <button id="random-btn" type="button" class="btn btn-outline-secondary btn-lg">random</button>
           </div>
         </div>
       </div>
-      <div class="card-footer w-100 text-muted" id="cardFooter">
-      </div>
-    </div>
+    </section>
     <br><br>
-  </section>
+    <section id="breaches" class="container">
+      <div style="max-width: 58rem;">
+        <div class="sub-title">
+          <h2>Getting a single breached site</h2>
+        </div>
+        <h5>Purpose:</h5>
+        <p>
+          In this section, the user can search for a single breached site.
+          A "breach" is an instance of a system having been compromised by an attacker and the data disclosed.
+          For example, Adobe was a breach, Gawker was a breach etc.
+        </p>
+        <div class="card text-center border-secondary mb-3 user-form" style="max-width: 58rem;">
+          <div class="card-header form-title">All Domain Names in the system</div>
+          <div class="card-body text-secondary">
+            <div class="form-group row">
+              <label for="allbreaches" class="col-sm-2 col-form-label">Domain Name</label>
+              <div class="col-sm-10">
+                <select class="form-control" id="allbreaches" name="domainName" style="width:80%;"></select>
+              </div>
+            </div>
+            <button id="breach-btn" type="button" class="btn btn-outline-secondary btn-lg">
+              Check Breached Site
+            </button>
+          </div>
+        </div>
+      </div><!-- end  -->
+    </section>
+    <br><br>
+    <section id="domainNameDisplay" class="domainNameDisplay">
+      <div class="card">
+        <div class="row no-gutters">
+        <div class="col-auto">
+          <img id="logo" class="img-fluid" src="placeholder.jpg" alt="" style="width: 115px; max-height: 100px;">
+        </div>
+          <div class="col">
+            <div class="card-block px-2">
+              <h4 class="card-title" id="domainTitle"></h4>
+              <p class="card-text" id="description"></p>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer w-100 text-muted" id="cardFooter">
+        </div>
+      </div>
+      <br><br>
+    </section>
+  </main>
   <br><br><br><br>
   <footer id="sticky-footer" class="py-4 bg-dark text-light">
     <div class="container text-center">
@@ -164,26 +169,14 @@
     </div>
   </footer>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
-  <script src="/pwned/scripts/siteFunc.js"></script>
-  <script src="/pwned/scripts/sha1.js"></script>
-  <script type="text/javascript">
-    // JQuery for popover (part of bootstrap library)
-    $(document).ready(function () {
-      $('[data-toggle="popover"]').popover({
-        placement: 'top',
-        trigger: 'hover'
-      });
-    });
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+  <script src="scripts/siteFunc.js"></script>
+  <script src="scripts/sha1.js"></script>
 </body>
 
 </html>
