@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
+  <!-- lighthouse Accessibility score 100% 9/15/2021 -->
   <meta charset="utf-8">
   <meta name="author" content="Eduardo Estrada">
   <meta name="revised" content="Tuesday, September 14th, 2021, 3:48 pm" />
@@ -18,8 +19,11 @@
     </div>
   </header>
   <main class="container">
-  <br>
-  <section class="container">
+    <br>
+    <section class="container">
+      <div class="sub-title">
+        <h2 tabindex="0">Searching By Range</h2>
+      </div>
       <div style="max-width: 58rem;">
         <h3>Purpose:</h3>
         <p tabindex="0">This project was inspired from a video by Dr Mike Pound [Computerphile]
@@ -43,14 +47,9 @@
           pwned passwords repository. The last 35 characters of the hash will then be used to search for a match.
         </p>
       </div>
-    </section>
-    <section class="container sub-title">
-      <div class="sub-title">
-        <h2 tabindex="0">Searching By Range</h2>
-      </div>
-      <div id="findPasswordSection" style="display: none;">in this section you will provide a password to check against the repository to see if the 
-      password has been comprimised. There is a password input field and a execute button.</div>
-      <div  tabindex="0" class="card text-center border-secondary mb-3 user-form" aria-labelledby="findPasswordSection" style="max-width: 58rem;">
+      <div id="findPasswordSection" style="display: none;">in this section you will provide a password to check against the repository to see if the
+        password has been comprimised. There is a password input field and a execute button.</div>
+      <div tabindex="0" class="card text-center border-secondary mb-3 user-form" aria-labelledby="findPasswordSection" style="max-width: 58rem;">
         <div class="card-header form-title">Unencrypted Password</div>
         <div class="card-body text-secondary">
           <div class="form-group row">
@@ -80,7 +79,7 @@
           <li class="list-group-item">Display hash found or not found</li>
         </ul>
         <p>
-          The searching algorithm is being accomplished on the front-end. (your computer, not mine or the server)
+          <em>The searching algorithm is being accomplished on the front-end. (your computer, not mine or the server)</em>
         </p>
       </div>
     </section>
@@ -111,7 +110,7 @@
         </div>
       </div>
     </section>
-    <br><br>
+    <br>
     <section id="breaches" class="container">
       <div style="max-width: 58rem;">
         <div class="sub-title">
