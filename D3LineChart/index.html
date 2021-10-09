@@ -1,123 +1,91 @@
 <!DOCTYPE html>
-<html lang="en-US">
-  <body>
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-      <title>Data-Driven Documents (D3) Visulization</title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <link rel="stylesheet" href="chart.css">
-      <link rel="stylesheet" href="site.css">
-    </head>
-    
-    <div class="main-title">
-      <div class="container-fluid"><h1>Data-Driven Documents (D3) Visulization</h1></div>
-    </div> 
-    <br><br>
-    <section class="container">
-      <h5>Purpose:</h5>
-      <p>
-        The purpose of this project, is to showcase the <mark>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Data-Driven Documents (D3) Visulization</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="chart.css">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <div class="main-title">
+    <div class="container-fluid">
+      <h1>Data-Driven Documents (D3) Visulization</h1>
+    </div>
+  </div>
+  <br><br>
+  <section class="container">
+    <h2>Purpose:</h2>
+    <p tabindex="0">
+      The purpose of this project, is to showcase the <mark>
         <span data-toggle="popover" data-content="Data-Driven Documents">D3 Visulization library.</span></mark>
-        <cite>
-        "D3.js is a JavaScript library for manipulating documents based on data. D3 helps you bring data to life using HTML, 
-        SVG, and CSS. D3’s emphasis on web standards gives you the full capabilities of modern browsers without 
-        tying yourself to a proprietary framework, combining powerful visualization components and a data-driven 
+      <cite>
+        "D3.js is a JavaScript library for manipulating documents based on data. D3 helps you bring data to life using HTML,
+        SVG, and CSS. D3’s emphasis on web standards gives you the full capabilities of modern browsers without
+        tying yourself to a proprietary framework, combining powerful visualization components and a data-driven
         approach to DOM manipulation"(<a href="https://d3js.org/">Data-Driven Documents</a>).
-        </cite>
-      </p>
-      <h5>About the Graph:</h5>
-      <p>
-        The original data for the following graph, has been dowloaded from the Mother Jones database.
-        <a href="https://bit.ly/2OQiwgQ">Download the database in its entirety (in CSV format) by clicking here.</a>
-        This graph answers the question, How many victims have there been in mass shootings in the United States, per year?
-        The graph takes into account injuries and fatalities.
-      </p>
-  
-    </section>
+      </cite>
+    </p>
+    <h2>About the Graph:</h2>
+    <p tabindex="0">
+      The original data for the following graph, has been dowloaded from the Mother Jones database.
+      <a href="https://bit.ly/2OQiwgQ">Download the database in its entirety (in CSV format) by clicking here.</a>
+      This graph answers the question, how many victims have there been in mass shootings in the United States?
+      and how many incidents have there been in the United States since 1982?
+      The graph takes into account injuries and fatalities.
+    </p>
+  </section>
+  <section class="container sub-title">
+    <div class="sub-title">
+      <h2>US Mass Shootings, 1982-2019: Data From Mother Jones’ Investigation</h2>
+    </div>
 
-
-
-
-
-
-    <section class="container sub-title">
-      <div class="sub-title"><h1>US Mass Shootings, 1982-2019: Data From Mother Jones’ Investigation</h1></div>
-     
-      <div class="card text-center border-secondary mb-3" style="max-width: 58rem;">
-        <div id="card-title" class="card-header form-title">Total Victims Per Year</div>
-          <div class="card-body text-secondary">
-              <div id="chart-display"></div>
-          </div>
-
-
-          <div class="card-footer text-muted">
-              <button type="button" class="btn btn-outline-dark" onclick="incidentsPerYearViz()">Incidents Per Year</button>
-              &nbsp;&nbsp;
-              <button type="button" class="btn btn-outline-dark" onclick="TotalVictimsButton()">Victims Per Year</button>
-            
-          </div>
-
-
-
-
-
-
-
+    <div class="card text-center border-secondary mb-3">
+      <div id="card-title" class="card-header form-title">Total Victims Per Year</div>
+      <div class="card-body text-secondary">
+        <div id="chart-display"></div>
       </div>
-      <p>
-        According to J. Bosman, K. Taylor & T. Arango (2019),<cite>
-        "The motivations of men who commit mass shootings are often muddled, complex or unknown. 
-        But one common thread that connects many of them — other than access to powerful firearms — 
-        is a history of hating women, assaulting wives, girlfriends and female family members, or sharing 
-        misogynistic views online" </cite>
-        <a href="https://www.nytimes.com/2019/08/10/us/mass-shootings-misogyny-dayton.html">(The New York Times)</a>
-        
-        
-          
-      </p>
-      
-    </section>
-    
- 
-   
+      <div class="card-footer text-muted">
+        <button id="incidBtn" type="button" class="btn btn-outline-dark">Incidents Per Year</button>
+        &nbsp;&nbsp;
+        <button id="victBtn" type="button" class="btn btn-outline-dark">Victims Per Year</button>
+      </div>
+    </div>
+    <p tabindex="0">
+      According to J. Bosman et al. (2019),<cite>
+      "The motivations of men who commit mass shootings are often muddled, complex or unknown.
+      But one common thread that connects many of them — other than access to powerful firearms —
+      is a history of hating women, assaulting wives, girlfriends and female family members, or sharing
+      misogynistic views online" </cite>
+      <a href="https://www.nytimes.com/2019/08/10/us/mass-shootings-misogyny-dayton.html" aria-label="article. A Common Trait Among Mass Killers: Hatred Toward Women">(The New York Times)</a>
+    </p>
+  </section>
+  <br><br><br><br>
+  <footer id="sticky-footer" class="py-4 bg-dark text-light">
+    <div class="container text-center">
+      Reference Links: &nbsp; &nbsp; &nbsp;
+      <a href="https://d3js.org/">D3 Data-Driven Documents</a>&nbsp; | &nbsp;
+      <a href="https://www.motherjones.com/">Mother Jones</a> &nbsp; | &nbsp;
+      <small>Eduardo Estrada 2019</small>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" 
+    crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 
+    crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
+    crossorigin="anonymous">
+  </script>
+  <script src="https://d3js.org/d3.v3.js"></script>
+  <script src="chart.js"></script>
+</body>
 
-    
-    <br><br><br><br>
-    <footer id="sticky-footer" class="py-4 bg-dark text-light">
-        <div class="container text-center">
-            Reference Links: &nbsp; &nbsp; &nbsp; 
-            <a href="https://d3js.org/">D3 Data-Driven Documents</a>&nbsp; | &nbsp; 
-            <a href="https://www.motherjones.com/">Mother Jones</a> &nbsp; | &nbsp;
-           
-          <small>Eduardo Estrada 2019</small>
-        </div>
-    </footer>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-      </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-      </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-      </script>
-    <script src="//d3js.org/d3.v3.min.js"></script>
-    <script src="chart.js"></script>
-   
-
-
-
-    <script type="text/javascript">
-      // JQuery for popover (part of bootstrap library)
-      $(document).ready(function(){
-          $('[data-toggle="popover"]').popover({
-              placement : 'top',
-              trigger : 'hover'
-          });
-      });
-      </script>
-  </body>
 </html>

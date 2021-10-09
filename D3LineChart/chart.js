@@ -1,3 +1,4 @@
+// x axis increments of 5
 const margin = { top: 30, right: 132, bottom: 30, left: 50 },
 width = 960 - margin.left - margin.right,
 height = 500 - margin.top - margin.bottom;
@@ -24,10 +25,6 @@ const yAxis = d3.svg.axis()
 .tickFormat(d3.format("s"));
 
 function victimsPerYear(){   
-
-
-    
-    
     const svg = d3.select("#chart-display").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -54,7 +51,7 @@ function victimsPerYear(){
             return a.date - b.date;
         });
 
-        x.domain([data[0].date, data[data.length - 1].date]);//
+        x.domain([data[0].date, data[data.length - 1].date]);
         y.domain(d3.extent(data, function(d) { return d.victims; }));
 
         svg.append("g")
@@ -101,6 +98,7 @@ function victimsPerYear(){
 
         let tooltipLikesValue = tooltipLikes.append("span")
             .attr("class", "myTooltip-likes");
+
         svg.append("rect")
             .attr("class", "overlay")
             .attr("width", width)
@@ -119,8 +117,6 @@ function victimsPerYear(){
             tooltip.attr("style", "left:" + (x(d.date)+64) + "px;top:" + (y(d.victims)-50)+ "px;");
             tooltip.select(".myTooltip-date").text(dateFormatter(d.date));
             tooltip.select(".myTooltip-likes").text(formatValue(d.victims));
-
-            //console.log(y(d.victims));
         }
     });
 };// end victimsPerYear()
@@ -128,11 +124,9 @@ function victimsPerYear(){
 function incidentsPerYearViz(){
     // first remove the SVG from the div 
     clearDiv();
-
-    // dont forget the change the text of card-title
+    // add title
     $('#card-title').text('Incidents Per Year');
     // now make the new chart again in same location
-
     const svg = d3.select("#chart-display").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -159,7 +153,7 @@ function incidentsPerYearViz(){
             return a.date - b.date;
         });
 
-        x.domain([data[0].date, data[data.length - 1].date]);//
+        x.domain([data[0].date, data[data.length - 1].date]);
         y.domain(d3.extent(data, function(d) { return d.incidents; }));
 
         svg.append("g")
@@ -226,24 +220,35 @@ function incidentsPerYearViz(){
             tooltip.select(".myTooltip-date").text(dateFormatter(d.date));
             tooltip.select(".myTooltip-likes").text(formatValue(d.incidents));
 
-            //console.log(y(d.victims));
+            // console.log(y(d.victims));
         }
     });
 
 }// end incidentsPerYearViz()
 
 function clearDiv(){
-    //const displayDiv = $('#chart-display');
     let elemToRemove = $('#chart-display').find('svg')
     elemToRemove.remove();
-
 }// end clearDiv()
 
 function TotalVictimsButton(){
     clearDiv();
     $('#card-title').text('Total Victims Per Year');//Total Victims Per Year
     victimsPerYear();
-
 }// end TotalVictimsButton()
-victimsPerYear();
+// default chart to display
+
+$(document).ready(function() {
+    victimsPerYear();
+    $('[data-toggle="popover"]').popover({
+      placement: 'top',
+      trigger: 'hover'
+    });
+    $( "#incidBtn" ).click(function() {
+        incidentsPerYearViz();
+    });
+    $( "#victBtn" ).click(function() {
+        TotalVictimsButton();
+    });
+});
 
