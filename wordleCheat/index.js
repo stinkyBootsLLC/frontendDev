@@ -186,12 +186,12 @@ function getDateStamp(oDate){
 /**
  * Calculates the Wordle answer of Today.
  * @param {Number} nEpochDay 
- * @param {Number} nSolutionJulianDay 
+ * @param {Number} nSolutionEpochDay 
  * @param {Number} nSolutionIndex 
  */
-function calculateAnswer(nEpochDay, nSolutionJulianDay, nSolutionIndex) {
-  console.log(nEpochDay, nSolutionJulianDay, nSolutionIndex);
-  if (nEpochDay === nSolutionJulianDay) {
+function calculateAnswer(nEpochDay, nSolutionEpochDay, nSolutionIndex) {
+  console.log(nEpochDay, nSolutionEpochDay, nSolutionIndex);
+  if (nEpochDay === nSolutionEpochDay) {
     oAnswers = {
       'Date': nEpochDay,
       'Today': aSolutions[nSolutionIndex],
@@ -199,7 +199,7 @@ function calculateAnswer(nEpochDay, nSolutionJulianDay, nSolutionIndex) {
     };
   } else {
     // recurse yourself
-    calculateAnswer(nEpochDay, nSolutionJulianDay + 1, nSolutionIndex + 1)
+    calculateAnswer(nEpochDay, nSolutionEpochDay + 1, nSolutionIndex + 1)
   }
 }// end calculateAnswer()
 
