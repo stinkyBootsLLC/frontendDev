@@ -205,70 +205,43 @@ function calculateAnswer(nEpochDay, nSolutionEpochDay, nSolutionIndex) {
 }// end calculateAnswer()
 
 function displayHistroy(aDBitems){
-
   console.log(aDBitems);
   document.getElementById("history").innerHTML = 
     `<ul id="list"></u>`;
-
   aDBitems.forEach(function (arrayItem) {
-
     document.getElementById("list").innerHTML += `<li>Date: ${arrayItem.ansDate} -> ${arrayItem.dailyAns}</li>`;
-    
     console.log(arrayItem.ansDate + '->' + arrayItem.dailyAns)
   });
-
-
-
 }
-
 
 function getDBAttributes(){
     // name and version num
     let dbRequest = window.indexedDB.open('wordleAnswersDB', 1), db, tx, store, index;
-
     dbRequest.onerror = function(event){
-
       console.error(event.target.error);
-
     };
-
     dbRequest.onsuccess = function(event){
       db = dbRequest.result;
       tx = db.transaction('wordleAnswersStore', 'readwrite');
       store = tx.objectStore('wordleAnswersStore');
       index = store.index('ansDateInd');
-
       db.onerror = function(event){
-
         console.error(event.target.error);
-
       };
-
       // let anAnswer = store.get(2);
       // anAnswer.onsuccess = function(){
       //   console.log(anAnswer.result);
       // }
-       
-
       let myIndex = store.index('ansDateInd');
       let getAllKeysRequest = myIndex.getAll();
-
-      getAllKeysRequest.onsuccess = function() {
-
+      getAllKeysRequest.onsuccess = function(){
         let aAnsHistory = getAllKeysRequest.result;
-
         displayHistroy(aAnsHistory);
-
-         
-
       }
-
       tx.oncomplete = function(){
         db.close();
       };
-
     };
-
 }
 // indexDB
 function putInDB(sAnswer, nEpochDate){
@@ -327,23 +300,13 @@ function putInDB(sAnswer, nEpochDate){
       ${oAnswers.Tommorow}</strong></span></p>
       <button id="db-btn">SAVE TO DB</button><br>
       <p>Display Answer History: <button id="display-btn">DISPLAY</button></p>`;
-
       document.getElementById("display-btn").addEventListener("click", function () {
-   
         getDBAttributes();
-
-        
-
       });
-
-
-
       document.getElementById("db-btn").addEventListener("click", function () {
         alert("This button is still experimental");
         putInDB(oAnswers.Today, oAnswers.Date);
-         
       });
-
 }
 
 document.getElementById("ans-btn").addEventListener("click", function () {
@@ -356,20 +319,14 @@ document.getElementById("ans-btn").addEventListener("click", function () {
   };
   let today = new Date() ;
   let nOffSet = today.getTimezoneOffset() / 8.64e7;
-
   const oSolutionDate = new Date("2022-02-14T00:00:00+0000");
   const nSolutionDay =  Math.floor(oSolutionDate.getEpochDay() - nOffSet) ;
   const nSolutionIndex = 239;
-
-
   let nEpochDay = Math.round(today.getEpochDay() - nOffSet);
   console.log(nSolutionDay); // 19036
   console.log(nEpochDay);
-   
   calculateAnswer(nEpochDay, nSolutionDay, nSolutionIndex);
   displayAnswers(today);
-
-
   // temp store answer in session storage
   // sessionStorage.setItem(nSolutionDay,JSON.stringify(oAnswers));
   // // running answers
@@ -381,6 +338,5 @@ document.getElementById("ans-btn").addEventListener("click", function () {
   // };
   // // this can be sent to persistent storage
   // console.log(oAllAnswers);
-  
 });
 
