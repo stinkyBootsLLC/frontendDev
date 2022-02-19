@@ -167,6 +167,7 @@ const aSolutions = [
 ];
 
 let oAnswers = {};
+
 /**
  * Returns a date as a String.
  * Format: YYYYMMDD
@@ -203,7 +204,22 @@ function calculateAnswer(nEpochDay, nSolutionEpochDay, nSolutionIndex) {
   }
 }// end calculateAnswer()
 
+function displayHistroy(aDBitems){
 
+  console.log(aDBitems);
+  document.getElementById("history").innerHTML = 
+    `<ul id="list"></u>`;
+
+  aDBitems.forEach(function (arrayItem) {
+
+    document.getElementById("list").innerHTML += `<li>Date: ${arrayItem.ansDate} -> ${arrayItem.dailyAns}</li>`;
+    
+    console.log(arrayItem.ansDate + '->' + arrayItem.dailyAns)
+  });
+
+
+
+}
 
 
 function getDBAttributes(){
@@ -232,16 +248,18 @@ function getDBAttributes(){
       // anAnswer.onsuccess = function(){
       //   console.log(anAnswer.result);
       // }
-      let aIndexArray = [];
+       
 
       let myIndex = store.index('ansDateInd');
       let getAllKeysRequest = myIndex.getAll();
 
       getAllKeysRequest.onsuccess = function() {
 
-        aIndexArray = getAllKeysRequest.result;
+        let aAnsHistory = getAllKeysRequest.result;
 
-        console.log(aIndexArray);
+        displayHistroy(aAnsHistory);
+
+         
 
       }
 
@@ -307,17 +325,24 @@ function putInDB(sAnswer, nEpochDate){
       ${oAnswers.Today}</strong></span></p>
       <p> Tommorow's Word: <span style='text-transform: uppercase; color: red;'><strong>
       ${oAnswers.Tommorow}</strong></span></p>
-      <button id="db-btn">SAVE TO DB</button>`;
+      <button id="db-btn">SAVE TO DB</button><br>
+      <p>Display Answer History: <button id="display-btn">DISPLAY</button></p>`;
+
+      document.getElementById("display-btn").addEventListener("click", function () {
+   
+        getDBAttributes();
+
+        
+
+      });
+
+
+
       document.getElementById("db-btn").addEventListener("click", function () {
-      alert("This button is still experimental");
-
-      putInDB(oAnswers.Today, oAnswers.Date);
-      getDBAttributes();
-
-
-
-
-    });
+        alert("This button is still experimental");
+        putInDB(oAnswers.Today, oAnswers.Date);
+         
+      });
 
 }
 
@@ -337,12 +362,14 @@ document.getElementById("ans-btn").addEventListener("click", function () {
   const nSolutionIndex = 239;
 
 
-  let nEpochDay = Math.floor(today.getEpochDay() - nOffSet);
+  let nEpochDay = Math.round(today.getEpochDay() - nOffSet);
   console.log(nSolutionDay); // 19036
   console.log(nEpochDay);
    
   calculateAnswer(nEpochDay, nSolutionDay, nSolutionIndex);
   displayAnswers(today);
+
+
   // temp store answer in session storage
   // sessionStorage.setItem(nSolutionDay,JSON.stringify(oAnswers));
   // // running answers
