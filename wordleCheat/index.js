@@ -209,7 +209,11 @@ function displayHistroy(aDBitems){
   document.getElementById("history").innerHTML = 
     `<ul id="list"></u>`;
   aDBitems.forEach(function (arrayItem) {
-    document.getElementById("list").innerHTML += `<li>Date: ${arrayItem.ansDate} -> ${arrayItem.dailyAns}</li>`;
+    document.getElementById("list").innerHTML += 
+    `<li>
+      Date: ${arrayItem.ansDate} 
+      Wordle: ${arrayItem.dailyAns} 
+    </li>`;
     console.log(arrayItem.ansDate + '->' + arrayItem.dailyAns)
   });
 }
@@ -272,12 +276,11 @@ function putInDB(sAnswer, nEpochDate){
       index = store.index('ansDateInd');
       db.onerror = function(event){
         console.error(event.target.error);
-        alert(`Value [${sAnswer}] is already stored in DB`)
+        alert(`A value for [${dateStamp}] is already stored in DB`)
       };
       // on success conduct transactions
       store.put({
-        ansDate: dateStamp, // this is the KEY PATH and MUST BE UNIQUE
-        epochDate: nEpochDate,
+        ansDate: dateStamp, // this is the KEY PATH and MUST BE UNIQUE see index variable
         dailyAns: sAnswer
       });
        // close transaction
@@ -310,22 +313,25 @@ function putInDB(sAnswer, nEpochDate){
 }
 
 document.getElementById("ans-btn").addEventListener("click", function () {
+  
   // Date.prototype.getJulian = function () {
   //   // remember this is UTC time Sooooo ahead of me hear on the east coast
   //   return Math.floor((this / 86400000) - (this.getTimezoneOffset() / 1440) + 2440587.5);
   // }
-  Date.prototype.getEpochDay = function () {
-    return Math.floor(this/8.64e7);
-  };
+  // Date.prototype.getEpochDay = function () {
+  //   return Math.floor(this/8.64e7);
+  // };
   let today = new Date() ;
-  let nOffSet = today.getTimezoneOffset() / 8.64e7;
-  const oSolutionDate = new Date("2022-02-14T00:00:00+0000");
-  const nSolutionDay =  Math.floor(oSolutionDate.getEpochDay() - nOffSet) ;
-  const nSolutionIndex = 239;
-  let nEpochDay = Math.round(today.getEpochDay() - nOffSet);
-  console.log(nSolutionDay); // 19036
-  console.log(nEpochDay);
-  calculateAnswer(nEpochDay, nSolutionDay, nSolutionIndex);
+  // let nOffSet = today.getTimezoneOffset() / 8.64e7;
+  // const oSolutionDate = new Date("2022-02-14T00:00:00+0000");
+  // // const nSolutionDay =  Math.floor(oSolutionDate.getEpochDay() - nOffSet );
+  const nSolutionIndex = 240;
+  // let nEpochDay = Math.round(today.getEpochDay() - nOffSet);
+  // console.log(nSolutionDay); // 19036
+  // console.log(nEpochDay);
+  const nSolutionDay =  Number(  getDateStamp(new Date("Feb 14 2022 00:00:00 GMT-0500"))  )   ;
+  let nToday =  Number(  getDateStamp(today  )  )   ;
+  calculateAnswer(nToday, nSolutionDay, nSolutionIndex);
   displayAnswers(today);
   // temp store answer in session storage
   // sessionStorage.setItem(nSolutionDay,JSON.stringify(oAnswers));
@@ -337,6 +343,5 @@ document.getElementById("ans-btn").addEventListener("click", function () {
   //   oAllAnswers[key] = sAnswer.Today;
   // };
   // // this can be sent to persistent storage
-  // console.log(oAllAnswers);
 });
 
