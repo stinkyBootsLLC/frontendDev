@@ -1,0 +1,14 @@
+sequence, courseName, courseNumber, sectionNumber, classNumber, startDate,completionDate, finalGradeLetter, finalGradeNumber, creditsEarned 
+1,Orientation to Graduate Studies at UMGC,UCSP 615,,,,,,,0
+2,Modern Software Methodologies,SWEN 603,,,,,,,3
+3,Computer Systems Architecture,ITEC 625,,,,,,,3
+4,Relational Database Systems,DBST 651,,,,,,,3
+5,Software Design and Implementation,SWEN 646,,,,,,,3
+6,Advanced Software Design and Implementation,SWEN 656,,,,,,,3
+7,"Information Systems Analysis, Modeling, and Design",ITEC 630,,,,,,,3
+8,Software Requirements,SWEN 645,,,,,,,3
+9,Information Technology Project Management,ITEC 640,,,,,,,3
+10,Software Verification and Validation,SWEN 647,,,,,,,3
+11,Usability Engineering,SWEN 651,,,,,,,3
+12,User Interface Implementation,SWEN 661,,,,,,,3
+13,Software Engineering Project,SWEN 670,,,,,,,3

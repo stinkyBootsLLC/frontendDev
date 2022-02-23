@@ -1,0 +1,95 @@
+{
+    "requiredCourses":[
+        {
+            "Sequence": 1,
+            "Course": "Orientation to Graduate Studies at UMGC",
+            "number": "UCSP 615",
+            "credits": "0"
+        },
+        {
+            "Sequence": 2,
+            "Course": "Modern Software Methodologies",
+            "number": "SWEN 603",
+            "credits": "3"
+        },
+        {
+            "Sequence": 3,
+            "Course": "Computer Systems Architecture",
+            "number": "ITEC 625",
+            "credits": "3"
+        },
+        {
+            "Sequence": 4,
+            "Course": "Relational Database Systems",
+            "number": "DBST 651",
+            "credits": "3"
+        },
+        {
+            "Sequence": 5,
+            "Course": "Software Design and Implementation",
+            "number": "SWEN 646",
+            "credits": "3"
+        },
+        {
+            "Sequence": 6,
+            "Course": "Advanced Software Design and Implementation",
+            "number": "SWEN 656",
+            "credits": "3"
+        },
+        {
+            "Sequence": 7,
+            "Course": "Information Systems Analysis, Modeling, and Design",
+            "number": "ITEC 630",
+            "credits": "3"
+        },
+        {
+            "Sequence": 8,
+            "Course": "Software Requirements",
+            "number": "SWEN 645",
+            "credits": "3"
+        },
+          {
+            "Sequence": 9,
+            "Course": "Information Technology Project Management",
+            "number": "ITEC 640",
+            "credits": "3"
+          },
+          {
+            "Sequence": 10,
+            "Course": "Software Verification and Validation",
+            "number": "SWEN 647",
+            "credits": "3"
+            
+          },
+          {
+            "Sequence": 11,
+            "Course": "Usability Engineering",
+            "number": "SWEN 651",
+            "credits": "3"
+          },
+          {
+            "Sequence": 12,
+            "Course": "User Interface Implementation",
+            "number": "SWEN 661",
+            "credits": "3"
+            
+          },
+          {
+            "Sequence": 13,
+            "Course": "Software Engineering Project",
+            "number": "SWEN 670",
+            "credits": "3"
+          }
+
+
+
+
+    ],
+    "stundents":[
+        {
+            "name": "Eduardo Estrada"
+        }
+    ]
+}
+
+
