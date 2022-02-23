@@ -276,7 +276,7 @@ function putInDB(sAnswer, nEpochDate){
       index = store.index('ansDateInd');
       db.onerror = function(event){
         console.error(event.target.error);
-        alert(`A value for [${dateStamp}] is already stored in DB`)
+        console.warn(`A value for [${dateStamp}] is already stored in DB`)
       };
       // on success conduct transactions
       store.put({
@@ -294,54 +294,27 @@ function putInDB(sAnswer, nEpochDate){
  * Displays the results in the view (HTML)
  * @param {Object} oTodaysDate 
  */
- function displayAnswers(oTodaysDate){
-    document.getElementById("main").innerHTML += 
-      `<p> Today's Date: ${oTodaysDate}</p>
-      <p>Today's Word: <span style='text-transform: uppercase;'><strong>
-      ${oAnswers.Today}</strong></span></p>
-      <p> Tommorow's Word: <span style='text-transform: uppercase; color: red;'><strong>
-      ${oAnswers.Tommorow}</strong></span></p>
-      <button id="db-btn">SAVE TO DB</button><br>
-      <p>Display Answer History: <button id="display-btn">DISPLAY</button></p>`;
-      document.getElementById("display-btn").addEventListener("click", function () {
-        getDBAttributes();
-      });
-      document.getElementById("db-btn").addEventListener("click", function () {
-        alert("This button is still experimental");
-        putInDB(oAnswers.Today, oAnswers.Date);
-      });
+function displayAnswers(oTodaysDate){
+  document.getElementById("main").innerHTML += 
+    `<p> Today's Date: ${oTodaysDate}</p>
+    <p>Today's Word: <span style='text-transform: uppercase;'><strong>
+    ${oAnswers.Today}</strong></span></p>
+    <p> Tommorow's Word: <span style='text-transform: uppercase; color: red;'><strong>
+    ${oAnswers.Tommorow}</strong></span></p>
+      
+    <p>Display Answer History: <button id="display-btn">DISPLAY</button></p>`;
+    document.getElementById("display-btn").addEventListener("click", function () {
+      getDBAttributes();
+    });
+    putInDB(oAnswers.Today, oAnswers.Date);
+      
 }
-
-document.getElementById("ans-btn").addEventListener("click", function () {
-  
-  // Date.prototype.getJulian = function () {
-  //   // remember this is UTC time Sooooo ahead of me hear on the east coast
-  //   return Math.floor((this / 86400000) - (this.getTimezoneOffset() / 1440) + 2440587.5);
-  // }
-  // Date.prototype.getEpochDay = function () {
-  //   return Math.floor(this/8.64e7);
-  // };
-  let today = new Date() ;
-  // let nOffSet = today.getTimezoneOffset() / 8.64e7;
-  // const oSolutionDate = new Date("2022-02-14T00:00:00+0000");
-  // // const nSolutionDay =  Math.floor(oSolutionDate.getEpochDay() - nOffSet );
+(function () {
+  let today = new Date();
   const nSolutionIndex = 240;
-  // let nEpochDay = Math.round(today.getEpochDay() - nOffSet);
-  // console.log(nSolutionDay); // 19036
-  // console.log(nEpochDay);
   const nSolutionDay =  Number(  getDateStamp(new Date("Feb 14 2022 00:00:00 GMT-0500"))  )   ;
   let nToday =  Number(  getDateStamp(today  )  )   ;
   calculateAnswer(nToday, nSolutionDay, nSolutionIndex);
   displayAnswers(today);
-  // temp store answer in session storage
-  // sessionStorage.setItem(nSolutionDay,JSON.stringify(oAnswers));
-  // // running answers
-  // let oAllAnswers = {};
-  // let sAnswer = "";
-  // for (const [key, value] of Object.entries(sessionStorage)) {
-  //   sAnswer = JSON.parse(value);
-  //   oAllAnswers[key] = sAnswer.Today;
-  // };
-  // // this can be sent to persistent storage
-});
+}());
 
